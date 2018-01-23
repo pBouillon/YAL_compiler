@@ -25,7 +25,7 @@ public class Yal {
             
             // à écrire pour yal0
             // yal.arbre.verifier() ;
-            // System.out.println(yal.arbre.toMIPS());
+             System.out.println(arbre.toMIPS());
         } 
         catch (FileNotFoundException ex) {
             System.err.println("Fichier " + fichier + " inexistant") ;

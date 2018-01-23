@@ -16,5 +16,17 @@ public class Egal extends Comparaison {
     public String operateur() {
         return " == ";
     }
+
+	@Override
+	public void verifier() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String toMIPS() {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }
