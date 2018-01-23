@@ -25,8 +25,21 @@ public class Plus extends BinaireArithmetique {
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder s = new StringBuilder();
+		s.append(gauche.toMIPS());
+		s.append("\n");
+		s.append("sw $v0, ($sp)");
+		s.append("\n");
+		s.append("addi $sp, $sp -4");
+		s.append("\n");
+		s.append( droite.toMIPS() );
+		s.append("\n");
+		s.append("addi $sp, $sp, +4");
+		s.append("\n");
+		s.append("lw $t8, ($sp) ");
+		s.append("\n");
+		s.append("add $v0, $t8, $v0");
+		return s.toString();
 	}
 
 }
