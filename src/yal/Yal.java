@@ -21,12 +21,14 @@ public class Yal {
         try {
             AnalyseurSyntaxique analyseur = new AnalyseurSyntaxique(new AnalyseurLexical(new FileReader(fichier)));
             ArbreAbstrait arbre = (ArbreAbstrait) analyseur.parse().value;
-            System.err.println("expression stockée dans l'yal.arbre : " + arbre);
+            // System.err.println("expression stockée dans l'yal.arbre : " + arbre);
             
             // à écrire pour yal0
             // yal.arbre.verifier() ;
             StringBuilder code = new StringBuilder() ;
-            code.append("move $s7, $sp\n")
+            code.append(".text\n")
+                .append("main:\n")
+                .append("move $s7, $sp\n")
                 .append(arbre.toMIPS()) ;
             System.out.println(code) ;
         } 
