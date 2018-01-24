@@ -30,8 +30,8 @@ public class ConstanteBool extends Constante {
 	public String toMIPS() {
     	int bool_expr = eval(cste) ;
 
-		return "# Chargement de la constante " + bool_expr + "\n" +
-				"li $v0, " + bool_expr + "\n" ;
+		return "# Chargement de la constante " + bool_expr +
+				"li $v0, " + bool_expr ;
 	}
 
 }

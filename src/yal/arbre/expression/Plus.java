@@ -25,19 +25,27 @@ public class Plus extends BinaireArithmetique {
 
 	@Override
 	public String toMIPS() {
-		return "# Evaluation de l'opérande gauche \n" +
-				gauche.toMIPS() + "\n" +
-				"# Stocke la valeur de v0 dans la mémoire \n" +
-				"sw $v0, ($sp)" + "\n" +
-				"# Dépilement dans $sp \n" +
-				"addi $sp, $sp -4 \n" +
-				"# Evaluation de l'opérande droite \n" +
-				droite.toMIPS() + "\n" +
-				"# Déplacement de sp \n" +
-				"addi $sp, $sp, +4 \n" +
-				"lw $t8, ($sp) \n" +
-				"# Ajout de t8 et v0 \n" +
-				"add $v0, $t8, $v0\n" ;
+		StringBuilder s = new StringBuilder() ;
+		s.append("# Evaluation de l'opérande gauche \n")
+		 .append(gauche.toMIPS())
+		 .append("\n")
+		 .append("# Stocke la valeur de v0 dans la mémoire \n")
+		 .append("sw $v0, ($sp)")
+		 .append("\n")
+		 .append("# Dépilement dans $sp \n")
+		 .append("addi $sp, $sp -4")
+		 .append("\n")
+		 .append("# Evaluation de l'opérande droite \n")
+		 .append(droite.toMIPS())
+		 .append("\n")
+		 .append("# Déplacement de sp \n")
+		 .append("addi $sp, $sp, +4")
+		 .append("\n")
+		 .append("lw $t8, ($sp) ")
+		 .append("\n")
+		 .append("# Ajout de t8 et v0 \n")
+		 .append("add $v0, $t8, $v0") ;
+		return s.toString() ;
 	}
 
 }
