@@ -21,7 +21,7 @@ public class ConstanteEntiere extends Constante {
 	@Override
 	public String toMIPS() {
 		// TODO Auto-generated method stub
-		return "li $v0 " + cste;
+		return "#Evaluation d'une constante dans v0 \n" + "li $v0 " + cste;
 	}
 
 }
