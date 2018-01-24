@@ -20,10 +20,8 @@ public class ConstanteEntiere extends Constante {
 
 	@Override
 	public String toMIPS() {
-		StringBuilder s = new StringBuilder();
-		s.append("#Evaluation d'une constante dans v0 \n");
-		s.append("li $v0, " + cste);
-		return s.toString();
+		return "#Evaluation d'une constante dans v0 \n"
+				+ "li $v0, " + cste + "\n" ;
 	}
 
 }
