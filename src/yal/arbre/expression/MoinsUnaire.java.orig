@@ -30,8 +30,6 @@ public class MoinsUnaire extends Unaire {
 				"li $v0, 0 \n" +
 				"lw $t8, ($sp) \n" +
 				"sub $v0, $t8, $v0\n" ;
-		s.append("#Recuperation de sp dans t8 \n");
-		s.append("#Soustraction de t8 par v0 \n");
 	}
 
 }
