@@ -25,7 +25,10 @@ public class Yal {
             
             // à écrire pour yal0
             // yal.arbre.verifier() ;
-             System.out.println(arbre.toMIPS());
+            StringBuilder code = new StringBuilder() ;
+            code.append("move $s7, $sp\n")
+                .append(arbre.toMIPS()) ;
+            System.out.println(code) ;
         } 
         catch (FileNotFoundException ex) {
             System.err.println("Fichier " + fichier + " inexistant") ;
