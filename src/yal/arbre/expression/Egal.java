@@ -19,18 +19,15 @@ public class Egal extends Comparaison {
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-		
+		if(gauche.getType() != "int" || droite.getType() != "int") {
+			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
+		}
 	}
 
 	@Override
 	public String toMIPS() {
-		if(gauche.getType() != "int" || droite.getType() != "int") {
-			return "ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType();
-		}else {
 			return null;
 		}
-	}
 
 	@Override
 	public String getType() {

@@ -19,21 +19,18 @@ public class MoinsUnaire extends Unaire {
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-
+		if(expression.getType() != "int") {
+			System.out.println( "ERREUR SEMANTIQUE: " + this.getType() + " avec un " + expression.getType()) ;
+		}
 	}
 
 	@Override
 	public String toMIPS() {
-		if(expression.getType() != "int") {
-			return "ERREUR SEMANTIQUE: " + this.getType() + " avec un " + expression.getType() ;
-		}else {
 			return 	"li $v0, 0 \n" +  "\n" +
 					"sw $v0, ($sp) \n" +
 					expression.toMIPS()	+
 					"lw $t8, ($sp) \n" +
 					"sub $v0, $t8, $v0\n" ;
-		}
 	}
 
 	@Override

@@ -25,13 +25,12 @@ public class BlocDInstructions extends ArbreAbstrait {
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
+		expr.verifier();
 		
 	}
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
 		return expr.toMIPS();
 	}
 

@@ -19,16 +19,14 @@ public class Div extends BinaireArithmetique {
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-
+		if(gauche.getType() != "int" || droite.getType() != "int") {
+			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
+		}
 	}
 
 	@Override
 	public String toMIPS() {
 		StringBuilder s = new StringBuilder();
-		if(gauche.getType() != "int" || droite.getType() != "int") {
-			return "ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType();
-		}else {
 			s.append(gauche.toMIPS());
 			s.append("\n");
 			s.append("sw $v0, ($sp)");
@@ -41,7 +39,6 @@ public class Div extends BinaireArithmetique {
 			s.append("\n");
 			s.append("mflo $v0");
 			return s.toString();
-		}
 	}
 
 	@Override

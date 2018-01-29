@@ -19,16 +19,14 @@ public class Mult extends BinaireArithmetique {
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-
+		if(gauche.getType() != "int" || droite.getType() != "int") {
+			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
+		}
 	}
 
 	@Override
 	public String toMIPS() {
 		StringBuilder s = new StringBuilder();
-		if(gauche.getType() != "int" || droite.getType() != "int") {
-			return "ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType();
-		}else {
 			s.append("#Evaluation de l'opérande gauche \n")
 			.append(gauche.toMIPS())
 			.append("\n")
@@ -51,7 +49,7 @@ public class Mult extends BinaireArithmetique {
 			.append("mflo $v0");
 			return s.toString();
 		}
-	}
+	
 	@Override
 	public String getType() {
 		return "multiplication";

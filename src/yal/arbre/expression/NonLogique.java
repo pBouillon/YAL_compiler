@@ -19,17 +19,14 @@ public class NonLogique extends Unaire {
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-
+		if(expression.getType() != "boolean" ) {
+			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " avec un " + expression.getType()) ;
+		}
 	}
 
 	@Override
 	public String toMIPS() {
-		if(expression.getType() != "boolean" ) {
-			return "ERREUR SEMANTIQUE: " + this.getType() + " avec un " + expression.getType() ;
-		}else {
 			return null;
-		}
 	}
 
 

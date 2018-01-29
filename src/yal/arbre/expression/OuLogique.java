@@ -19,15 +19,13 @@ public class OuLogique extends BinaireLogique {
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-
+		if(gauche.getType() != "boolean" || droite.getType() != "boolean") {
+			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
+		}
 	}
 
 	@Override
 	public String toMIPS() {
-		if(gauche.getType() != "boolean" || droite.getType() != "boolean") {
-			return "ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType();
-		}else {
 			return "# Evaluation de l'opérande gauche \n" +
 					gauche.toMIPS() + "\n" + 
 					"# Stocke la valeur de v0 dans la mémoire \n" +
@@ -41,7 +39,6 @@ public class OuLogique extends BinaireLogique {
 					"lw $t8, ($sp) \n" +
 					"# comparaison de t8 ou v0  \n" +
 					"or $v0, $t8, $v0\n" ;
-		}
 	}
 	@Override
 	public String getType() {
