@@ -1,5 +1,7 @@
 package yal.arbre.expression;
 
+import yal.EtiquetteFactory;
+
 /**
  * 3 déc. 2015
  *
@@ -28,12 +30,12 @@ public class Superieur extends Comparaison {
 				"# stockage de $v0 - $t8 dans $v0\n" +
 				"sub $v0, $t8, $v0\n" +
 				"# teste si $v0 - $t8 > 0\n" +
-                "bgtz $v0, " + EtiquetteFactory.getInstance().getSiSup() + "\n" +
+                "bgtz $v0, " + EtiquetteFactory.getInstance().getNextSiSup() + "\n" +
 				"Si resultat non superieur, va a l'etiquette sinonSup\n" +
-                "j " + EtiquetteFactory.getInstance().getSiNonSup() + "\n" +
+                "j " + EtiquetteFactory.getInstance().getNextSiNonSup() + "\n" +
 				EtiquetteFactory.getInstance().getSiSup() + ": \n" +
                 "lw $v0, 1\n"  +
-                "j " + EtiquetteFactory.getInstance().getFinSiSup() + "\n" +
+                "j " + EtiquetteFactory.getInstance().getNextFinSiSup() + "\n" +
 				EtiquetteFactory.getInstance().getSiNonSup() + ":\n"  +
                 "lw $v0, 0\n"  +
 				EtiquetteFactory.getInstance().getFinSiSup() + ":\n";
