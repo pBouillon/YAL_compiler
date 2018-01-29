@@ -36,7 +36,7 @@ public class OuLogique extends BinaireLogique {
 				"# Déplacement de sp \n" +
 				"addi $sp, $sp, +4 \n" +
 				"lw $t8, ($sp) \n" +
-				"# comparaison de t8 et v0 (ou) \n" +
+				"# comparaison de t8 ou v0  \n" +
 				"or $v0, $t8, $v0\n" ;
 	}
 
