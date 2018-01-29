@@ -33,7 +33,14 @@ public class Egal extends Comparaison {
 				"\n" +
 				"sub $v0, $t8, $v0\n" +
 				"# vérifie si v0 == t8\n" +
-				"beq  ";
+				"beq $v0, $t8, siEq\n" +
+				"j siNonEq\n" +
+				"siEq:\n" +
+				"lw $v0, 1\n" +
+				"j finSiEq\n" +
+				"siNonEq:\n" +
+				"lw $v0, 0\n" +
+				"finSiEq:\n";
 	}
 
 	@Override
