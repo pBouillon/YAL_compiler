@@ -36,7 +36,7 @@ public class EtLogique extends BinaireLogique {
 
 	@Override
 	public String getType() {
-		return "et logique";
+		return "boolean";
 	}
 
 }

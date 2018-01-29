@@ -30,12 +30,12 @@ public class OuLogique extends BinaireLogique {
 					"# Déplacement de sp \n" +
 					"addi $sp, $sp, +4 \n" +
 					"lw $t8, ($sp) \n" +
-					"# comparaison de t8 ou v0  \n" +
+					"# Comparaison de t8 ou v0  \n" +
 					"or $v0, $t8, $v0\n" ;
 	}
 	@Override
 	public String getType() {
-		return "ou logique";
+		return "boolean";
 	}
 
 }

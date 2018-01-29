@@ -1,5 +1,8 @@
 package yal.arbre.expression;
 
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -13,8 +16,11 @@ public abstract class Comparaison extends Binaire {
     }
     
 	public void verifier() {
+		gauche.verifier();
+		droite.verifier();
 		if(gauche.getType() != "int" || droite.getType() != "int") {
-			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
+			String s =  operateur() + " entre un " + gauche.getType() + " et un " + droite.getType();
+			ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
 		}
 	}
 

@@ -1,5 +1,8 @@
 package yal.arbre.expression;
 
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -33,14 +36,14 @@ public class Moins extends BinaireArithmetique {
 		s.append("\n");
 		s.append("lw $t8, ($sp) ");
 		s.append("\n");
-		s.append("sub $v0, $t8, $v0");
+		s.append("sub $v0, $t8, $v0\n");
 		return s.toString();
 
 	}
-
+	
 	@Override
 	public String getType() {
-		return "soustraction";
+		return "int";
 	}
 
 }

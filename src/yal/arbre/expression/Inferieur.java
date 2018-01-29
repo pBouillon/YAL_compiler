@@ -25,7 +25,7 @@ public class Inferieur extends Comparaison {
 
 	@Override
 	public String getType() {
-		return "inferieur";
+		return "boolean";
 	}
     
 }

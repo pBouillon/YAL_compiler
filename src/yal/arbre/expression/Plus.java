@@ -1,5 +1,8 @@
 package yal.arbre.expression;
 
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -42,10 +45,10 @@ public class Plus extends BinaireArithmetique {
 		return s.toString() ;
 
 	}
-
+    
 	@Override
 	public String getType() {
-		return "addition";
+		return "int";
 	}
 
 }

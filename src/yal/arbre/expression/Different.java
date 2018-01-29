@@ -24,7 +24,7 @@ public class Different extends Comparaison {
 
 	@Override
 	public String getType() {
-		return "different";
+		return "boolean";
 	}
 
 }

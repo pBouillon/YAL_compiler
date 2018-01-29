@@ -1,5 +1,8 @@
 package yal.arbre.expression;
 
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -19,8 +22,10 @@ public class MoinsUnaire extends Unaire {
 
 	@Override
 	public void verifier() {
+		expression.verifier();
 		if(expression.getType() != "int") {
-			System.out.println( "ERREUR SEMANTIQUE: " + this.getType() + " avec un " + expression.getType()) ;
+			String s =  operateur() + " avec un " + expression.getType();
+			ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
 		}
 	}
 
@@ -35,7 +40,7 @@ public class MoinsUnaire extends Unaire {
 
 	@Override
 	public String getType() {
-		return "soustraction unaire";
+		return "int";
 	}
 
 }

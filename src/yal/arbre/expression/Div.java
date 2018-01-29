@@ -1,5 +1,8 @@
 package yal.arbre.expression;
 
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -30,13 +33,13 @@ public class Div extends BinaireArithmetique {
 			s.append("\n");
 			s.append("div $v0, $t8");
 			s.append("\n");
-			s.append("mflo $v0");
+			s.append("mflo $v0 \n");
 			return s.toString();
-	}
-
+	}    
+	
 	@Override
 	public String getType() {
-		return "division";
+		return "int";
 	}
 
 }

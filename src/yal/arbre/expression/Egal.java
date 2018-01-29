@@ -24,7 +24,7 @@ public class Egal extends Comparaison {
 
 	@Override
 	public String getType() {
-		return "egal";
+		return "boolean";
 	}
     
 }
