@@ -12,4 +12,10 @@ public abstract class BinaireArithmetique extends Binaire {
         super(gauche, droite) ;
     }
     
+	public void verifier() {
+		if(gauche.getType() != "int" || droite.getType() != "int") {
+			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
+		}
+	}
+    
 }

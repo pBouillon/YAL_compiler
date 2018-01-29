@@ -24,7 +24,7 @@ public class Yal {
             System.err.println("expression stockée dans l'yal.arbre : " + arbre);
             
             // à écrire pour yal0
-            // yal.arbre.verifier() ;
+            arbre.verifier() ;
             System.out.println (
                     header() +
                     arbre.toMIPS() +

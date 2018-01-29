@@ -18,13 +18,6 @@ public class Plus extends BinaireArithmetique {
 	}
 
 	@Override
-	public void verifier() {
-		if(gauche.getType() != "int" || droite.getType() != "int") {
-			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
-		}
-	}
-
-	@Override
 	public String toMIPS() {
 		StringBuilder s = new StringBuilder() ;
 		s.append("# Evaluation de l'opérande gauche \n")

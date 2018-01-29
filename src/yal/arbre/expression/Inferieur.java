@@ -17,12 +17,6 @@ public class Inferieur extends Comparaison {
         return " < ";
     }
 
-	@Override
-	public void verifier() {
-		if(gauche.getType() != "int" || droite.getType() != "int") {
-			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
-		}
-	}
 
 	@Override
 	public String toMIPS() {

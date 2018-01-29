@@ -8,8 +8,13 @@ package yal.arbre.expression;
 
 public abstract class BinaireLogique extends Binaire {
 
-    protected BinaireLogique(Expression gauche, Expression droite) {
-        super(gauche, droite) ;
-    }
-    
+	protected BinaireLogique(Expression gauche, Expression droite) {
+		super(gauche, droite) ;
+	}
+
+	public void verifier() {
+		if(gauche.getType() != "boolean" || droite.getType() != "boolean") {
+		}
+		System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
+	} 
 }

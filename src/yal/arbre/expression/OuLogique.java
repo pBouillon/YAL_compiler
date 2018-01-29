@@ -18,13 +18,6 @@ public class OuLogique extends BinaireLogique {
 	}
 
 	@Override
-	public void verifier() {
-		if(gauche.getType() != "boolean" || droite.getType() != "boolean") {
-			System.out.println("ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType());
-		}
-	}
-
-	@Override
 	public String toMIPS() {
 			return "# Evaluation de l'opérande gauche \n" +
 					gauche.toMIPS() + "\n" + 
