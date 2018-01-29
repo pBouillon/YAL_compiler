@@ -31,7 +31,15 @@ public class NonLogique extends Unaire {
 
 	@Override
 	public String toMIPS() {
-			return null;
+			return  expression.toMIPS() + "\n" + 
+					"bgtz $v0, siEq\n" +
+					"j siNonEq\n" +
+					"siEq:\n" +
+					"lw $v0, 0\n" +
+					"j finSiEq\n" +
+					"siNonEq:\n" +
+					"lw $v0, 1\n" +
+					"finSiEq:\n";
 	}
 
 
