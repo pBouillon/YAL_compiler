@@ -29,4 +29,9 @@ public class NonLogique extends Unaire {
 		return null;
 	}
 
+	@Override
+	public String getType() {
+		return "non logique";
+	}
+
 }

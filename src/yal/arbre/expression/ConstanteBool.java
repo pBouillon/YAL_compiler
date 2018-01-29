@@ -34,4 +34,9 @@ public class ConstanteBool extends Constante {
 				"li $v0, " + bool_expr ;
 	}
 
+	@Override
+	public String getType() {
+		return "boolean";
+	}
+
 }

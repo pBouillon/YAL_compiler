@@ -8,25 +8,34 @@ package yal.arbre.expression;
 
 public class Superieur extends Comparaison {
 
-    public Superieur(Expression gauche, Expression droite) {
-        super(gauche, droite);
-    }
+	public Superieur(Expression gauche, Expression droite) {
+		super(gauche, droite);
+	}
 
-    @Override
-    public String operateur() {
-        return " > ";
-    }
+	@Override
+	public String operateur() {
+		return " > ";
+	}
 
 	@Override
 	public void verifier() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
-		return null;
+		if(gauche.getType() != "int" || droite.getType() != "int") {
+			return "ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType();
+		}else {
+			return null;
+		}
 	}
-    
+
+
+	@Override
+	public String getType() {
+		return "superieur";
+	}
+
 }

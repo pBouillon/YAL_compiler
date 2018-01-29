@@ -40,4 +40,9 @@ public class EtLogique extends BinaireLogique {
 				"and $v0, $t8, $v0\n" ;
 	}
 
+	@Override
+	public String getType() {
+		return "and";
+	}
+
 }

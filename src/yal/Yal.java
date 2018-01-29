@@ -49,7 +49,7 @@ public class Yal {
     }
 
     private String footer() {
-        return  "end:\n" +
+        return  "\nend:\n" +
                     "move $v1, $v0\n" +
                     "li $v0, 10\n" +
                     "syscall\n" ;

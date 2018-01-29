@@ -24,4 +24,9 @@ public class ConstanteEntiere extends Constante {
 				+ "li $v0, " + cste + "\n" ;
 	}
 
+	@Override
+	public String getType() {
+		return "int";
+	}
+
 }

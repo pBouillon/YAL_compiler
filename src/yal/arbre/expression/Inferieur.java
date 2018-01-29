@@ -25,8 +25,16 @@ public class Inferieur extends Comparaison {
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
-		return null;
+		if(gauche.getType() != "int" || droite.getType() != "int") {
+			return "ERREUR SEMANTIQUE: " + this.getType() + " entre un " + gauche.getType() + " et un " + droite.getType();
+		}else {
+			return null;
+		}
+	}
+
+	@Override
+	public String getType() {
+		return "inferieur";
 	}
     
 }

@@ -40,4 +40,9 @@ public class OuLogique extends BinaireLogique {
 				"or $v0, $t8, $v0\n" ;
 	}
 
+	@Override
+	public String getType() {
+		return "ou logique";
+	}
+
 }
