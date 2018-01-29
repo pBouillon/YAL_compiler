@@ -1,5 +1,6 @@
 package yal.arbre.expression;
 
+import yal.EtiquetteFactory;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.SemantiqueException;
 
@@ -32,14 +33,14 @@ public class NonLogique extends Unaire {
 	@Override
 	public String toMIPS() {
 			return  expression.toMIPS() + "\n" + 
-					"bgtz $v0, siEq\n" +
-					"j siNonEq\n" +
-					"siEq:\n" +
+					"bgtz $v0, "+EtiquetteFactory.getInstance().getNextSiEg()+"\n" +
+					"j "+EtiquetteFactory.getInstance().getNextSiNonEg()+"\n" +
+					EtiquetteFactory.getInstance().getSiEg()+":\n" +
 					"lw $v0, 0\n" +
-					"j finSiEq\n" +
-					"siNonEq:\n" +
+					"j "+EtiquetteFactory.getInstance().getNextFinSiEg()+"\n" +
+					EtiquetteFactory.getInstance().getSiNonEg()+":\n" +
 					"lw $v0, 1\n" +
-					"finSiEq:\n";
+					EtiquetteFactory.getInstance().getFinSiEg()+":\n";
 	}
 
 
