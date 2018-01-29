@@ -19,8 +19,22 @@ public class Egal extends Comparaison {
 
 	@Override
 	public String toMIPS() {
-			return null;
-		}
+		return gauche.toMIPS() +
+				"\n" +
+				"sw $v0, ($sp)" +
+				"\n" +
+				"addi $sp, $sp -4" +
+				"\n" +
+				droite.toMIPS() +
+				"\n" +
+				"addi $sp, $sp, +4" +
+				"\n" +
+				"lw $t8, ($sp) " +
+				"\n" +
+				"sub $v0, $t8, $v0\n" +
+				"# vérifie si v0 == t8\n" +
+				"beq  ";
+	}
 
 	@Override
 	public String getType() {

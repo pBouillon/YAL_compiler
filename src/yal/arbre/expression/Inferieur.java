@@ -20,7 +20,21 @@ public class Inferieur extends Comparaison {
 
 	@Override
 	public String toMIPS() {
-			return null;
+		return gauche.toMIPS() +
+				"sw $v0, ($sp)\n" +
+				"addi $sp, $sp -4\n" +
+				droite.toMIPS() +
+				"addi $sp, $sp, +4\n" +
+				"lw $t8, ($sp)\n" +
+				"sub $v0, $t8, $v0\n" +
+                "bltz $v0, siInf\n" +
+                "j sinonInf\n" +
+                "siInf: \n" +
+                "lw $v0, 1\n" +
+                "j finSiInf\n" +
+                "sinonInf:\n" +
+                "lw $v0, 0\n" +
+                "finSiInf:\n";
 	}
 
 	@Override

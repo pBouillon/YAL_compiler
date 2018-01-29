@@ -1,8 +1,5 @@
 package yal.arbre.expression;
 
-import yal.exceptions.ListeSemantiqueException;
-import yal.exceptions.SemantiqueException;
-
 /**
  * 3 déc. 2015
  *
@@ -24,21 +21,20 @@ public class Moins extends BinaireArithmetique {
 	@Override
 	public String toMIPS() {
 		StringBuilder s = new StringBuilder();
-		s.append(gauche.toMIPS());
-		s.append("\n");
-		s.append("sw $v0, ($sp)");
-		s.append("\n");
-		s.append("addi $sp, $sp -4");
-		s.append("\n");
-		s.append( droite.toMIPS() );
-		s.append("\n");
-		s.append("addi $sp, $sp, +4");
-		s.append("\n");
-		s.append("lw $t8, ($sp) ");
-		s.append("\n");
-		s.append("sub $v0, $t8, $v0\n");
-		return s.toString();
-
+		s.append(gauche.toMIPS())
+		 .append("\n")
+		 .append("sw $v0, ($sp)")
+		 .append("\n")
+		 .append("addi $sp, $sp -4")
+		 .append("\n")
+		 .append( droite.toMIPS() )
+		 .append("\n")
+		 .append("addi $sp, $sp, +4")
+		 .append("\n")
+		 .append("lw $t8, ($sp) ")
+		 .append("\n")
+		 .append("sub $v0, $t8, $v0\n") ;
+		return s.toString() ;
 	}
 	
 	@Override
