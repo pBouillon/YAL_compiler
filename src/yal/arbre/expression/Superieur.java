@@ -19,7 +19,21 @@ public class Superieur extends Comparaison {
 
 	@Override
 	public String toMIPS() {
-			return null;		
+		return gauche.toMIPS() +
+				"sw $v0, ($sp)\n" +
+				"addi $sp, $sp -4\n" +
+				droite.toMIPS() +
+				"addi $sp, $sp, +4\n" +
+				"lw $t8, ($sp)\n" +
+				"sub $v0, $t8, $v0\n" +
+                "bgtz $v0, siSup\n" +
+                "j sinonSup\n" +
+                "siSup: \n" +
+                "lw $v0, 1\n" +
+                "j finSiSup\n" +
+                "sinonSup:\n" +
+                "lw $v0, 0\n" +
+                "finSiSup:\n";
 	}
 
 
