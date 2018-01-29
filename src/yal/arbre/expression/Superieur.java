@@ -25,15 +25,18 @@ public class Superieur extends Comparaison {
 				droite.toMIPS() +
 				"addi $sp, $sp, +4\n" +
 				"lw $t8, ($sp)\n" +
+				"# stockage de $v0 - $t8 dans $v0\n" +
 				"sub $v0, $t8, $v0\n" +
-                "bgtz $v0, siSup\n" +
-                "j sinonSup\n" +
-                "siSup: \n" +
-                "lw $v0, 1\n" +
-                "j finSiSup\n" +
-                "sinonSup:\n" +
-                "lw $v0, 0\n" +
-                "finSiSup:\n";
+				"# teste si $v0 - $t8 > 0\n" +
+                "bgtz $v0, " + EtiquetteFactory.getInstance().getSiSup() + "\n" +
+				"Si resultat non superieur, va a l'etiquette sinonSup\n" +
+                "j " + EtiquetteFactory.getInstance().getSiNonSup() + "\n" +
+				EtiquetteFactory.getInstance().getSiSup() + ": \n" +
+                "lw $v0, 1\n"  +
+                "j " + EtiquetteFactory.getInstance().getFinSiSup() + "\n" +
+				EtiquetteFactory.getInstance().getSiNonSup() + ":\n"  +
+                "lw $v0, 0\n"  +
+				EtiquetteFactory.getInstance().getFinSiSup() + ":\n";
 	}
 
 

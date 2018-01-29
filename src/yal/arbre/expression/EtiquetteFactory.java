@@ -1,0 +1,115 @@
+package yal.arbre.expression;
+
+import java.util.HashMap;
+
+public class EtiquetteFactory {
+
+    private static EtiquetteFactory INSTANCE
+            = new EtiquetteFactory() ;
+
+    // Inferieur
+    private final String SI_INF    = "siInf" ;
+    private final String SINON_INF = "sinonInf" ;
+    private final String FSI_INF   = "finSiInf" ;
+
+    // Superieur
+    private final String SI_SUP    = "siSup" ;
+    private final String SINON_SUP = "sinonSup" ;
+    private final String FSI_SUP   = "finSiSup" ;
+
+    // Egal
+    private final String SI_EG    = "siEg" ;
+    private final String SINON_EG = "sinonEg" ;
+    private final String FSI_EG   = "finSiEg" ;
+
+    // Non Egal
+    private final String SI_NEG    = "siNonEg" ;
+    private final String SINON_NEG = "sinonNonEg" ;
+    private final String FSI_NEG   = "finSiNonEg" ;
+
+    private HashMap<String, Integer> etiqs ;
+
+    private EtiquetteFactory() {
+        etiqs = new HashMap<>() ;
+        // inferieur
+        etiqs.put(SI_INF, 0) ;
+        etiqs.put(SINON_INF, 0) ;
+        etiqs.put(FSI_INF, 0) ;
+        // superieur
+        etiqs.put(SI_SUP, 0) ;
+        etiqs.put(SINON_SUP, 0) ;
+        etiqs.put(FSI_SUP, 0) ;
+        // egal
+        etiqs.put(SI_EG, 0) ;
+        etiqs.put(SINON_EG, 0) ;
+        etiqs.put(FSI_EG, 0) ;
+        // dif
+        etiqs.put(SI_NEG, 0) ;
+        etiqs.put(SINON_NEG, 0) ;
+        etiqs.put(FSI_NEG, 0) ;
+    }
+
+    public static EtiquetteFactory getInstance() {
+        return INSTANCE;
+    }
+
+    // Inferieur
+    public String getSiInf() {
+        etiqs.put(SI_INF, etiqs.get(SI_INF) + 1) ;
+        return SI_INF + etiqs.get(SI_INF) ;
+    }
+
+    public String getSiNonInf() {
+        etiqs.put(SINON_INF, etiqs.get(SINON_INF) + 1) ;
+        return SINON_INF + etiqs.get(SINON_INF) ;
+    }
+
+    public String getFinSiInf() {
+        etiqs.put(FSI_INF, etiqs.get(FSI_INF) + 1) ;
+        return FSI_INF + etiqs.get(FSI_INF) ;
+    }
+
+    // Superieur
+    public String getSiSup() {
+        etiqs.put(SI_SUP, etiqs.get(SI_SUP) + 1) ;
+        return SI_SUP + etiqs.get(SI_SUP) ;
+    }
+
+    public String getSiNonSup() {
+        etiqs.put(SINON_SUP, etiqs.get(SINON_SUP) + 1) ;
+        return SINON_SUP + etiqs.get(SINON_SUP) ;
+    }
+
+    public String getFinSiSup() {
+        etiqs.put(FSI_SUP, etiqs.get(FSI_SUP) + 1) ;
+        return FSI_SUP + etiqs.get(FSI_SUP) ;
+    }
+
+    // Egal
+    public String getSiEg() {
+        etiqs.put(SI_EG, etiqs.get(SI_EG) + 1) ;
+        return SI_EG + etiqs.get(SI_EG) ;
+    }
+    public String getSiNonEg() {
+        etiqs.put(SINON_EG, etiqs.get(SINON_EG) + 1) ;
+        return SINON_EG + etiqs.get(SINON_EG) ;
+    }
+    public String getFinSiEg() {
+        etiqs.put(FSI_EG, etiqs.get(FSI_EG) + 1) ;
+        return FSI_EG + etiqs.get(FSI_EG) ;
+    }
+
+    // Non Egal
+    public String getSiNeg() {
+        etiqs.put(SI_NEG, etiqs.get(SI_NEG) + 1) ;
+        return SI_NEG + etiqs.get(SI_NEG) ;
+    }
+    public String getSiNonNeg() {
+        etiqs.put(SINON_NEG, etiqs.get(SINON_NEG) + 1) ;
+        return SINON_NEG + etiqs.get(SINON_NEG) ;
+    }
+    public String getFinSiNeg() {
+        etiqs.put(FSI_NEG, etiqs.get(FSI_NEG) + 1) ;
+        return FSI_NEG + etiqs.get(FSI_NEG) ;
+    }
+}

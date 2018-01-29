@@ -23,9 +23,15 @@ public class MoinsUnaire extends Unaire {
 	@Override
 	public void verifier() {
 		expression.verifier();
-		if(expression.getType() != "int") {
-			String s =  operateur() + " avec un " + expression.getType();
-			ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
+		if (!expression.getType().equals("int")) {
+			ListeSemantiqueException
+				.getInstance()
+				.addException (
+					new SemantiqueException (
+						noLigne,
+						operateur() + " avec un " + expression.getType()
+					)
+				) ;
 		}
 	}
 

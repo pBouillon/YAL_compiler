@@ -1,5 +1,8 @@
 package yal.arbre.expression ;
 
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
+
 /**
  * 3 déc. 2015
  *
@@ -22,8 +25,16 @@ public class ConstanteBool extends Constante {
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-		
+		if (!cste.equals(TRUE) && !cste.equals(FALSE)) {
+			ListeSemantiqueException
+				.getInstance()
+				.addException (
+					new SemantiqueException (
+							noLigne,
+							cste + ": Symbole non reconnu"
+					)
+				) ;
+		}
 	}
 
 	@Override
