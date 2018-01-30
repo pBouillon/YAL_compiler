@@ -34,10 +34,10 @@ public class Superieur extends Comparaison {
 				"Si resultat non superieur, va a l'etiquette sinonSup\n" +
                 "j " + EtiquetteFactory.getInstance().getNextSiNonSup() + "\n" +
 				EtiquetteFactory.getInstance().getSiSup() + ": \n" +
-                "lw $v0, 1\n"  +
+                "li $v0, 1\n"  +
                 "j " + EtiquetteFactory.getInstance().getNextFinSiSup() + "\n" +
 				EtiquetteFactory.getInstance().getSiNonSup() + ":\n"  +
-                "lw $v0, 0\n"  +
+                "li $v0, 0\n"  +
 				EtiquetteFactory.getInstance().getFinSiSup() + ":\n";
 	}
 

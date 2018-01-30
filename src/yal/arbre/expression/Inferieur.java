@@ -32,10 +32,10 @@ public class Inferieur extends Comparaison {
                 "bltz $v0,"+EtiquetteFactory.getInstance().getNextSiInf()+"\n" +
                 "j "+ EtiquetteFactory.getInstance().getNextSiNonInf() +"\n" +
                 EtiquetteFactory.getInstance().getSiInf()+": \n" +
-                "lw $v0, 1\n" +
+                "li $v0, 1\n" +
                 "j "+EtiquetteFactory.getInstance().getNextFinSiInf()+"\n" +
                 EtiquetteFactory.getInstance().getSiNonInf()+":\n" +
-                "lw $v0, 0\n" +
+                "li $v0, 0\n" +
                 EtiquetteFactory.getInstance().getFinSiInf()+ ":\n";
 	}
 
