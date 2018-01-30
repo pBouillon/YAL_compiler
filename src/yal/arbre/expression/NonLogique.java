@@ -36,10 +36,10 @@ public class NonLogique extends Unaire {
 					"bgtz $v0, "+EtiquetteFactory.getInstance().getNextSiEg()+"\n" +
 					"j "+EtiquetteFactory.getInstance().getNextSiNonEg()+"\n" +
 					EtiquetteFactory.getInstance().getSiEg()+":\n" +
-					"lw $v0, 0\n" +
+					"li $v0, 0\n" +
 					"j "+EtiquetteFactory.getInstance().getNextFinSiEg()+"\n" +
 					EtiquetteFactory.getInstance().getSiNonEg()+":\n" +
-					"lw $v0, 1\n" +
+					"li $v0, 1\n" +
 					EtiquetteFactory.getInstance().getFinSiEg()+":\n";
 	}
 
