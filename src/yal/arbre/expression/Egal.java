@@ -34,7 +34,7 @@ public class Egal extends Comparaison {
 				"lw $t8, ($sp) " +
 				"\n" +
 				"sub $v0, $t8, $v0\n" +
-				"beq $v0, "+ EtiquetteFactory.getInstance().getNextSiEg()+"\n" +
+				"beqz $v0, "+ EtiquetteFactory.getInstance().getNextSiEg()+"\n" +
 				"j "+EtiquetteFactory.getInstance().getNextSiNonEg()+"\n" +
 				EtiquetteFactory.getInstance().getSiEg()+":\n" +
 				"li $v0, 1\n" +
