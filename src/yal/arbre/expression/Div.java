@@ -31,7 +31,7 @@ public class Div extends BinaireArithmetique {
 			s.append("\n");
 			s.append("lw $t8, ($sp) ");
 			s.append("\n");
-			s.append("div $v0, $t8");
+			s.append("div $t8, $v0");
 			s.append("\n");
 			s.append("mflo $v0 \n");
 			return s.toString();
