@@ -34,14 +34,13 @@ public class Egal extends Comparaison {
 				"lw $t8, ($sp) " +
 				"\n" +
 				"sub $v0, $t8, $v0\n" +
-				"# verifie si v0 == t8\n" +
-				"beq $v0, $t8,"+ EtiquetteFactory.getInstance().getNextSiEg()+"\n" +
+				"beq $v0, "+ EtiquetteFactory.getInstance().getNextSiEg()+"\n" +
 				"j "+EtiquetteFactory.getInstance().getNextSiNonEg()+"\n" +
 				EtiquetteFactory.getInstance().getSiEg()+":\n" +
-				"lw $v0, 1\n" +
+				"li $v0, 1\n" +
 				"j "+EtiquetteFactory.getInstance().getNextFinSiEg()+"\n" +
 				EtiquetteFactory.getInstance().getSiNonEg()+":\n" +
-				"lw $v0, 0\n" +
+				"li $v0, 0\n" +
 				EtiquetteFactory.getInstance().getFinSiEg()+":\n";
 	}
 
