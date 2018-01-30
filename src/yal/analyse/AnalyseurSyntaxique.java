@@ -17,9 +17,8 @@ import java_cup.runtime.*;
   */
 public class AnalyseurSyntaxique extends java_cup.runtime.lr_parser {
 
-  /** Default constructor.
-   * @param analyseurLexical*/
-  public AnalyseurSyntaxique(AnalyseurLexical analyseurLexical) {super();}
+  /** Default constructor.*/
+  public AnalyseurSyntaxique() {super();}
 
   /** Constructor which sets the default scanner. */
   public AnalyseurSyntaxique(java_cup.runtime.Scanner s) {super(s);}
