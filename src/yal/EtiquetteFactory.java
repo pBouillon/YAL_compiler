@@ -55,7 +55,7 @@ public class EtiquetteFactory {
 
     // Inferieur
     public String getNextSiInf() {
-        return SI_INF + etiqs.get(SI_INF) ;
+        return SI_INF + (etiqs.get(SI_INF) + 1) ;
     }
 
     public String getSiInf() {
@@ -64,7 +64,7 @@ public class EtiquetteFactory {
     }
 
     public String getNextSiNonInf() {
-        return SINON_INF + etiqs.get(SINON_INF) ;
+        return SINON_INF + (etiqs.get(SINON_INF) + 1) ;
     }
 
     public String getSiNonInf() {
@@ -73,7 +73,7 @@ public class EtiquetteFactory {
     }
 
     public String getNextFinSiInf() {
-        return FSI_INF + etiqs.get(FSI_INF) ;
+        return FSI_INF + (etiqs.get(FSI_INF) + 1) ;
     }
 
     public String getFinSiInf() {
@@ -83,7 +83,7 @@ public class EtiquetteFactory {
 
     // Superieur
     public String getNextSiSup() {
-        return SI_SUP + etiqs.get(SI_SUP) ;
+        return SI_SUP + (etiqs.get(SI_SUP) + 1) ;
     }
 
     public String getSiSup() {
@@ -92,7 +92,7 @@ public class EtiquetteFactory {
     }
 
     public String getNextSiNonSup() {
-        return SINON_SUP + etiqs.get(SINON_SUP) ;
+        return SINON_SUP + (etiqs.get(SINON_SUP) + 1) ;
     }
 
     public String getSiNonSup() {
@@ -101,7 +101,7 @@ public class EtiquetteFactory {
     }
 
     public String getNextFinSiSup() {
-        return FSI_SUP + etiqs.get(FSI_SUP) ;
+        return FSI_SUP + (etiqs.get(FSI_SUP) + 1) ;
     }
 
     public String getFinSiSup() {
@@ -111,7 +111,7 @@ public class EtiquetteFactory {
 
     // Egal
     public String getNextSiEg() {
-        return SI_EG + etiqs.get(SI_EG) ;
+        return SI_EG + (etiqs.get(SI_EG) + 1) ;
     }
 
     public String getSiEg() {
@@ -120,7 +120,7 @@ public class EtiquetteFactory {
     }
 
     public String getNextSiNonEg() {
-        return SINON_EG + etiqs.get(SINON_EG) ;
+        return SINON_EG + (etiqs.get(SINON_EG) + 1) ;
     }
 
     public String getSiNonEg() {
@@ -129,7 +129,7 @@ public class EtiquetteFactory {
     }
 
     public String getNextFinSiEg() {
-        return FSI_EG + etiqs.get(FSI_EG) ;
+        return FSI_EG + (etiqs.get(FSI_EG) + 1) ;
     }
 
     public String getFinSiEg() {
@@ -139,7 +139,7 @@ public class EtiquetteFactory {
 
     // Non Egal
     public String getNextSiNeg() {
-        return SI_NEG + etiqs.get(SI_NEG) ;
+        return SI_NEG + (etiqs.get(SI_NEG) + 1) ;
     }
 
     public String getSiNeg() {
@@ -148,7 +148,7 @@ public class EtiquetteFactory {
     }
 
     public String getNextSiNonNeg() {
-        return SINON_NEG + etiqs.get(SINON_NEG) ;
+        return SINON_NEG + (etiqs.get(SINON_NEG) + 1) ;
     }
 
     public String getSiNonNeg() {
@@ -157,7 +157,7 @@ public class EtiquetteFactory {
     }
 
     public String getNextFinSiNeg() {
-        return FSI_NEG + etiqs.get(FSI_NEG) ;
+        return FSI_NEG + (etiqs.get(FSI_NEG) + 1) ;
     }
 
     public String getFinSiNeg() {
