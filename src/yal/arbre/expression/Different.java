@@ -1,5 +1,7 @@
 package yal.arbre.expression;
 
+import yal.EtiquetteFactory;
+
 /**
  * 3 déc. 2015
  *
@@ -32,15 +34,15 @@ public class Different extends Comparaison {
 				"lw $t8, ($sp) " +
 				"\n" +
 				"sub $v0, $t8, $v0\n" +
-				"# vérifie si v0 != t8\n" +
-				"bne $v0, $t8, siEq\n" +
-				"j siNonEq\n" +
-				"siEq:\n" +
-				"lw $v0, 1\n" +
-				"j finSiEq\n" +
-				"siNonEq:\n" +
-				"lw $v0, 0\n" +
-				"finSiEq:\n";
+				"# verifie si v0 != t8\n" +
+				"bgtz $v0,"+ EtiquetteFactory.getInstance().getNextSiNeg()+"\n" +
+				"j "+EtiquetteFactory.getInstance().getNextSiNonNeg()+"\n" +
+				EtiquetteFactory.getInstance().getSiNeg()+":\n" +
+				"li $v0, 1\n" +
+				"j "+EtiquetteFactory.getInstance().getNextFinSiNeg()+"\n" +
+				EtiquetteFactory.getInstance().getSiNonNeg()+":\n" +
+				"li $v0, 0\n" +
+				EtiquetteFactory.getInstance().getFinSiNeg()+":\n";
 	}
 
 	@Override
