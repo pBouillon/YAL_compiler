@@ -58,7 +58,9 @@ public class Yal {
 	}
 
 	private String header() {
-		return  ".text\n" +
+		return  ".data : \n"+
+				"errdiv: 	.asciiz \"Division par zero impossible \" \n"+
+				".text\n" +
 				"main:\n" +
 				"move $s7, $sp\n" ;
 	}
