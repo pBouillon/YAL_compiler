@@ -35,7 +35,8 @@ public class Yal {
 					System.err.println(s.getMessage());
 				}
 			}else {
-				PrintWriter out = new PrintWriter("resultat.mips");
+				String fileName = fichier.substring(0,fichier.length()-4);
+				PrintWriter out = new PrintWriter(fileName + ".mips");
 				out.println(
 						header() +
 						arbre.toMIPS() +
