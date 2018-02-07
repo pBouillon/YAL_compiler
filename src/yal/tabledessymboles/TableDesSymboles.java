@@ -22,4 +22,8 @@ public class TableDesSymboles {
     public void ajouter(Entree e,Symbole s) { // throws doubleDeclarationException
     	this.map.put(e,s);
     }
+    
+    public Symbole identifier(Entree e) { // throws VariableUndefinedException
+    	return this.map.get(e);
+    }
 }
