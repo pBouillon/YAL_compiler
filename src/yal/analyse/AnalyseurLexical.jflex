@@ -34,14 +34,10 @@ csteB = "vrai" | "faux"
 
 finDeLigne = \r|\n
 espace = {finDeLigne}  | [ \t\f]
-
 commentaireSlashSlash = [/][/].*
 
 %%
-
-{commentaireSlashSlash} 	{ }
-					// je ne fais rien, tous les caractères sont jetés
-					
+			
 "+"              	{ return symbol(CodesLexicaux.PLUS); }
 "-"               	{ return symbol(CodesLexicaux.MOINS); }
 "*"                	{ return symbol(CodesLexicaux.MULT); }
@@ -63,5 +59,9 @@ commentaireSlashSlash = [/][/].*
 {csteB}      	        { return symbol(CodesLexicaux.CONSTANTEBOOL, yytext()); }
 
 {espace}                { }
+
+{commentaireSlashSlash} 	{ }
+					// je ne fais rien, tous les caractères sont jetés
+
 
 .                       { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }

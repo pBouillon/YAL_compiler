@@ -181,7 +181,7 @@ public class AnalyseurSyntaxique extends java_cup.runtime.lr_parser {
 
         if (info instanceof java_cup.runtime.Symbol) {
             java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
-
+            System.out.println(s.toString());
             if (s.left >= 0) {                
                 m.append("\tligne : " + (s.left + 1)) ;
                 if (s.right >= 0)                    
