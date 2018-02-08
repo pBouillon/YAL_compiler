@@ -67,8 +67,8 @@ parser code {:
 /* Terminals (tokens returned by the scanner).  */
 
 terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
-terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
-terminal Symbol    ECRIRE ;
+terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON, EGAL ;
+terminal Symbol    ECRIRE, IDF;
 terminal Symbol    ENTIER ;
 terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE, CONSTANTEIDF ;
    
@@ -96,7 +96,12 @@ PROG    ::=     EXPR:e
                    RESULT = yal.arbre ; :}
                 ;
 
-DECL_VAR ::=
+DECL_VAR ::= 	ENTIER IDF
+				{ }
+		|
+ 				ENTIER IDF EGAL EXPR
+ 				{}
+ 				;
     
 EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 {: RESULT = new Plus(g, d) ; :}

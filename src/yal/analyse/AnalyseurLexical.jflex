@@ -44,11 +44,16 @@ commentaireSlashSlash = [/][/].*
 
 %%
 			
+{entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
+{idf}                   { return symbol(CodesLexicaux.CONSTANTEIDF, yytext()); }
+{ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
+
 "+"              	    { return symbol(CodesLexicaux.PLUS);  }
 "-"               	    { return symbol(CodesLexicaux.MOINS); }
 "*"                	    { return symbol(CodesLexicaux.MULT); }
 "/"                	    { return symbol(CodesLexicaux.DIV);  }
 
+"="                    { return symbol(CodesLexicaux.EGAL); }
 "=="                    { return symbol(CodesLexicaux.EGALEGAL); }
 "!="                    { return symbol(CodesLexicaux.DIFF); }
 "<"                	    { return symbol(CodesLexicaux.INF);  }
@@ -65,9 +70,9 @@ commentaireSlashSlash = [/][/].*
 {csteC}      	        { return symbol(CodesLexicaux.CONSTANTECHAINE, yytext()); }
 {csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext());    }
 
-{ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
-{idf}                   { return symbol(CodesLexicaux.CONSTANTEIDF, yytext()); }
-{entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
+
+
+
 
 {espace}                { }
 
