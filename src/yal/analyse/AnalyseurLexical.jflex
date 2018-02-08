@@ -52,22 +52,22 @@ commentaireEtoileSlash = [*][/]
 <commentaire> {commentaireEtoileSlash} 	{ yybegin(YYINITIAL) ; }
 					// fin du commentaire
 					
-<YYINITIAL>{"+"}              	{ return symbol(CodesLexicaux.PLUS); }
-<YYINITIAL>{"-"}               	{ return symbol(CodesLexicaux.MOINS); }
-<YYINITIAL>{"*"}                	{ return symbol(CodesLexicaux.MULT); }
-<YYINITIAL>{"/"}                	{ return symbol(CodesLexicaux.DIV); }
+<YYINITIAL>"+"              	{ return symbol(CodesLexicaux.PLUS); }
+<YYINITIAL>"-"               	{ return symbol(CodesLexicaux.MOINS); }
+<YYINITIAL>"*"                	{ return symbol(CodesLexicaux.MULT); }
+<YYINITIAL>"/"                	{ return symbol(CodesLexicaux.DIV); }
 
-<YYINITIAL>{"=="}                    { return symbol(CodesLexicaux.EGALEGAL); }
-<YYINITIAL>{"!="}                    { return symbol(CodesLexicaux.DIFF); }
-<YYINITIAL>{"<"}                	{ return symbol(CodesLexicaux.INF); }
-<YYINITIAL>{">"}                	{ return symbol(CodesLexicaux.SUP); }
+<YYINITIAL>"=="                    { return symbol(CodesLexicaux.EGALEGAL); }
+<YYINITIAL>"!="                    { return symbol(CodesLexicaux.DIFF); }
+<YYINITIAL>"<"                	{ return symbol(CodesLexicaux.INF); }
+<YYINITIAL>">"                	{ return symbol(CodesLexicaux.SUP); }
 
-<YYINITIAL>{"et"}                	{ return symbol(CodesLexicaux.ET); }
-<YYINITIAL>{"ou"}                	{ return symbol(CodesLexicaux.OU); }
-<YYINITIAL>{"non"}                	{ return symbol(CodesLexicaux.NON); }
+<YYINITIAL>"et"                	{ return symbol(CodesLexicaux.ET); }
+<YYINITIAL>"ou"                	{ return symbol(CodesLexicaux.OU); }
+<YYINITIAL>"non"                	{ return symbol(CodesLexicaux.NON); }
 
-<YYINITIAL>{"("}                	{ return symbol(CodesLexicaux.PAROUV); }
-<YYINITIAL>{")"}              	{ return symbol(CodesLexicaux.PARFER); }
+<YYINITIAL>"("                	{ return symbol(CodesLexicaux.PAROUV); }
+<YYINITIAL>")"              	{ return symbol(CodesLexicaux.PARFER); }
 
 <YYINITIAL>{csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext()); }
 <YYINITIAL>{csteB}      	        { return symbol(CodesLexicaux.CONSTANTEBOOL, yytext()); }
