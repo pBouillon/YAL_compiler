@@ -33,7 +33,7 @@ csteE       = [0-9]+
 csteB       = "vrai" | "faux"
 csteC       = \"[a-zA-Z]+\"
 
-type        = "entier"
+entier        = "entier"
 idf         = [a-zA-Z0-9]+
 ecrire      = "ecrire"
 
@@ -67,10 +67,11 @@ commentaireSlashSlash = [/][/].*
 
 {ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
 {idf}                   { return symbol(CodesLexicaux.CONSTANTEIDF, yytext()); }
+{entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
 
 {espace}                { }
 
 {commentaireSlashSlash} { }
 
-{finDeLigne}            { throw new AnalyseLexicaleException(yyline, yycolumn, "hjkcrnyviuhfe") ; }
+{finDeLigne}            { }
 .                       { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }

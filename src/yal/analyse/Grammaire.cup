@@ -68,7 +68,9 @@ parser code {:
 
 terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
 terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON ;
-terminal String    CONSTANTEINT, CONSTANTEBOOL ;
+terminal Symbol    ECRIRE ;
+terminal Symbol    ENTIER ;
+terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE, CONSTANTEIDF ;
    
 /* Non terminals used in the grammar section.  */
 
