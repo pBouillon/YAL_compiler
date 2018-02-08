@@ -21,9 +21,9 @@
          <not>
            <available file="${src}/CodesLexicaux.java" />
          </not>        
-	 <uptodate targetfile="${src}/Grammaire.cup"
+	    <uptodate targetfile="${src}/Grammaire.cup"
                    srcfile="${src}/AnalyseurSyntaxique.java">
-         </uptodate>
+        </uptodate>
       </or>
   </condition>
 </target>
@@ -33,7 +33,7 @@
   <java classname="java_cup.Main" fork="yes" failonerror="yes" >
     <arg line="-symbols CodesLexicaux -parser AnalyseurSyntaxique ${src}/Grammaire.cup" />
     <classpath>
-        <pathelement path="${java.class.path}:/opt/depot/projetToucan/java-cup-11a.jar" />
+        <pathelement path="${java.class.path}:jflex-1.6.1.jar" />
     </classpath>
   </java>
   <move file="AnalyseurSyntaxique.java" tofile="${src}/AnalyseurSyntaxique.java" />
@@ -62,7 +62,7 @@
   <java classname="jflex.Main" fork="yes" failonerror="yes" >
     <arg line="${src}/AnalyseurLexical.jflex" />
     <classpath>
-        <pathelement path="${java.class.path}:/opt/depot/projetToucan/jflex-1.6.1.jar" />
+        <pathelement path="${java.class.path}:jflex-1.6.1.jar" />
     </classpath>
   </java>
 </target>

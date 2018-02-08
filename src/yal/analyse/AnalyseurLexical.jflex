@@ -34,6 +34,7 @@ csteB = "vrai" | "faux"
 
 finDeLigne = \r|\n
 espace = {finDeLigne}  | [ \t\f]
+
 commentaireSlashSlash = [/][/].*
 
 %%
@@ -60,7 +61,7 @@ commentaireSlashSlash = [/][/].*
 
 {espace}                { }
 
-{commentaireSlashSlash} 	{ }
+<YYINITIAL> {commentaireSlashSlash} 	{ }
 					// je ne fais rien, tous les caractères sont jetés
 
 .                       { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }
