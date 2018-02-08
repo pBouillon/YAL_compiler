@@ -29,39 +29,39 @@ import yal.exceptions.AnalyseLexicaleException;
 %}
 
 
-csteE = [0-9]+
-csteB = "vrai" | "faux"
+csteE       = [0-9]+
+csteB       = "vrai" | "faux"
 
-finDeLigne = \r|\n
-espace = {finDeLigne}  | [ \t\f]
+finDeLigne  = \r|\n
+espace      = {finDeLigne}  | [ \t\f]
 
 commentaireSlashSlash = [/][/].*
 
 %%
 			
-"+"              	{ return symbol(CodesLexicaux.PLUS); }
-"-"               	{ return symbol(CodesLexicaux.MOINS); }
-"*"                	{ return symbol(CodesLexicaux.MULT); }
-"/"                	{ return symbol(CodesLexicaux.DIV); }
+"+"              	    { return symbol(CodesLexicaux.PLUS);  }
+"-"               	    { return symbol(CodesLexicaux.MOINS); }
+"*"                	    { return symbol(CodesLexicaux.MULT); }
+"/"                	    { return symbol(CodesLexicaux.DIV);  }
 
 "=="                    { return symbol(CodesLexicaux.EGALEGAL); }
 "!="                    { return symbol(CodesLexicaux.DIFF); }
-"<"                	{ return symbol(CodesLexicaux.INF); }
-">"                	{ return symbol(CodesLexicaux.SUP); }
+"<"                	    { return symbol(CodesLexicaux.INF);  }
+">"                	    { return symbol(CodesLexicaux.SUP);  }
 
-"et"                	{ return symbol(CodesLexicaux.ET); }
-"ou"                	{ return symbol(CodesLexicaux.OU); }
+"et"                	{ return symbol(CodesLexicaux.ET);  }
+"ou"                	{ return symbol(CodesLexicaux.OU);  }
 "non"                	{ return symbol(CodesLexicaux.NON); }
 
-"("                	{ return symbol(CodesLexicaux.PAROUV); }
-")"              	{ return symbol(CodesLexicaux.PARFER); }
+"("                	    { return symbol(CodesLexicaux.PAROUV); }
+")"              	    { return symbol(CodesLexicaux.PARFER); }
 
-{csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext()); }
+{csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext());  }
 {csteB}      	        { return symbol(CodesLexicaux.CONSTANTEBOOL, yytext()); }
 
 {espace}                { }
 
-<YYINITIAL> {commentaireSlashSlash} 	{ }
-					// je ne fais rien, tous les caractères sont jetés
+{commentaireSlashSlash} { throw new AnalyseLexicaleException(yyline, yycolumn, "hjkcrnyviuhfe") ; }
 
+{finDeLigne}            { }
 .                       { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }
