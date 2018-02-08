@@ -1,7 +1,7 @@
-package yal.yal.analyse ;
+package yal.analyse ;
 
 import java_cup.runtime.*;
-import yal.yal.exceptions.AnalyseLexicaleException;
+import yal.exceptions.AnalyseLexicaleException;
       
 %%
    
@@ -62,6 +62,5 @@ commentaireSlashSlash = [/][/].*
 
 {commentaireSlashSlash} 	{ }
 					// je ne fais rien, tous les caractères sont jetés
-
 
 .                       { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }
