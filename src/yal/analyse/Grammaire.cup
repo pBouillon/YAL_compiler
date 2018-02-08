@@ -93,6 +93,8 @@ PROG    ::=     EXPR:e
                    yal.arbre.ajouter(e) ;
                    RESULT = yal.arbre ; :}
                 ;
+
+DECL_VAR ::=
     
 EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 {: RESULT = new Plus(g, d) ; :}

@@ -31,8 +31,13 @@ import yal.exceptions.AnalyseLexicaleException;
 
 csteE       = [0-9]+
 csteB       = "vrai" | "faux"
+csteC       = \"[a-zA-Z]+\"
 
-finDeLigne  = \r|\n
+type        = "entier"
+idf         = [a-zA-Z0-9]+
+ecrire      = "ecrire"
+
+finDeLigne  = \r|\n|;
 espace      = {finDeLigne}  | [ \t\f]
 
 commentaireSlashSlash = [/][/].*
@@ -56,12 +61,16 @@ commentaireSlashSlash = [/][/].*
 "("                	    { return symbol(CodesLexicaux.PAROUV); }
 ")"              	    { return symbol(CodesLexicaux.PARFER); }
 
-{csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext());  }
-{csteB}      	        { return symbol(CodesLexicaux.CONSTANTEBOOL, yytext()); }
+{csteB}      	        { return symbol(CodesLexicaux.CONSTANTEBOOL, yytext());   }
+{csteC}      	        { return symbol(CodesLexicaux.CONSTANTECHAINE, yytext()); }
+{csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext());    }
+
+{ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
+{idf}                   { return symbol(CodesLexicaux.CONSTANTEIDF, yytext()); }
 
 {espace}                { }
 
-{commentaireSlashSlash} { throw new AnalyseLexicaleException(yyline, yycolumn, "hjkcrnyviuhfe") ; }
+{commentaireSlashSlash} { }
 
-{finDeLigne}            { }
+{finDeLigne}            { throw new AnalyseLexicaleException(yyline, yycolumn, "hjkcrnyviuhfe") ; }
 .                       { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }
