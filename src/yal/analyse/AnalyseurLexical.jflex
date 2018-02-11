@@ -48,6 +48,7 @@ commentaireSlashSlash = [/][/].*
 {idf}                   { return symbol(CodesLexicaux.CONSTANTEIDF, yytext()); }
 {ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
 
+";"                		{ return symbol(CodesLexicaux.POINTVIRGULE); }
 "+"              	    { return symbol(CodesLexicaux.PLUS);  }
 "-"               	    { return symbol(CodesLexicaux.MOINS); }
 "*"                	    { return symbol(CodesLexicaux.MULT); }

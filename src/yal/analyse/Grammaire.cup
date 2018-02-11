@@ -66,7 +66,7 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER ;
+terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER, POINTVIRGULE ;
 terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON, EGAL ;
 terminal Symbol    ECRIRE, IDF;
 terminal Symbol    ENTIER ;
@@ -90,18 +90,30 @@ precedence left NON ;
  
 start with PROG ;
 
-PROG    ::=     EXPR:e 
-                {: BlocDInstructions yal.arbre = new BlocDInstructions(eleft+1) ;
-                   yal.arbre.ajouter(e) ;
-                   RESULT = yal.arbre ; :}
+PROG    ::=     EXPR:e POINTVIRGULE
+                {:  BlocDInstructions yal.arbre = new BlocDInstructions(eleft+1) ;
+                	yal.arbre.ajouter(e) ;
+                	RESULT = yal.arbre ; :}
+        |
+        		PROG:p EXPR:e POINTVIRGULE
+                {: 	yal.arbre.ajouter(e) ;
+                	RESULT = yal.arbre ; :}
                 ;
 
+DECLARATION ::= DECL_VAR
+				{ /*  A REMPLIR  */ }
+				;
+				
 DECL_VAR ::= 	ENTIER IDF
-				{ }
-		|
+				{  /*   A REMPLIR   */  }
+		 |
  				ENTIER IDF EGAL EXPR
- 				{}
+ 				{ /*   A REMPLIR   */  }
  				;
+ 				
+AFFECT ::= 		IDF EGAL EXPR
+				{  /*   A REMPLIR   */  }
+				;
     
 EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 {: RESULT = new Plus(g, d) ; :}
