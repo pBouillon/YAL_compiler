@@ -3,6 +3,7 @@ package yal.yal.analyse ;
 import java.util.*;
 import yal.yal.arbre.* ;
 import yal.yal.arbre.expression.* ;
+import yal.yal.arbre.instruction.* ;
 import yal.yal.exceptions.AnalyseSyntaxiqueException;
 
 import java_cup.runtime.*;
@@ -68,13 +69,15 @@ parser code {:
 
 terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER, POINTVIRGULE ;
 terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON, EGAL ;
-terminal Symbol    ECRIRE, IDF;
-terminal Symbol    ENTIER ;
+terminal Symbol    IDF ;
 terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE, CONSTANTEIDF ;
-   
+
+terminal String    ENTIER, ECRIRE ;
+
 /* Non terminals used in the grammar section.  */
 
 non terminal ArbreAbstrait PROG ;
+non terminal Instruction INSTR ;
 non terminal Expression EXPR, CSTE ;
 non terminal Expression DECLARATION, DECL_VAR, AFFECT;
 
@@ -157,9 +160,27 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 DECLARATION:d
                 {: RESULT = d ; :}
         |
+                INSTR:i
+                {: RESULT = i ; :}
+                ;
+
+INSTR ::=       ECRIRE CONSTANTECHAINE:c
+                {: RESULT = new EcrireChaine(c) ; :}
+        |
+                ECRIRE EXPR:e
+                {: RESULT = new EcrireExpr(e) ; :}
+        |
                 AFFECT:a
                 {: RESULT = a ; :}
                 ;
+
+PRINT ::=       ECRIRE EXPR:e
+                {: RESULT = new Ecrire (e) ; :}
+        |
+               ECRIRE CONSTANTECHAINE:c
+               {: RESULT = new Ecrire(c) ; :}
+               ;
+
 
 CSTE    ::=     CONSTANTEINT:e 
                 {: RESULT = new ConstanteEntiere(e, eleft+1) ; :}

@@ -15,14 +15,14 @@ public class TableDesSymboles {
     private static TableDesSymboles INSTANCE = new TableDesSymboles();
     
     /** Point d'accès pour l'instance unique du singleton */
-    public static TableDesSymboles getInstance()
-    {   return INSTANCE;
+    public static TableDesSymboles getInstance() {
+        return INSTANCE;
     }
-    
+
     public void ajouter(Entree e,Symbole s) { // throws doubleDeclarationException
     	this.map.put(e,s);
     }
-    
+
     public Symbole identifier(Entree e) { // throws VariableUndefinedException
     	return this.map.get(e);
     }

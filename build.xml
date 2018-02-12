@@ -8,7 +8,7 @@
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
 <project name="YAL_compiler" default="-pre-compile" basedir=".">
-    <description>Builds, tests, and runs the project Toucan.</description>
+    <description>Builds, tests, and runs the project YAL.</description>
     <property name="excludes" value="**/*.cup,**/*.jflex,**/*.odt,**/*.pdf"/>
 	<property name="src" value="src/yal/analyse"/>
 <target name="init-cup" >
