@@ -10,6 +10,7 @@ public class EcrireExpr extends Ecrire {
 
     @Override
     public String toMIPS() {
-        return null ;
+        return "# ecriture de l'expression" +
+                "" ;
     }
 }

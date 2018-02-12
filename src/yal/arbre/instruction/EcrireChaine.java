@@ -13,9 +13,18 @@ public class EcrireChaine extends Ecrire {
 
     @Override
     public String toMIPS() {
-        return  "\t# affichage de la chaine de caractere\n" +
-                "\tli $v0 , 1\n" +
-                "\tli $a0 , " + cste + "\n" +
-                "\tsyscall\n" ;
+        return String.join (
+                "\n",
+                "\t# stockage de v0 en memoire",
+                "\tsw $v0, ($sp)",
+                "\taddi $sp, $sp, -4",
+                "\t# affichage de la chaine de caractere",
+                "\tli $v0 , 1",
+                "\tli $a0 , " + cste,
+                "\tsyscall",
+                "\t# recuperation de la valeur en memoire",
+                "\taddi $sp, $sp, 4",
+                "\tlw $v0, ($sp)"
+            ) ;
     }
 }
