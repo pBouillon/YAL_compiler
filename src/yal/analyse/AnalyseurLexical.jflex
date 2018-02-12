@@ -45,7 +45,6 @@ commentaireSlashSlash = [/][/].*
 %%
 			
 {entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
-{idf}                   { return symbol(CodesLexicaux.CONSTANTEIDF, yytext()); }
 {ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
 
 ";"                		{ return symbol(CodesLexicaux.POINTVIRGULE); }
@@ -71,8 +70,7 @@ commentaireSlashSlash = [/][/].*
 {csteC}      	        { return symbol(CodesLexicaux.CONSTANTECHAINE, yytext()); }
 {csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext());    }
 
-
-
+{idf}                   { return symbol(CodesLexicaux.CONSTANTEIDF, yytext()); }
 
 
 {espace}                { }
