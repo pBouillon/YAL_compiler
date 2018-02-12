@@ -93,26 +93,26 @@ precedence left NON ;
  
 start with PROG ;
 
-PROG    ::=     EXPR:e POINTVIRGULE
+PROG    ::=     INST:e POINTVIRGULE
                 {:  BlocDInstructions yal.arbre = new BlocDInstructions(eleft+1) ;
                 	yal.arbre.ajouter(e) ;
                 	RESULT = yal.arbre ; :}
         |
-        		PROG:p EXPR:e POINTVIRGULE
+        		PROG:p INST:e POINTVIRGULE
                 {: 	yal.arbre.ajouter(e) ;
                 	RESULT = yal.arbre ; :}
                 ;
 
 DECLARATION ::= DECL_VAR:d
-				{: RESULT = TableDesSymboles.getInstance().ajouter(new Entree(d), new Symbole()); :}
+				{: RESULT = d; :}
 				;
 				
 DECL_VAR ::= 	ENTIER IDF:i
-				{  RESULT = new DeclarationEntier(i); }
+				{:  RESULT = new DeclarationEntier(i); :}
  				;
  				
 AFFECT ::= 		IDF:i EGAL EXPR:e
-				{  RESULT = new Affectation(i,e);  }
+				{:  RESULT = new Affectation(i,e);  :}
 				;
 				    
 EXPR    ::=     EXPR:g  PLUS  EXPR:d
@@ -157,22 +157,20 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 PAROUV  EXPR:e  PARFER
                 {: RESULT = e ; :}
         |
-                DECLARATION:d
-                {: RESULT = d ; :}
-        |
-                INSTR:i
-                {: RESULT = i ; :}
-                ;
 
-INSTR ::=       ECRIRE CONSTANTECHAINE:c
-                {: RESULT = new EcrireChaine(c) ; :}
-        |
-                ECRIRE EXPR:e
-                {: RESULT = new EcrireExpr(e) ; :}
+INSTR ::=       PRINT:p
+                {: RESULT = p; :}
         |
                 AFFECT:a
                 {: RESULT = a ; :}
+        |
+                DECLARATION:d
+                {: RESULT = d ; :}
+        |
+                EXPR:i
+                {: RESULT = i ; :}
                 ;
+
 
 PRINT ::=       ECRIRE EXPR:e
                 {: RESULT = new Ecrire (e) ; :}
