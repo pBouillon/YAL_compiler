@@ -4,11 +4,12 @@ import java.util.HashMap;
 
 public class TableDesSymboles {
 	private HashMap<Entree,Symbole> map;
-	
+	private int compteur;
 	/** Constructeur privé */
     private TableDesSymboles()
     {
     	this.map = new HashMap<>();
+    	compteur = 0 ;
     }
  
     /** Instance unique pré-initialisée */
@@ -26,4 +27,14 @@ public class TableDesSymboles {
     public Symbole identifier(Entree e) { // throws VariableUndefinedException
     	return this.map.get(e);
     }
+
+	public int getCompteur() {
+		return compteur;
+	}
+
+	public void setCompteur(int compteur) {
+		this.compteur = compteur;
+	}
+    
+    
 }

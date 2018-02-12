@@ -6,8 +6,9 @@ public class Symbole {
 	/*
 	 * Constructeur qui initialise le pointeur de la variable vers son espace memoire 
 	 * */
-	public Symbole(int i) {
-		this.pointeur = i ;
+	public Symbole() {
+		 this.pointeur = TableDesSymboles.getInstance().getCompteur();
+		 TableDesSymboles.getInstance().setCompteur(-4);
 	}
 
 }

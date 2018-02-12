@@ -104,7 +104,7 @@ PROG    ::=     EXPR:e POINTVIRGULE
                 ;
 
 DECLARATION ::= DECL_VAR:d
-				{ RESULT = d; }
+				{: RESULT = TableDesSymboles.getInstance().ajouter(new Entree(d), new Symbole()); :}
 				;
 				
 DECL_VAR ::= 	ENTIER IDF:i
