@@ -1,11 +1,11 @@
 package yal.analyse ;
 
 import java.util.*;
-import yal.yal.arbre.* ;
-import yal.yal.arbre.expression.* ;
-import yal.yal.arbre.instruction.* ;
-import yal.yal.exceptions.AnalyseSyntaxiqueException;
-
+import yal.arbre.* ;
+import yal.arbre.expression.* ;
+import yal.arbre.instruction.* ;
+import yal.exceptions.AnalyseSyntaxiqueException;
+import yal.tabledessymboles.*;
 import java_cup.runtime.*;
 
 action code {: 
@@ -103,12 +103,11 @@ PROG    ::=     INSTR:e POINTVIRGULE
                 	RESULT = yal.arbre ; :}
                 ;
 
-DECLARATION ::= DECL_VAR:d
-				{: RESULT = TableDesSymboles.getInstance().ajouter(new Entree(d), new Symbole()); :}
+DECLARATION ::= DECL_VAR
 				;
 				
-DECL_VAR ::= 	ENTIER IDF:i
-				{:  RESULT = new DeclarationEntier(i); :}
+DECL_VAR ::= 	ENTIER IDF:i POINTVIRGULE
+				{:  TDS.getInstance().ajouter(new Entree(i), new Symbole()); :}
  				;
  				
 AFFECT ::= 		IDF:i EGAL EXPR:e
@@ -173,10 +172,10 @@ INSTR ::=       PRINT:p
 
 
 PRINT ::=      ECRIRE EXPR:e
-                {: RESULT = new Ecrire (e) ; :}
+                {:  new EcrireExpr(e,eleft+1) ; :}
         |
                ECRIRE CONSTANTECHAINE:c
-               {: RESULT = new Ecrire(c) ; :}
+               {: RESULT = new EcrireChaine(eleft+1,c) ; :}
                ;
 
 

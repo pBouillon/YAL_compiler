@@ -1,8 +1,12 @@
 package yal.arbre.instruction;
+import yal.arbre.expression.*;
 
 public class EcrireExpr extends Ecrire {
-    protected EcrireExpr(int no) {
+	private Expression expr;
+	
+    protected EcrireExpr(Expression e, int no) {
         super(no);
+        this.expr = e ;
     }
 
     @Override
@@ -10,7 +14,7 @@ public class EcrireExpr extends Ecrire {
 
     @Override
     public String toMIPS() {
-        return "# ecriture de l'expression" +
+        return "# ecriture de l'expression" + expr +
                 "" ;
     }
 }
