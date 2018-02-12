@@ -76,7 +76,7 @@ terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE, CONSTANTEIDF ;
 
 non terminal ArbreAbstrait PROG ;
 non terminal Expression EXPR, CSTE ;
-
+non terminal Expression DECLARATION, DECL_VAR, AFFECT;
 
 precedence left OU ;
 precedence left ET ;
@@ -100,21 +100,18 @@ PROG    ::=     EXPR:e POINTVIRGULE
                 	RESULT = yal.arbre ; :}
                 ;
 
-DECLARATION ::= DECL_VAR
-				{ /*  A REMPLIR  */ }
+DECLARATION ::= DECL_VAR:d
+				{ RESULT = d; }
 				;
 				
-DECL_VAR ::= 	ENTIER IDF
-				{  /*   A REMPLIR   */  }
-		 |
- 				ENTIER IDF EGAL EXPR
- 				{ /*   A REMPLIR   */  }
+DECL_VAR ::= 	ENTIER IDF:i
+				{  RESULT = new DeclarationEntier(i); }
  				;
  				
-AFFECT ::= 		IDF EGAL EXPR
-				{  /*   A REMPLIR   */  }
+AFFECT ::= 		IDF:i EGAL EXPR:e
+				{  RESULT = new Affectation(i,e);  }
 				;
-    
+				    
 EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 {: RESULT = new Plus(g, d) ; :}
         | 
@@ -156,6 +153,12 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
         |
                 PAROUV  EXPR:e  PARFER
                 {: RESULT = e ; :}
+        |
+                DECLARATION:d
+                {: RESULT = d ; :}
+        |
+                AFFECT:a
+                {: RESULT = a ; :}
                 ;
 
 CSTE    ::=     CONSTANTEINT:e 
