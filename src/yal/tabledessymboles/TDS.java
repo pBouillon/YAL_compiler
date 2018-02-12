@@ -2,21 +2,19 @@ package yal.tabledessymboles;
 
 import java.util.HashMap;
 
-public class TableDesSymboles {
+public class TDS {
 	private HashMap<Entree,Symbole> map;
 	private int compteur;
-	/** Constructeur privé */
-    private TableDesSymboles()
+
+    private TDS()
     {
     	this.map = new HashMap<>();
     	compteur = 0 ;
     }
  
-    /** Instance unique pré-initialisée */
-    private static TableDesSymboles INSTANCE = new TableDesSymboles();
+    private static TDS INSTANCE = new TDS();
     
-    /** Point d'accès pour l'instance unique du singleton */
-    public static TableDesSymboles getInstance() {
+    public static TDS getInstance() {
         return INSTANCE;
     }
 
@@ -35,6 +33,5 @@ public class TableDesSymboles {
 	public void setCompteur(int compteur) {
 		this.compteur = compteur;
 	}
-    
-    
+
 }

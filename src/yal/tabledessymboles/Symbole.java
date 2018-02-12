@@ -7,8 +7,8 @@ public class Symbole {
 	 * Constructeur qui initialise le pointeur de la variable vers son espace memoire 
 	 * */
 	public Symbole() {
-		 this.pointeur = TableDesSymboles.getInstance().getCompteur();
-		 TableDesSymboles.getInstance().setCompteur(-4);
+		 this.pointeur = TDS.getInstance().getCompteur();
+		 TDS.getInstance().setCompteur(-4);
 	}
 
 }
