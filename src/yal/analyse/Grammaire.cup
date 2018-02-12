@@ -111,7 +111,7 @@ DECL_VAR ::= 	ENTIER IDF:i POINTVIRGULE
  				;
  				
 AFFECT ::= 		IDF:i EGAL EXPR:e
-				{:  RESULT = new Affectation(i,e);  :}
+				{:  new Affectation(i,e,eleft+1);  :}
 				;
 				    
 EXPR    ::=     EXPR:g  PLUS  EXPR:d
@@ -157,17 +157,13 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 {: RESULT = e ; :}
 				;
 				
-INSTR ::=       PRINT:p
-                {: RESULT = p; :}
+INSTR ::=       PRINT
         |
-                AFFECT:a
-                {: RESULT = a ; :}
+                AFFECT
         |
-                DECLARATION:d
-                {: RESULT = d ; :}
+                DECLARATION
         |
-                EXPR:i
-                {: RESULT = i ; :}
+                EXPR
                 ;
 
 

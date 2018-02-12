@@ -1,7 +1,9 @@
 package yal.arbre.instruction;
 
+import yal.arbre.expression.Expression;
+
 public class Affectation extends Instruction {
-    protected Affectation(int no) {
+    public Affectation(String idf, Expression v, int no) {
         super(no);
     }
 
