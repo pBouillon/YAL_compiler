@@ -4,7 +4,7 @@ import yal.arbre.expression.*;
 public class EcrireExpr extends Ecrire {
 	private Expression expr;
 	
-    protected EcrireExpr(Expression e, int no) {
+    public EcrireExpr(Expression e, int no) {
         super(no);
         this.expr = e ;
     }

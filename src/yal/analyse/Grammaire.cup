@@ -175,7 +175,7 @@ PRINT ::=      ECRIRE EXPR:e
                 {:  new EcrireExpr(e,eleft+1) ; :}
         |
                ECRIRE CONSTANTECHAINE:c
-               {: new EcrireChaine(eleft+1,c) ; :}
+               {: new EcrireChaine(c,cleft+1) ; :}
                ;
 
 

@@ -3,7 +3,7 @@ package yal.arbre.instruction;
 public class EcrireChaine extends Ecrire {
     private String cste ;
 
-    protected EcrireChaine(int no, String _cste) {
+    public EcrireChaine(String _cste, int no) {
         super(no);
         cste = _cste ;
     }
