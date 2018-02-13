@@ -76,8 +76,7 @@ public class Yal {
      * @return mips prog begin and data declarations
      */
 	private String header() {
-		return  ".data : \n"+
-				"errdiv: 	.asciiz \"Division par zero impossible\" \n"+
+		return  DataFactory.getInstance().genData() +
 				".text\n" +
 				"main:\n" +
 				"move $s7, $sp\n" ;
