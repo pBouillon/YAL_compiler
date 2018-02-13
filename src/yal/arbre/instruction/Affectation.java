@@ -1,6 +1,10 @@
 package yal.arbre.instruction;
 
 import yal.arbre.expression.Expression;
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.VariableUndefinedException;
+import yal.tabledessymboles.Entree;
+import yal.tabledessymboles.TDS;
 
 public class Affectation extends Instruction {
 	
@@ -15,7 +19,7 @@ public class Affectation extends Instruction {
 
     @Override
     public void verifier() {
-
+    	 TDS.getInstance().identifier(idf, noLigne);
     }
 
     @Override

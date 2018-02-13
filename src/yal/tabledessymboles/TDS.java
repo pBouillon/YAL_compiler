@@ -1,10 +1,11 @@
 package yal.tabledessymboles;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import yal.exceptions.DoubleDeclarationException;
 import yal.exceptions.ListeSemantiqueException;
-import yal.exceptions.SemantiqueException;
 import yal.exceptions.VariableUndefinedException;
 
 public class TDS {
@@ -31,12 +32,22 @@ public class TDS {
 		}
 	}
 
-	public Symbole identifier(Entree e, int ligne){ 
-		if(this.map.containsKey(new Entree(e.getIdentifier()))) {
-			ListeSemantiqueException.getInstance().addException(new VariableUndefinedException(ligne, "variable : " + e.getIdentifier()));
+	public Symbole identifier(String e, int ligne){ 
+		boolean trouve = false;
+		Symbole res = null;
+
+		for (Entry<Entree, Symbole> entry : map.entrySet())
+		{
+			if(entry.getKey().getIdentifier().equals(e) ) {						
+				res = entry.getValue(); 
+				trouve = true;
+			}
+		}
+		if(!trouve) {
+			ListeSemantiqueException.getInstance().addException(new VariableUndefinedException(ligne, "variable : " + e));
 			return null;
 		}else {
-			return this.map.get(e);
+			return res;
 		}
 	}
 
