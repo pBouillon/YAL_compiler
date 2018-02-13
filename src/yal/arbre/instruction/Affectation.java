@@ -25,4 +25,9 @@ public class Affectation extends Instruction {
         		"# Affectation de " +  exp.toString() + " dans " + idf + " \n" +
         		"sw $v0, "+ TDS.getInstance().identifier(idf, this.noLigne ).getPointeur() +"($s7) \n";
     }
+
+    @Override
+    public String toString() {
+        return "Affectation " + idf + " = " + exp.toString() + "\n" ;
+    }
 }

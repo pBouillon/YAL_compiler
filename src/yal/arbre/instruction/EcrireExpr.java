@@ -28,6 +28,6 @@ public class EcrireExpr extends Ecrire {
 
     @Override
     public String toString() {
-        return "ecrire " + expr.toString() ;
+        return "ecrire " + expr.toString() + "\n" ;
     }
 }

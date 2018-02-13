@@ -15,7 +15,7 @@ public class DataFactory {
     private DataFactory() {
         cpt = 0 ;
         var = new HashMap<>() ;
-        addData("Division par zero impossible");
+        addData("\"Division par zero impossible\"");
     }
 
     public static DataFactory getInstance() {

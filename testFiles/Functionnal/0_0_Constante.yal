@@ -3,8 +3,9 @@ debut
 entier a ; // erzeteryeryrt
 entier b;
 entier c;
-ecrire "test" ;
+ecrire 2 + 5 ;
 a = 2 ;
 b = 5 ;
-c=15;
+c = 15 ;
+ecrire "test" ;
 fin

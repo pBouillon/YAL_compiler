@@ -24,4 +24,9 @@ public class EcrireChaine extends Ecrire {
                 "\tsyscall"
             ) ;
     }
+
+    @Override
+    public String toString() {
+        return "ecrire " + cste + "\n" ;
+    }
 }
