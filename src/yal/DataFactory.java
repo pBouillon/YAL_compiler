@@ -45,7 +45,7 @@ public class DataFactory {
             dataGen.append("\t")
                     .append(getVarFor(data))
                     .append(": .asciiz ")
-                    .append("\"").append(data).append("\n\"")
+                    .append(data)
                     .append("\n") ;
         }
 

@@ -25,4 +25,9 @@ public class EcrireExpr extends Ecrire {
                 "\tli $a0 , $t8"
         ) ;
     }
+
+    @Override
+    public String toString() {
+        return "ecrire " + expr.toString() ;
+    }
 }
