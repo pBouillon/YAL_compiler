@@ -19,7 +19,7 @@ public class EcrireChaine extends Ecrire {
         return String.join (
                 "\n",
                 "\t# affichage de la chaine de caractere",
-                "\tli $v0 , 4",
+                "\tli $v0 , 4", // code d'affichage pour les chaines
                 "\tli $a0 , " + DataFactory.getInstance().getVarFor(cste),
                 "\tsyscall"
             ) ;
