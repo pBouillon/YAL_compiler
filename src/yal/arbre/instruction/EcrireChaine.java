@@ -15,9 +15,7 @@ public class EcrireChaine extends Ecrire {
 
     @Override
     public String toMIPS() {
-
         DataFactory.getInstance().addData(cste) ;
-
         return String.join (
                 "\n",
                 "\t# affichage de la chaine de caractere",
