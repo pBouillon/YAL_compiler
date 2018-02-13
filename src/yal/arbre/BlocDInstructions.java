@@ -1,5 +1,7 @@
 package yal.arbre;
 
+import java.util.ArrayList;
+
 /**
  * 3 déc. 2015
  *
@@ -8,30 +10,46 @@ package yal.arbre;
 
 public class BlocDInstructions extends ArbreAbstrait {
     
-    protected ArbreAbstrait expr ;
+    protected ArrayList<ArbreAbstrait> linst ;
     
     public BlocDInstructions(int n) {
         super(n) ;
+        linst = new ArrayList<ArbreAbstrait>();
     }
     
     public void ajouter(ArbreAbstrait a) {
-        expr = a ;
+        linst.add(a) ;
     }
     
     @Override
     public String toString() {
-        return expr.toString() ;
+    	String res = "";
+			for (ArbreAbstrait a: linst){
+				if (a != null){
+					res = res + a.toString();
+				}
+			}
+		return res;
     }
 
 	@Override
 	public void verifier() {
-		expr.verifier();
-		
+			for (ArbreAbstrait a: linst){
+			if (a != null){
+				a.verifier();
+				}
+			}
 	}
 
 	@Override
 	public String toMIPS() {
-		return expr.toMIPS();
+		String res = "";
+			for (ArbreAbstrait a: linst){
+				if (a != null){
+					res = res + a.toMIPS();
+				}
+			}
+		return res;
 	}
 
 }

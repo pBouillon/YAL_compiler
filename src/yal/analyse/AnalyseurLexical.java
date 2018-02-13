@@ -666,7 +666,7 @@ public class AnalyseurLexical implements java_cup.runtime.Scanner {
             }
           case 25: break;
           case 3: 
-            { return symbol(CodesLexicaux.CONSTANTEIDF, yytext());
+            { return symbol(CodesLexicaux.IDF, yytext());
             }
           case 26: break;
           case 4: 
