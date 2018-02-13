@@ -70,7 +70,7 @@ parser code {:
 terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER, POINTVIRGULE ;
 terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON, EGAL ;
 terminal String    IDF ;
-terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE, CONSTANTEIDF ;
+terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE ;
 
 terminal String    ENTIER, ECRIRE ;
 
@@ -112,7 +112,7 @@ LINSTR    ::=     INSTR:e
 DECLARATION ::= DECL_VAR
 				;
 				
-DECL_VAR ::= 	ENTIER IDF:i POINTVIRGULE
+DECL_VAR ::= 	ENTIER IDF:i 
 				{:  TDS.getInstance().ajouter(new Entree(i), new Symbole(),ileft+1); :}
  				;
  				
@@ -169,8 +169,7 @@ INSTR ::=       PRINT:p POINTVIRGULE
                 AFFECT:a POINTVIRGULE
                 {: RESULT = a ; :}
         |
-                DECLARATION:d POINTVIRGULE
-                {: RESULT = d ; :}
+                DECLARATION POINTVIRGULE
                 ;
 
 

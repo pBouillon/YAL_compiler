@@ -70,7 +70,7 @@ commentaireSlashSlash = [/][/].*
 {csteC}      	        { return symbol(CodesLexicaux.CONSTANTECHAINE, yytext()); }
 {csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext());    }
 
-{idf}                   { return symbol(CodesLexicaux.CONSTANTEIDF, yytext()); }
+{idf}                   { return symbol(CodesLexicaux.IDF, yytext()); }
 
 
 {espace}                { }
