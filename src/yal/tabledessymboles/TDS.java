@@ -28,7 +28,6 @@ public class TDS {
 			ListeSemantiqueException.getInstance().addException(new DoubleDeclarationException(ligne, "variable : " + e.getIdentifier()));
 		}else {
 			this.map.put(e,s);
-			System.out.println("ajout dans la TDS : " + e);
 		}
 	}
 

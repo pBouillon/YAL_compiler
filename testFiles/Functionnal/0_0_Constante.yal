@@ -1,2 +1,3 @@
-entier a ;
-entier a;
+entier a ; // erzeteryeryrt
+entier b;
+a = b ;
