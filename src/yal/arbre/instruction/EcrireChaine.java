@@ -20,7 +20,7 @@ public class EcrireChaine extends Ecrire {
                 "\n",
                 "\t# affichage de la chaine de caractere",
                 "\tli $v0 , 4", // code d'affichage pour les chaines
-                "\tli $a0 , " + DataFactory.getInstance().getVarFor(cste),
+                "\tla $a0 , " + DataFactory.getInstance().getVarFor(cste),
                 "\tsyscall"
             ) ;
     }
