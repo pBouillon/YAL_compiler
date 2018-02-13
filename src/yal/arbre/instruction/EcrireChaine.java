@@ -18,16 +18,10 @@ public class EcrireChaine extends Ecrire {
         DataFactory.getInstance().addData(cste) ;
         return String.join (
                 "\n",
-                "\t# stockage de v0 en memoire",
-                "\tsw $v0, ($sp)",
-                "\taddi $sp, $sp, -4",
                 "\t# affichage de la chaine de caractere",
-                "\tli $v0 , 1",
+                "\tli $v0 , 4",
                 "\tli $a0 , " + DataFactory.getInstance().getVarFor(cste),
-                "\tsyscall",
-                "\t# recuperation de la valeur en memoire",
-                "\taddi $sp, $sp, 4",
-                "\tlw $v0, ($sp)"
+                "\tsyscall"
             ) ;
     }
 }

@@ -23,7 +23,7 @@ public class DataFactory {
     }
 
     public void addData(String data) {
-        var.put(data, cpt++) ;
+        var.put(data + "\n", cpt++) ;
     }
 
     /**
