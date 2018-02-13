@@ -2,6 +2,8 @@ package yal.tabledessymboles;
 
 import java.util.HashMap;
 
+import yal.exceptions.DoubleDeclarationException;
+
 public class TDS {
 	private HashMap<Entree,Symbole> map;
 	private int compteur;
@@ -18,8 +20,12 @@ public class TDS {
         return INSTANCE;
     }
 
-    public void ajouter(Entree e,Symbole s) { // throws doubleDeclarationException
-    	this.map.put(e,s);
+    public void ajouter(Entree e,Symbole s, int ligne) throws DoubleDeclarationException { 
+    	if(this.map.containsKey(e)) {
+    		throw new DoubleDeclarationException(ligne, "variable : " + e.toString());
+    	}else {
+    		this.map.put(e,s);
+    	}
     }
 
     public Symbole identifier(Entree e) { // throws VariableUndefinedException
@@ -33,5 +39,6 @@ public class TDS {
 	public void setCompteur(int compteur) {
 		this.compteur = compteur;
 	}
+	
 
 }
