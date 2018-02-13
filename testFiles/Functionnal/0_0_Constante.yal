@@ -3,6 +3,7 @@ debut
 entier a ; // erzeteryeryrt
 entier b;
 entier c;
+ecrire 2 > 5 ;
 ecrire 2 < 5 ;
 a = 2 ;
 b = 5 ;
