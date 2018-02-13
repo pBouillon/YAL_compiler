@@ -1,5 +1,6 @@
 package yal.arbre.expression;
 
+import yal.DataFactory;
 import yal.EtiquetteFactory;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.SemantiqueException;
@@ -35,7 +36,7 @@ public class Div extends BinaireArithmetique {
 			.append("beqz $v0,"+ EtiquetteFactory.getInstance().getNextSiNeg()+"\n")
 			.append("j " + EtiquetteFactory.getInstance().getNextSiNonNeg() +"\n")
 			.append(EtiquetteFactory.getInstance().getSiNeg()+ ":\n")
-			.append("la $a0, errdiv \n")
+			.append("la $a0, "+ DataFactory.getInstance().getErrDiv()+" \n")
 			.append("syscall \n")
 			.append(EtiquetteFactory.getInstance().getSiNonNeg()+ ":\n")
 			.append("div $t8, $v0")
