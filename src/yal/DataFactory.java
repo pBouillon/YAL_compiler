@@ -23,7 +23,7 @@ public class DataFactory {
     }
 
     public void addData(String data) {
-        var.put(data + "\n", cpt++) ;
+        var.put(data, cpt++) ;
     }
 
     /**
@@ -45,7 +45,7 @@ public class DataFactory {
             dataGen.append("\t")
                     .append(getVarFor(data))
                     .append(": .asciiz ")
-                    .append(data)
+                    .append("\"" + data + "\"")
                     .append("\n") ;
         }
 
