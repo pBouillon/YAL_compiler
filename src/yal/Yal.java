@@ -50,9 +50,10 @@ public class Yal {
 			} else {
 				String fileName = fichier.substring (0, fichier.length() - 4) ;
 				PrintWriter out = new PrintWriter (fileName + ".mips") ;
+				String mipsCode = arbre.toMIPS() ;
 				out.println (
 						header() +
-						arbre.toMIPS() +
+						mipsCode +
 						footer()
 					) ;
 				out.close() ;
