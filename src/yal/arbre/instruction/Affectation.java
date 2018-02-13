@@ -23,6 +23,6 @@ public class Affectation extends Instruction {
     public String toMIPS() {
         return  exp.toMIPS()+
         		"# Affectation de " +  exp.toString() + " dans " + idf + " \n" +
-        		"sw $v0, "+ TDS.getInstance().identifier(idf, this.noLigne ) +"($s7) \n";
+        		"sw $v0, "+ TDS.getInstance().identifier(idf, this.noLigne ).getPointeur() +"($s7) \n";
     }
 }
