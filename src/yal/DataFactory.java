@@ -39,7 +39,7 @@ public class DataFactory {
     }
 
     String genData() {
-        StringBuilder dataGen = new StringBuilder(".data:\n");
+        StringBuilder dataGen = new StringBuilder(".data\n");
 
         for (String data : var.keySet()) {
             dataGen.append("\t")
