@@ -15,7 +15,7 @@ public class EcrireExpr extends Ecrire {
     @Override
     public String toMIPS() {
         return String.join(
-                "\t",
+                "\n",
                 "# ecriture de l'expression " + expr + "\n" ,
                 expr.toMIPS(),
                 "\t# stockage de l'expr dans t8",
