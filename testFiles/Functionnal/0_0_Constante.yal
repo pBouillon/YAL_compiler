@@ -1,3 +1,10 @@
+programme test
+debut
 entier a ; // erzeteryeryrt
 entier b;
-a = b ;
+entier c;
+ecrire "test" ;
+a = 2 ;
+b = 5 ;
+c=15;
+fin

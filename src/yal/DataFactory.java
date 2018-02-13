@@ -27,10 +27,6 @@ public class DataFactory {
     }
 
     /**
-     * ex:
-     *      var0
-     *      var1
-     *
      * @param data string
      * @return VAR_NAME + nb
      */
@@ -39,13 +35,13 @@ public class DataFactory {
     }
 
     String genData() {
-        StringBuilder dataGen = new StringBuilder(".data\n");
+        StringBuilder dataGen = new StringBuilder(".data:\n");
 
         for (String data : var.keySet()) {
             dataGen.append("\t")
                     .append(getVarFor(data))
                     .append(": .asciiz ")
-                    .append(data)
+                    .append(data) // "data" by default
                     .append("\n") ;
         }
 
