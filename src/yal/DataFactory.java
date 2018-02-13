@@ -15,7 +15,7 @@ public class DataFactory {
     private DataFactory() {
         cpt = 0 ;
         var = new HashMap<>() ;
-        addData("errdiv: .asciiz \"Division par zero impossible\"\n");
+        addData("Division par zero impossible");
     }
 
     public static DataFactory getInstance() {
@@ -45,7 +45,7 @@ public class DataFactory {
             dataGen.append("\t")
                     .append(getVarFor(data))
                     .append(": .asciiz ")
-                    .append(data)
+                    .append("\"").append(data).append("\n\"")
                     .append("\n") ;
         }
 
