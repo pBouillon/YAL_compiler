@@ -26,7 +26,7 @@ public class TDS {
 			throw new DoubleDeclarationException(ligne, "variable : " + e.toString());
 		}else {
 			this.map.put(e,s);
-			System.out.println("ajout dans la TDS");
+			System.out.println("ajout dans la TDS : " + e);
 		}
 	}
 
