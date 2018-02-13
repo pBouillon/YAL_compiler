@@ -41,7 +41,7 @@ public class Plus extends BinaireArithmetique {
 		.append("lw $t8, ($sp) ")
 		.append("\n")
 		.append("# Ajout de t8 et v0 \n")
-		.append("add $v0, $t8, $v0") ;
+		.append("add $v0, $t8, $v0\n") ;
 		return s.toString() ;
 
 	}
