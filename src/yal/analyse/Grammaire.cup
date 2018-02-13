@@ -79,7 +79,8 @@ terminal String    ENTIER, ECRIRE ;
 non terminal ArbreAbstrait PROG ;
 non terminal Instruction INSTR ;
 non terminal Expression EXPR, CSTE ;
-non terminal Expression DECLARATION, DECL_VAR, AFFECT, PRINT;
+non terminal Instruction DECLARATION, DECL_VAR, AFFECT, PRINT;
+non terminal BlocDInstructions LINSTR;
 
 precedence left OU ;
 precedence left ET ;
@@ -93,14 +94,19 @@ precedence left NON ;
  
 start with PROG ;
 
-PROG    ::=     INSTR:e POINTVIRGULE
-                {:  BlocDInstructions yal.arbre = new BlocDInstructions(eleft+1) ;
-                	yal.arbre.ajouter(e) ;
-                	RESULT = yal.arbre ; :}
+PROG    ::=     LINSTR:e 
+				{:   RESULT = e; :}
+				;
+
+
+LINSTR    ::=     INSTR:e 
+                {:  BlocDInstructions bloc = new BlocDInstructions(eleft+1) ;
+                	bloc.ajouter(e) ;
+                	RESULT = bloc ; :}
         |
-        		PROG:p INSTR POINTVIRGULE
-                {: 	yal.arbre.ajouter(e) ;
-                	RESULT = yal.arbre ; :}
+        		LINSTR:li INSTR:e
+                {: 	li.ajouter(e) ;
+                	RESULT = li ; :}
                 ;
 
 DECLARATION ::= DECL_VAR
@@ -157,13 +163,14 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 {: RESULT = e ; :}
 				;
 				
-INSTR ::=       PRINT
+INSTR ::=       PRINT POINTVIRGULE
         |
-                AFFECT
+                AFFECT POINTVIRGULE
         |
-                DECLARATION
+                DECLARATION POINTVIRGULE
         |
-                EXPR
+                EXPR:e POINTVIRGULE
+                {: RESULT = e ; :}
                 ;
 
 
