@@ -3,6 +3,8 @@ package yal.tabledessymboles;
 import java.util.HashMap;
 
 import yal.exceptions.DoubleDeclarationException;
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
 import yal.exceptions.VariableUndefinedException;
 
 public class TDS {
@@ -23,16 +25,17 @@ public class TDS {
 
 	public void ajouter(Entree e,Symbole s, int ligne) throws DoubleDeclarationException { 
 		if(this.map.containsKey(e)) {
-			throw new DoubleDeclarationException(ligne, "variable : " + e.toString());
+			ListeSemantiqueException.getInstance().addException(new DoubleDeclarationException(ligne, "variable : " + e.getIdentifier()));
 		}else {
 			this.map.put(e,s);
 			System.out.println("ajout dans la TDS : " + e);
 		}
 	}
 
-	public Symbole identifier(Entree e, int ligne)  throws VariableUndefinedException { 
-		if(this.map.containsKey(e)) {
-			throw new DoubleDeclarationException(ligne, "variable : " + e.toString());
+	public Symbole identifier(Entree e, int ligne){ 
+		if(this.map.containsKey(new Entree(e.getIdentifier()))) {
+			ListeSemantiqueException.getInstance().addException(new VariableUndefinedException(ligne, "variable : " + e.getIdentifier()));
+			return null;
 		}else {
 			return this.map.get(e);
 		}

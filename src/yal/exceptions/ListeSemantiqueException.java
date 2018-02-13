@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ListeSemantiqueException {
 	private boolean error = false;
-	private  ArrayList<SemantiqueException> listeException;
+	private  ArrayList<RuntimeException> listeException;
 
 	/** Constructeur privé */
 	private ListeSemantiqueException()
@@ -20,7 +20,7 @@ public class ListeSemantiqueException {
 	{   return INSTANCE;
 	}
 
-	public void addException(SemantiqueException e) {
+	public void addException(RuntimeException e) {
 		this.error = true ;
 		this.listeException.add(e) ;
 	}
@@ -33,11 +33,11 @@ public class ListeSemantiqueException {
 		this.error = error;
 	}
 
-	public ArrayList<SemantiqueException> getListeException() {
+	public ArrayList<RuntimeException> getListeException() {
 		return listeException;
 	}
 
-	public void setListeException(ArrayList<SemantiqueException> listeException) {
+	public void setListeException(ArrayList<RuntimeException> listeException) {
 		this.listeException = listeException;
 	}
 	

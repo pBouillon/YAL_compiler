@@ -44,7 +44,7 @@ public class Yal {
 
 			ListeSemantiqueException liste = ListeSemantiqueException.getInstance() ;
 			if (liste.isError()) {
-				for(SemantiqueException s : liste.getListeException()) {
+				for(RuntimeException s : liste.getListeException()) {
 					System.err.println (s.getMessage()) ;
 				}
 			} else {
