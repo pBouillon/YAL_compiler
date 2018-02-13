@@ -18,11 +18,10 @@ public class EcrireExpr extends Ecrire {
                 "\n",
                 "# ecriture de l'expression " + expr + "\n" ,
                 expr.toMIPS(),
-                "\t# stockage de l'expr dans t8",
-                "\tlw $t8, $v0",
+                "\tmove $a0, $v0",
                 "\t# affichage de la chaine de caractere",
                 "\tli $v0 , 1", // code d'affichage pour les entiers
-                "\tli $a0 , $t8"
+                "\tsyscall"
         ) ;
     }
 
