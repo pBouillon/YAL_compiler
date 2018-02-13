@@ -1,6 +1,9 @@
 package yal.arbre.instruction;
 
 import yal.arbre.expression.Expression;
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.VariableUndefinedException;
+import yal.tabledessymboles.Entree;
 import yal.tabledessymboles.TDS;
 
 public class Affectation extends Instruction {
@@ -21,8 +24,10 @@ public class Affectation extends Instruction {
 
     @Override
     public String toMIPS() {
-        return  exp.toMIPS()+
-        		"# Affectation de " +  exp.toString() + " dans " + idf + " \n" +
-        		"sw $v0, "+ TDS.getInstance().identifier(idf, this.noLigne ) +"($s7) \n";
+        return  +
+        		"# Affectation de " +
+        		" "+
+        		" "+
+        		" ";
     }
 }
