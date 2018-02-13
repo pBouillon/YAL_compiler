@@ -113,11 +113,11 @@ DECLARATION ::= DECL_VAR
 				;
 				
 DECL_VAR ::= 	ENTIER IDF:i POINTVIRGULE
-				{:  TDS.getInstance().ajouter(new Entree(i), new Symbole()); :}
+				{:  TDS.getInstance().ajouter(new Entree(i), new Symbole(),ileft+1); :}
  				;
  				
 AFFECT ::= 		IDF:i EGAL EXPR:e
-				{:  new Affectation(i,e,eleft+1);  :}
+				{:  RESULT = new Affectation(i,e,eleft+1);  :}
 				;
 				    
 EXPR    ::=     EXPR:g  PLUS  EXPR:d
