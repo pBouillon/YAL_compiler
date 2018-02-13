@@ -5,7 +5,9 @@ import java.util.HashMap;
 public class DataFactory {
 
     private final String VAR_NAME = "var" ;
-    private final String DIV_ZERO = "\"Division par zero impossible\"" ;
+    private final String DIV_ZERO =  "\"Division par zero impossible\"" ;
+    private final String STR_TRUE =  "\"vrai\"" ;
+    private final String STR_FALSE = "\"faux\"" ;
 
     private static DataFactory INSTANCE
             = new DataFactory() ;
@@ -17,6 +19,8 @@ public class DataFactory {
         cpt = 0 ;
         var = new HashMap<>() ;
         addData(DIV_ZERO);
+        addData(STR_TRUE);
+        addData(STR_FALSE);
     }
 
     public static DataFactory getInstance() {
@@ -52,4 +56,6 @@ public class DataFactory {
     public String getErrDiv() {
         return VAR_NAME + var.get(DIV_ZERO) ;
     }
+    public String getTrue() {return VAR_NAME + var.get(STR_TRUE);}
+    public String getFalse() {return VAR_NAME + var.get(STR_FALSE);}
 }

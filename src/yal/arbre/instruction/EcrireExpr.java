@@ -1,4 +1,6 @@
 package yal.arbre.instruction;
+import yal.DataFactory;
+import yal.EtiquetteFactory;
 import yal.arbre.expression.*;
 
 public class EcrireExpr extends Ecrire {
@@ -14,15 +16,34 @@ public class EcrireExpr extends Ecrire {
 
     @Override
     public String toMIPS() {
-        return String.join(
+        String ret = "# ecriture de l'expression " + expr + "\n" ;
+        if (expr.getType().equals("boolean")) {
+            ret += String.join (
+               "\n",
+               "\tbeqz $v0, " + EtiquetteFactory.getInstance().getNextSiEg(),
+                    "\tj "+ EtiquetteFactory.getInstance().getNextSiNonEg(),
+                    "\t" + EtiquetteFactory.getInstance().getSiEg() + ": ",
+                    "\t# affichage de Faux",
+                    "\tli $v0 , 4",
+                    "\tla $a0 , " + DataFactory.getInstance().getFalse(),
+                    "\tj " + EtiquetteFactory.getInstance().getNextFinSiEg(),
+                    "\t" + EtiquetteFactory.getInstance().getSiNonEg() + ":",
+                    "\t# affichage de Vrai",
+                    "\tli $v0 , 4",
+                    "\tla $a0 , " + DataFactory.getInstance().getTrue(),
+                    "\t" + EtiquetteFactory.getInstance().getFinSiEg() + ":"
+            ) ;
+        } else {
+            ret += String.join(
                 "\n",
-                "# ecriture de l'expression " + expr + "\n" ,
                 expr.toMIPS(),
                 "\tmove $a0, $v0",
                 "\t# affichage de la chaine de caractere",
-                "\tli $v0 , 1", // code d'affichage pour les entiers
-                "\tsyscall"
-        ) ;
+                "\tli $v0 , 1" // code d'affichage pour les entiers
+            ) ;
+        }
+
+        return ret + "\n\tsyscall\n";
     }
 
     @Override
