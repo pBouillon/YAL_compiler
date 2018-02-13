@@ -27,10 +27,6 @@ public class DataFactory {
     }
 
     /**
-     * ex:
-     *      var0
-     *      var1
-     *
      * @param data string
      * @return VAR_NAME + nb
      */
