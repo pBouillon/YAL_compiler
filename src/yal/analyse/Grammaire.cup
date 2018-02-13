@@ -69,6 +69,7 @@ parser code {:
 
 terminal Symbol    PLUS, MOINS, MULT, DIV, PAROUV, PARFER, POINTVIRGULE ;
 terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON, EGAL ;
+terminal Symbol    PROGRAMME, DEBUT, FIN ;
 terminal String    IDF ;
 terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE ;
 
@@ -94,8 +95,8 @@ precedence left NON ;
  
 start with PROG ;
 
-PROG    ::=     LINSTR:e 
-				{:   RESULT = e; :}
+PROG    ::=     PROGRAMME IDF  DEBUT LINSTR:e FIN
+				{: RESULT = e; :}
 				;
 
 
