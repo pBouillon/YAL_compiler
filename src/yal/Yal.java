@@ -38,7 +38,7 @@ public class Yal {
 					)
 			) ;
 			ArbreAbstrait arbre = (ArbreAbstrait) analyseur.parse().value ;
-			System.err.println ("expression stockée dans l'yal.arbre : \n" + arbre) ;
+			//System.err.println ("expression stockée dans l'yal.arbre : \n" + arbre) ;
 
 			arbre.verifier() ;
 
