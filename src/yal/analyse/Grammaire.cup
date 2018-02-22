@@ -168,6 +168,9 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 CSTE:c
                 {: RESULT = c ; :}
         |
+                IDF:i
+                {: RESULT = new IDF(i, ileft+1) ; :}
+        |
                 PAROUV  EXPR:e  PARFER
                 {: RESULT = e ; :}
 				;
