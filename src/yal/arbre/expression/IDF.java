@@ -1,5 +1,7 @@
 package yal.arbre.expression;
 
+import yal.tabledessymboles.TDS;
+
 public class IDF extends Expression{
 	
 	private String idf;
@@ -22,8 +24,9 @@ public class IDF extends Expression{
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
-		return null;
+		return  "# recuperation de la valeur de " +  idf +" \n" +
+        		"sw $v0, "+ TDS.getInstance().identifier(idf, this.noLigne ).getPointeur() +"($s7) \n";
+    
 	}
 	
 	
