@@ -205,8 +205,8 @@ PRINT ::=      ECRIRE EXPR:e
                {:  RESULT = new EcrireChaine(c, cleft + 1) ; :}
                ;
 
-BOUCLE ::= 	TANTQUE EXPR REPETER LINSTR FINTANTQUE
-			{:  System.out.println("test boucle"); :}
+BOUCLE ::= 	TANTQUE EXPR:e REPETER LINSTR:l FINTANTQUE
+			{:  RESULT = new Boucle(e, l, eleft + 1) ; :}
 			;
 			
 CONDITION ::= 	SI EXPR:cond ALORS LINSTR:si ELSE LINSTR:sinon FINSI

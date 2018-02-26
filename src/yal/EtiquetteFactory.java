@@ -29,35 +29,50 @@ public class EtiquetteFactory {
 
     // Raw evals
     private final String SI    = "si" ;
-    private final String ALORS    = "alors" ;
+    private final String ALORS = "alors" ;
     private final String SINON = "sinon" ;
     private final String FSI   = "fin" ;
+
+    // Loop
+    private final String TANTQUE  = "tantque" ;
+    private final String ETANTQUE  = "etantque" ;
+    private final String FTANTQUE = "ftantque" ;
 
     private HashMap<String, Integer> etiqs ;
 
     private EtiquetteFactory() {
         etiqs = new HashMap<>() ;
+
         // inferieur
         etiqs.put(SI_INF, 0) ;
         etiqs.put(SINON_INF, 0) ;
         etiqs.put(FSI_INF, 0) ;
+
         // superieur
         etiqs.put(SI_SUP, 0) ;
         etiqs.put(SINON_SUP, 0) ;
         etiqs.put(FSI_SUP, 0) ;
+
         // egal
         etiqs.put(SI_EG, 0) ;
         etiqs.put(SINON_EG, 0) ;
         etiqs.put(FSI_EG, 0) ;
+
         // dif
         etiqs.put(SI_NEG, 0) ;
         etiqs.put(SINON_NEG, 0) ;
         etiqs.put(FSI_NEG, 0) ;
+
         // raw
         etiqs.put(SI, 0) ;
         etiqs.put(ALORS, 0) ;
         etiqs.put(SINON, 0) ;
         etiqs.put(FSI, 0) ;
+
+        // loop
+        etiqs.put(TANTQUE, 0) ;
+        etiqs.put(ETANTQUE, 0) ;
+        etiqs.put(FTANTQUE, 0) ;
     }
 
     public static EtiquetteFactory getInstance() {
@@ -211,5 +226,33 @@ public class EtiquetteFactory {
     public String getFsi() {
         etiqs.put(FSI, etiqs.get(FSI) + 1) ;
         return FSI + etiqs.get(FSI) ;
+    }
+
+    // Loop
+    public String getNextTantQue() {
+        return TANTQUE + (etiqs.get(TANTQUE) + 1) ;
+    }
+
+    public String getTantQue() {
+        etiqs.put(TANTQUE, etiqs.get(TANTQUE) + 1) ;
+        return TANTQUE + etiqs.get(TANTQUE) ;
+    }
+
+    public String getPrevEvalTantQue() {
+        return ETANTQUE + (etiqs.get(ETANTQUE) - 1) ;
+    }
+
+    public String getEvalTantQue() {
+        etiqs.put(ETANTQUE, etiqs.get(ETANTQUE) + 1) ;
+        return ETANTQUE + etiqs.get(ETANTQUE) ;
+    }
+
+    public String getNextFTantQue() {
+        return FTANTQUE + (etiqs.get(FTANTQUE) + 1) ;
+    }
+
+    public String getFTantQue() {
+        etiqs.put(FTANTQUE, etiqs.get(FTANTQUE) + 1) ;
+        return FTANTQUE + etiqs.get(FTANTQUE) ;
     }
 }

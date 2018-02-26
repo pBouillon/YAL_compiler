@@ -44,15 +44,23 @@ public class Condition extends Instruction {
 		return String.join (
 				"\n",
 				"\t# debut du si .. sinon ..",
-				"\t" + et.getSi() + ": ",
+
+				"\t#SI",
+				et.getSi() + ": ",
 				"\t" + condition.toMIPS(),
 				"\tbeqz $v0, " + et.getNextSinon(),
-				"\t" + et.getAlors() + ":",
+
+				"\t# ALORS",
+				et.getAlors() + ":",
 				"\t" + si.toMIPS(),
 				"\tj " + et.getNextFsi(),
-				"\t" + et.getSinon(),
+
+				"\t# SINON",
+				et.getSinon() + ":",
 				"\t" + blocSinon,
-				"\t" + et.getFsi()
+
+				et.getFsi() + ":",
+				"\t# fin du si .. sinon .."
 				) ;
 	}
 

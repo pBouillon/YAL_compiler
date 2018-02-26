@@ -1,22 +1,55 @@
 package yal.arbre.instruction;
 
-public class Boucle extends Instruction {
+import yal.EtiquetteFactory;
+import yal.arbre.BlocDInstructions;
+import yal.arbre.expression.Expression;
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
 
-	protected Boucle(int no) {
+public class Boucle extends Instruction {
+	Expression condition;
+	BlocDInstructions instr ;
+
+	protected Boucle(Expression _cond, BlocDInstructions _instr, int no) {
 		super(no);
-		// TODO Auto-generated constructor stub
+		condition = _cond ;
+		instr = _instr ;
 	}
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-		
+		if (condition.getType().equals("boolean")) return ;
+
+		ListeSemantiqueException
+				.getInstance()
+				.addException(
+						new SemantiqueException(
+								super.noLigne,
+								"Expression booléenne attendue"
+						)) ;
 	}
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
-		return null;
+		EtiquetteFactory et = EtiquetteFactory.getInstance() ;
+		return String.join (
+				"\n",
+				"\t# Debut tantque ...",
+
+				"\t# Evaluation de la condition",
+				et.getEvalTantQue() + ":",
+				"\t" + condition.toMIPS(),
+				"\tbeqz $v0, " + et.getNextTantQue(),
+				"\tj " + et.getNextFTantQue(),
+
+				"\t# corps de la boucle",
+				et.getTantQue() + ":",
+				instr.toMIPS(),
+				"\tj " + et.getPrevEvalTantQue(),
+
+				"\t# fin de la boucle",
+				et.getFTantQue() + ":"
+		) ;
 	}
 
 }
