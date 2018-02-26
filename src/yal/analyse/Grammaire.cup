@@ -97,8 +97,11 @@ precedence left NON ;
  
 start with PROG ;
 
-PROG    ::=     PROGRAMME IDF  DEBUT LDECL LINSTR:e FIN
+PROG    ::=     PROGRAMME IDF DEBUT LDECL LINSTR:e FIN
 				{: RESULT = e; :}
+        |
+                PROGRAMME IDF DEBUT LINSTR:e FIN
+                {: RESULT = e; :}
 				;
 
 

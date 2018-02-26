@@ -29,44 +29,44 @@ import yal.exceptions.AnalyseLexicaleException;
 %}
 
 
-csteE       = [0-9]+
-csteB       = "vrai" | "faux"
-csteC       = \"[a-zA-Z\\]+\"
+csteE      = [0-9]+
+csteB      = "vrai" | "faux"
+csteC      = \"[a-zA-Z\\]+\"
 
-entier        = "entier"
-idf         = [a-zA-Z0-9]+
-ecrire      = "ecrire"
-lire      =  "lire"
-tantque      =  "tantque"
-repeter      =  "repeter"
-fintantque      =  "fintantque"
-si        		= "si"
-alors        		= "alors"
-sinon        		= "sinon"
-finsi        		= "finsi"
-programme      = "programme"
+entier     = entier"
+idf        = [a-zA-Z0-9]+
+ecrire     = "ecrire"
+lire       = "lire"
+tantque    = "tantque"
+repeter    = "repeter"
+fintantque = "fintantque"
+si         = "si"
+alors      = "alors"
+sinon      = "sinon"
+finsi      = "finsi"
+programme  = "programme"
 debut      = "debut"
-fin      = "fin"
+fin        = "fin"
 
-finDeLigne  = \r|\n|;
-espace      = {finDeLigne}  | [ \t\f]
+finDeLigne = \r|\n|;
+espace     = {finDeLigne}  | [ \t\f]
 
 commentaireSlashSlash = [/][/].*
 
 %%
-{si}                { return symbol(CodesLexicaux.SI, yytext()); }
-{alors}                { return symbol(CodesLexicaux.ALORS, yytext()); }
-{sinon}                { return symbol(CodesLexicaux.SINON, yytext()); }
-{finsi}                { return symbol(CodesLexicaux.FINSI, yytext()); }
-{tantque}                { return symbol(CodesLexicaux.TANTQUE, yytext()); }
-{repeter}                { return symbol(CodesLexicaux.REPETER, yytext()); }
-{fintantque}                { return symbol(CodesLexicaux.FINTANTQUE, yytext()); }
+{si}                    { return symbol(CodesLexicaux.SI, yytext()); }
+{alors}                 { return symbol(CodesLexicaux.ALORS, yytext()); }
+{sinon}                 { return symbol(CodesLexicaux.SINON, yytext()); }
+{finsi}                 { return symbol(CodesLexicaux.FINSI, yytext()); }
+{tantque}               { return symbol(CodesLexicaux.TANTQUE, yytext()); }
+{repeter}               { return symbol(CodesLexicaux.REPETER, yytext()); }
+{fintantque}            { return symbol(CodesLexicaux.FINTANTQUE, yytext()); }
 {entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
 {ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
-{programme}                { return symbol(CodesLexicaux.PROGRAMME, yytext()); }
-{debut}                { return symbol(CodesLexicaux.DEBUT, yytext()); }
-{fin}                { return symbol(CodesLexicaux.FIN, yytext()); }
-{lire}                { return symbol(CodesLexicaux.LIRE, yytext()); }	
+{programme}             { return symbol(CodesLexicaux.PROGRAMME, yytext()); }
+{debut}                 { return symbol(CodesLexicaux.DEBUT, yytext()); }
+{fin}                   { return symbol(CodesLexicaux.FIN, yytext()); }
+{lire}                  { return symbol(CodesLexicaux.LIRE, yytext()); }
 
 ";"                		{ return symbol(CodesLexicaux.POINTVIRGULE); }
 "+"              	    { return symbol(CodesLexicaux.PLUS);  }
@@ -74,7 +74,7 @@ commentaireSlashSlash = [/][/].*
 "*"                	    { return symbol(CodesLexicaux.MULT); }
 "/"                	    { return symbol(CodesLexicaux.DIV);  }
 
-"="                    { return symbol(CodesLexicaux.EGAL); }
+"="                     { return symbol(CodesLexicaux.EGAL); }
 "=="                    { return symbol(CodesLexicaux.EGALEGAL); }
 "!="                    { return symbol(CodesLexicaux.DIFF); }
 "<"                	    { return symbol(CodesLexicaux.INF);  }
