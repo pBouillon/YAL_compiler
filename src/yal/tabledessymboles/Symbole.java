@@ -12,7 +12,7 @@ public class Symbole {
 	 * */
 	public Symbole() {
 		 this.pointeur = TDS.getInstance().getCompteur();
-		 TDS.getInstance().setCompteur(-4);
+		 TDS.getInstance().setCompteur(TDS.getInstance().getCompteur()-4);
 	}
 
 }
