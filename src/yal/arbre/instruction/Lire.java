@@ -1,22 +1,32 @@
 package yal.arbre.instruction;
 
-public class Lire extends Instruction{
+import yal.tabledessymboles.TDS;
 
-	protected Lire(int no) {
+public class Lire extends Instruction {
+	private String varName;
+
+	public Lire(String _var, int no) {
 		super(no);
-		// TODO Auto-generated constructor stub
+		varName = _var ;
 	}
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
-		return null;
+		return String.join("\n",
+			"\t# read code",
+			"\tli $v0, 5",
+			"\tsyscall",
+			"\t# Input is in v0",
+			"\tlw $v0, " +
+					TDS.getInstance()
+							.identifier(varName, super.noLigne)
+							.getPointeur() +
+					"($s7)"
+		) ;
 	}
 
 }
