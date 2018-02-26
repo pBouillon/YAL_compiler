@@ -1,22 +1,59 @@
 package yal.arbre.instruction;
 
-public class Condition extends Instruction {
+import yal.EtiquetteFactory;
+import yal.arbre.BlocDInstructions;
+import yal.arbre.expression.Expression;
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
 
-	protected Condition(int no) {
+public class Condition extends Instruction {
+	private Expression 		  condition ;
+	private BlocDInstructions si ;
+	private BlocDInstructions sinon ;
+
+	protected Condition (
+			Expression _cond,
+			BlocDInstructions _si,
+			BlocDInstructions _sinon,
+			int no ) {
 		super(no);
-		// TODO Auto-generated constructor stub
+		condition = _cond ;
+		sinon = _sinon ;
+		si    = _si ;
 	}
 
 	@Override
 	public void verifier() {
-		// TODO Auto-generated method stub
-		
+		if (condition.getType().equals("boolean")) return ;
+
+		ListeSemantiqueException
+				.getInstance()
+				.addException(
+					new SemantiqueException (
+							super.noLigne,
+							"Expression booléenne attendue"
+				)) ;
 	}
 
 	@Override
 	public String toMIPS() {
-		// TODO Auto-generated method stub
-		return null;
+		EtiquetteFactory et = EtiquetteFactory.getInstance() ;
+
+		String blocSinon = (sinon != null) ? sinon.toMIPS()
+										   : "" ;
+		return String.join (
+				"\n",
+				"\t# debut du si .. sinon ..",
+				"\t" + et.getSi() + ": ",
+				"\t" + condition.toMIPS(),
+				"\tbeqz $v0, " + et.getNextSinon(),
+				"\t" + et.getAlors() + ":",
+				"\t" + si.toMIPS(),
+				"\tj " + et.getNextFsi(),
+				"\t" + et.getSinon(),
+				"\t" + blocSinon,
+				"\t" + et.getFsi()
+				) ;
 	}
 
 }

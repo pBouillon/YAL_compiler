@@ -27,6 +27,12 @@ public class EtiquetteFactory {
     private final String SINON_NEG = "sinonNonEg" ;
     private final String FSI_NEG   = "finSiNonEg" ;
 
+    // Raw evals
+    private final String SI    = "si" ;
+    private final String ALORS    = "alors" ;
+    private final String SINON = "sinon" ;
+    private final String FSI   = "fin" ;
+
     private HashMap<String, Integer> etiqs ;
 
     private EtiquetteFactory() {
@@ -47,6 +53,11 @@ public class EtiquetteFactory {
         etiqs.put(SI_NEG, 0) ;
         etiqs.put(SINON_NEG, 0) ;
         etiqs.put(FSI_NEG, 0) ;
+        // raw
+        etiqs.put(SI, 0) ;
+        etiqs.put(ALORS, 0) ;
+        etiqs.put(SINON, 0) ;
+        etiqs.put(FSI, 0) ;
     }
 
     public static EtiquetteFactory getInstance() {
@@ -163,5 +174,42 @@ public class EtiquetteFactory {
     public String getFinSiNeg() {
         etiqs.put(FSI_NEG, etiqs.get(FSI_NEG) + 1) ;
         return FSI_NEG + etiqs.get(FSI_NEG) ;
+    }
+
+    // Raw
+    public String getNextSi() {
+        return SI + (etiqs.get(SI) + 1) ;
+    }
+
+    public String getSi() {
+        etiqs.put(SI, etiqs.get(SI) + 1) ;
+        return SI + etiqs.get(SI) ;
+    }
+
+    public String getNextAlors() {
+        return ALORS + (etiqs.get(ALORS) + 1) ;
+    }
+
+    public String getAlors() {
+        etiqs.put(ALORS, etiqs.get(ALORS) + 1) ;
+        return ALORS + etiqs.get(ALORS) ;
+    }
+
+    public String getNextSinon() {
+        return SINON + (etiqs.get(SINON) + 1) ;
+    }
+
+    public String getSinon() {
+        etiqs.put(SINON, etiqs.get(SINON) + 1) ;
+        return SINON + etiqs.get(SINON) ;
+    }
+
+    public String getNextFsi() {
+        return FSI + (etiqs.get(FSI) + 1) ;
+    }
+
+    public String getFsi() {
+        etiqs.put(FSI, etiqs.get(FSI) + 1) ;
+        return FSI + etiqs.get(FSI) ;
     }
 }

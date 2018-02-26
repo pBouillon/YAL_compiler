@@ -209,8 +209,11 @@ BOUCLE ::= 	TANTQUE EXPR REPETER LINSTR FINTANTQUE
 			{:  System.out.println("test boucle"); :}
 			;
 			
-CONDITION ::= 	SI EXPR ALORS LINSTR ELSE  FINSI
-				{:  System.out.println("test si"); :}
+CONDITION ::= 	SI EXPR:cond ALORS LINSTR:si ELSE LINSTR:sinon FINSI
+				{: RESULT = new Condition(cond, si, sinon, condleft + 1) ; :}
+        |
+                SI EXPR:cond ALORS LINSTR:si FINSI
+                {: RESULT = new Condition(cond, si, null, condleft + 1) ; :}
 				;
 
 ELSE ::= 
