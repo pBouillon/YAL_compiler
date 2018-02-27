@@ -15,6 +15,7 @@ programme imc debut
     // calcul de l'IMC
     imc = taille * taille ;
     imc = masse / imc ;
+    ecrire imc ;
 
     // affichage du resultat
     si imc < 18 alors
