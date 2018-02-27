@@ -53,7 +53,8 @@ public class DataFactory {
         for (int i = 0; i < str.length(); ++i) {
             key += (int)str.charAt(i) ;
         }
-        return key ;
+
+        return key + str.length() ;
     }
 
     String genData() {
