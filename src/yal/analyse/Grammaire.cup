@@ -72,7 +72,7 @@ terminal Symbol    SUP, INF, EGALEGAL, DIFF, ET, OU, NON, EGAL ;
 terminal String    PROGRAMME, DEBUT, FIN ;
 terminal String    IDF, LIRE, TANTQUE, REPETER, FINTANTQUE  ;
 terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE ;
-terminal String	   SI, ALORS, SINON, FINSI;
+terminal String	   SI, ALORS, SINON, FSI;
 
 terminal String    ENTIER, ECRIRE ;
 
@@ -209,10 +209,10 @@ BOUCLE ::= 	TANTQUE EXPR:e REPETER LINSTR:l FINTANTQUE
 			{:  RESULT = new Boucle(e, l, eleft + 1) ; :}
 			;
 			
-CONDITION ::= 	SI EXPR:cond ALORS LINSTR:si ELSE LINSTR:sinon FINSI
+CONDITION ::= 	SI EXPR:cond ALORS LINSTR:si SINON LINSTR:sinon FSI
 				{: RESULT = new Condition(cond, si, sinon, condleft + 1) ; :}
         |
-                SI EXPR:cond ALORS LINSTR:si FINSI
+                SI EXPR:cond ALORS LINSTR:si FSI
                 {: RESULT = new Condition(cond, si, null, condleft + 1) ; :}
 				;
 

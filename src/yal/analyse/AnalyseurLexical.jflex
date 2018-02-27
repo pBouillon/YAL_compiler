@@ -43,7 +43,7 @@ fintantque = "fintantque"
 si         = "si"
 alors      = "alors"
 sinon      = "sinon"
-finsi      = "finsi"
+fsi      = "fsi"
 programme  = "programme"
 debut      = "debut"
 fin        = "fin"
@@ -57,7 +57,7 @@ commentaireSlashSlash = [/][/].*
 {si}                    { return symbol(CodesLexicaux.SI, yytext()); }
 {alors}                 { return symbol(CodesLexicaux.ALORS, yytext()); }
 {sinon}                 { return symbol(CodesLexicaux.SINON, yytext()); }
-{finsi}                 { return symbol(CodesLexicaux.FINSI, yytext()); }
+{fsi}                 	{ return symbol(CodesLexicaux.FSI, yytext()); }
 {tantque}               { return symbol(CodesLexicaux.TANTQUE, yytext()); }
 {repeter}               { return symbol(CodesLexicaux.REPETER, yytext()); }
 {fintantque}            { return symbol(CodesLexicaux.FINTANTQUE, yytext()); }
