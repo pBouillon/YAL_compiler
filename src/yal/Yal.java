@@ -83,7 +83,7 @@ public class Yal {
 				".text\n" +
 				"main:\n" +
 				"move $s7, $sp\n"+
-				"addi $sp, $sp, " + (-4*TDS.getInstance().getCompteur());
+				"addi $sp, $sp, " + TDS.getInstance().getCompteur() + "\n";
 			
 	}
 
