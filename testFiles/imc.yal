@@ -22,18 +22,18 @@ programme imc debut
     si imc < 18 alors
         ecrire "insuffisance pondérale (maigreur)\n" ;
         imc = 50 ;
-    finsi
+    fsi
 
     si imc < 25 alors
         ecrire "poids normal\n" ;
         imc = 50 ;
-    finsi
+    fsi
 
     si imc < 30 alors
         ecrire "surpoids\n" ;
         imc = 50 ;
     sinon
         ecrire "obésité\n" ;
-    finsi
+    fsi
 
 fin
