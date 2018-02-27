@@ -5,12 +5,14 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import yal.analyse.AnalyseurLexical;
 import yal.analyse.AnalyseurSyntaxique;
 import yal.arbre.ArbreAbstrait;
 import yal.exceptions.AnalyseException;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.SemantiqueException;
+import yal.tabledessymboles.TDS;
 
 /**
  * 24 mars 2015 
@@ -80,7 +82,9 @@ public class Yal {
 		return  DataFactory.getInstance().genData() +
 				".text\n" +
 				"main:\n" +
-				"move $s7, $sp\n" ;
+				"move $s7, $sp\n"+
+				"addi $sp, $sp, " + (-4*TDS.getInstance().getCompteur());
+			
 	}
 
     /**
