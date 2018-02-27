@@ -67,8 +67,8 @@ public class DataFactory {
     }
 
     public String getErrDiv() {
-        return VAR_NAME + varName.get(getKeyStr(DIV_ZERO)) ;
+        return VAR_NAME + varCpt.get(getKeyStr(DIV_ZERO)) ;
     }
-    public String getTrue() {return VAR_NAME + varName.get(getKeyStr(STR_TRUE));}
-    public String getFalse() {return VAR_NAME + varName.get(getKeyStr(STR_FALSE));}
+    public String getTrue() {return VAR_NAME + varCpt.get(getKeyStr(STR_TRUE));}
+    public String getFalse() {return VAR_NAME + varCpt.get(getKeyStr(STR_FALSE));}
 }
