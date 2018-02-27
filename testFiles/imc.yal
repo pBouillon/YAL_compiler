@@ -3,5 +3,6 @@ programme imc debut
     a = 0 ;
     tantque a < 5 repeter
         ecrire a ;
+        a = a + 1;
     fintantque
 fin
