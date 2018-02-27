@@ -239,7 +239,7 @@ public class EtiquetteFactory {
     }
 
     public String getPrevEvalTantQue() {
-        return ETANTQUE + (etiqs.get(ETANTQUE) - 1) ;
+        return ETANTQUE + (etiqs.get(ETANTQUE)) ;
     }
 
     public String getEvalTantQue() {
