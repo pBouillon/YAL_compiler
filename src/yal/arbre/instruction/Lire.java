@@ -21,7 +21,7 @@ public class Lire extends Instruction {
 			"\tli $v0, 5",
 			"\tsyscall",
 			"\t# Input is in v0",
-			"\tlw $v0, " +
+			"\tsw $v0, " +
 					TDS.getInstance()
 							.identifier(varName, super.noLigne)
 							.getPointeur() +

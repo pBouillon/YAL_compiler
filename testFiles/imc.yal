@@ -8,11 +8,9 @@ programme imc debut
     // corps
     ecrire "Votre taille en cm: " ;
     lire taille ;
-    ecrire "\n" ;
 
     ecrire "Votre masse corporelle en kg: " ;
     lire masse ;
-    ecrire "\n" ;
 
     // calcul de l'IMC
     imc = taille * taille ;
