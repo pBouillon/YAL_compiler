@@ -25,7 +25,7 @@ public class IDF extends Expression{
 	@Override
 	public String toMIPS() {
 		return  "# recuperation de la valeur de " +  idf +" \n" +
-        		"sw $v0, "+ TDS.getInstance().identifier(idf, this.noLigne ).getPointeur() +"($s7) \n";
+        		"sw $v0, "+ TDS.getInstance().identifier(idf, this.noLigne).getPointeur() +"($s7) \n";
     
 	}
 	
