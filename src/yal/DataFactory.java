@@ -12,12 +12,14 @@ public class DataFactory {
     private static DataFactory INSTANCE
             = new DataFactory() ;
 
-    private HashMap<String, Integer> var ;
+    private HashMap<Integer, String> varName ;
+    private HashMap<Integer, Integer> varCpt ;
     private int cpt ;
 
     private DataFactory() {
         cpt = 0 ;
-        var = new HashMap<>() ;
+        varName = new HashMap<>() ;
+        varCpt = new HashMap<>() ;
         addData(DIV_ZERO);
         addData(STR_TRUE);
         addData(STR_FALSE);
@@ -28,7 +30,10 @@ public class DataFactory {
     }
 
     public void addData(String data) {
-        var.put(data, cpt++) ;
+        int key = getKeyStr(data) ;
+
+        varName.put(key, data) ;
+        varCpt.put(key, cpt++) ;
     }
 
     /**
@@ -36,13 +41,21 @@ public class DataFactory {
      * @return VAR_NAME + nb
      */
     public String getVarFor(String data) {
-        return VAR_NAME + var.get(data) ;
+        return VAR_NAME + varName.get(getKeyStr(data)) ;
+    }
+
+    private int getKeyStr(String str) {
+        int key = 0 ;
+        for (int i = 0; i < str.length(); ++i) {
+            key += (int)str.charAt(i) ;
+        }
+        return key ;
     }
 
     String genData() {
         StringBuilder dataGen = new StringBuilder(".data:\n");
 
-        for (String data : var.keySet()) {
+        for (String data : varName.values()) {
             dataGen.append("\t")
                     .append(getVarFor(data))
                     .append(": .asciiz ")
@@ -54,8 +67,8 @@ public class DataFactory {
     }
 
     public String getErrDiv() {
-        return VAR_NAME + var.get(DIV_ZERO) ;
+        return VAR_NAME + varName.get(getKeyStr(DIV_ZERO)) ;
     }
-    public String getTrue() {return VAR_NAME + var.get(STR_TRUE);}
-    public String getFalse() {return VAR_NAME + var.get(STR_FALSE);}
+    public String getTrue() {return VAR_NAME + varName.get(getKeyStr(STR_TRUE));}
+    public String getFalse() {return VAR_NAME + varName.get(getKeyStr(STR_FALSE));}
 }
