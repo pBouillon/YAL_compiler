@@ -1,0 +1,36 @@
+programme imc debut
+
+    // variables
+    entier imc ;
+    entier masse ;
+    entier taille ;
+
+    // corps
+    ecrire "Votre taille en cm: " ;
+    lire taille ;
+
+    ecrire "Votre masse corporelle en kg: " ;
+    lire masse ;
+
+    imc = taille * taille ;
+    imc = poids / imc ;
+
+    si imc < 18 alors
+        ecrire "\ninsuffisance pondérale (maigreur)\n" ;
+        imc = 0 ;
+    fsi
+
+    si imc < 25 alors
+        ecrire "\npoids normal\n" ;
+        imc = 0 ;
+    fsi
+
+    si imc < 30 alors
+        ecrire "\nsurpoids\n" ;
+        imc = 0 ;
+    sinon
+        ecrire "\nobésité\n" ;
+        imc = 0 ;
+    fsi
+
+fin
