@@ -41,6 +41,9 @@ public class Condition extends Instruction {
 
 		String blocSinon = (sinon != null) ? sinon.toMIPS()
 										   : "" ;
+
+		String blocSi = (si != null) ? sinon.toMIPS()
+				: "" ;
 		return String.join (
 				"\n",
 				"\t# debut du si .. sinon ..",
@@ -52,7 +55,7 @@ public class Condition extends Instruction {
 
 				"\t# ALORS",
 				et.getAlors() + ":",
-				"\t" + si.toMIPS(),
+				"\t" + blocSi,
 				"\tj " + et.getNextFsi(),
 
 				"\t# SINON",
