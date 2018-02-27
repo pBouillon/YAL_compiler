@@ -8,29 +8,32 @@ programme imc debut
     // corps
     ecrire "Votre taille en cm: " ;
     lire taille ;
+    ecrire "\n" ;
 
     ecrire "Votre masse corporelle en kg: " ;
     lire masse ;
+    ecrire "\n" ;
 
+    // calcul de l'IMC
     imc = taille * taille ;
     imc = poids / imc ;
 
+    // affichage du resultat
     si imc < 18 alors
-        ecrire "\ninsuffisance pondérale (maigreur)\n" ;
-        imc = 0 ;
+        ecrire "insuffisance pondérale (maigreur)\n" ;
+        imc = 50 ;
     fsi
 
     si imc < 25 alors
-        ecrire "\npoids normal\n" ;
-        imc = 0 ;
+        ecrire "poids normal\n" ;
+        imc = 50 ;
     fsi
 
     si imc < 30 alors
-        ecrire "\nsurpoids\n" ;
-        imc = 0 ;
+        ecrire "surpoids\n" ;
+        imc = 50 ;
     sinon
-        ecrire "\nobésité\n" ;
-        imc = 0 ;
+        ecrire "obésité\n" ;
     fsi
 
 fin
