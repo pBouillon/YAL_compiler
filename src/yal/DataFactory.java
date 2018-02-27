@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class DataFactory {
 
-    private final String VAR_NAME = "var" ;
+    private final String VAR_PREFIX = "var" ;
     private final String DIV_ZERO =  "\"Division par zero impossible\"" ;
     private final String STR_TRUE =  "\"vrai\"" ;
     private final String STR_FALSE = "\"faux\"" ;
@@ -19,9 +19,9 @@ public class DataFactory {
     private DataFactory() {
         cpt = 0 ;
         varName = new HashMap<>() ;
-        varCpt = new HashMap<>() ;
-        addData(DIV_ZERO);
-        addData(STR_TRUE);
+        varCpt = new HashMap<>()  ;
+        addData(DIV_ZERO) ;
+        addData(STR_TRUE) ;
         addData(STR_FALSE);
     }
 
@@ -32,16 +32,20 @@ public class DataFactory {
     public void addData(String data) {
         int key = getKeyStr(data) ;
 
+        if (varName.containsKey(key)) {
+            return ;
+        }
+
         varName.put(key, data) ;
         varCpt.put(key, cpt++) ;
     }
 
     /**
      * @param data string
-     * @return VAR_NAME + nb
+     * @return VAR_PREFIX + nb
      */
     public String getVarFor(String data) {
-        return VAR_NAME + varName.get(getKeyStr(data)) ;
+        return VAR_PREFIX + varCpt.get(getKeyStr(data)) ;
     }
 
     private int getKeyStr(String str) {
@@ -67,8 +71,8 @@ public class DataFactory {
     }
 
     public String getErrDiv() {
-        return VAR_NAME + varCpt.get(getKeyStr(DIV_ZERO)) ;
+        return VAR_PREFIX + varCpt.get(getKeyStr(DIV_ZERO)) ;
     }
-    public String getTrue() {return VAR_NAME + varCpt.get(getKeyStr(STR_TRUE));}
-    public String getFalse() {return VAR_NAME + varCpt.get(getKeyStr(STR_FALSE));}
+    public String getTrue() {return VAR_PREFIX + varCpt.get(getKeyStr(STR_TRUE));}
+    public String getFalse() {return VAR_PREFIX + varCpt.get(getKeyStr(STR_FALSE));}
 }
