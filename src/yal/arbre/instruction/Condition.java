@@ -11,11 +11,11 @@ public class Condition extends Instruction {
 	private BlocDInstructions si ;
 	private BlocDInstructions sinon ;
 
-	protected Condition (
+	public Condition(
 			Expression _cond,
 			BlocDInstructions _si,
 			BlocDInstructions _sinon,
-			int no ) {
+			int no) {
 		super(no);
 		condition = _cond ;
 		sinon = _sinon ;

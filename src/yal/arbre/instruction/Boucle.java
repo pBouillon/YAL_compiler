@@ -10,7 +10,7 @@ public class Boucle extends Instruction {
 	Expression condition;
 	BlocDInstructions instr ;
 
-	protected Boucle(Expression _cond, BlocDInstructions _instr, int no) {
+	public Boucle(Expression _cond, BlocDInstructions _instr, int no) {
 		super(no);
 		condition = _cond ;
 		instr = _instr ;

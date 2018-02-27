@@ -187,11 +187,11 @@ INSTR ::=       PRINT:p POINTVIRGULE
         		READ:r POINTVIRGULE
         		{: RESULT = r ; :}
         |
-        		BOUCLE 
-        		{: /*  A REMPLIR  */ :}
+        		BOUCLE:b
+        		{: RESULT = b ; :}
         |
-        		CONDITION 
-        		{: /*  A REMPLIR  */ :}
+        		CONDITION:c
+        		{: RESULT = c ; :}
                 ;
 
 READ ::= 	LIRE IDF:i
@@ -215,13 +215,6 @@ CONDITION ::= 	SI EXPR:cond ALORS LINSTR:si ELSE LINSTR:sinon FINSI
                 SI EXPR:cond ALORS LINSTR:si FINSI
                 {: RESULT = new Condition(cond, si, null, condleft + 1) ; :}
 				;
-
-ELSE ::= 
-			{: System.out.println("sans sinon");    :}
-		|
-			SINON LINSTR
-			{:   System.out.println("avec sinon");  :}
-			;
 
 			
 CSTE    ::=     CONSTANTEINT:e 

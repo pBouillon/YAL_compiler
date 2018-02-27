@@ -31,9 +31,9 @@ import yal.exceptions.AnalyseLexicaleException;
 
 csteE      = [0-9]+
 csteB      = "vrai" | "faux"
-csteC      = \"(*)+\"
+csteC      = \"([^\"\n]|\\n|\\\")*\"
 
-entier     = entier"
+entier     = "entier"
 idf        = [a-zA-Z0-9]+
 ecrire     = "ecrire"
 lire       = "lire"
