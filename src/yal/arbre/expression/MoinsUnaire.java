@@ -17,7 +17,7 @@ public class MoinsUnaire extends Unaire {
 
 	@Override
 	public String operateur() {
-		return "- " ;
+		return SYM_UNARY_MIN ;
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class Plus extends BinaireArithmetique {
 
 	@Override
 	public String operateur() {
-		return " + " ;
+		return SYM_PLUS ;
 	}
 
 	@Override

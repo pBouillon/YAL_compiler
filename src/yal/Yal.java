@@ -1,18 +1,17 @@
 package yal ;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import yal.analyse.AnalyseurLexical;
 import yal.analyse.AnalyseurSyntaxique;
 import yal.arbre.ArbreAbstrait;
 import yal.exceptions.AnalyseException;
 import yal.exceptions.ListeSemantiqueException;
-import yal.exceptions.SemantiqueException;
 import yal.tabledessymboles.TDS;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 24 mars 2015 
@@ -39,7 +38,6 @@ public class Yal {
 					)
 			) ;
 			ArbreAbstrait arbre = (ArbreAbstrait) analyseur.parse().value ;
-			//System.err.println ("expression stockée dans l'yal.arbre : \n" + arbre) ;
 
 			arbre.verifier() ;
 
@@ -78,22 +76,27 @@ public class Yal {
      * @return mips prog begin and data declarations
      */
 	private String header() {
-		return  DataFactory.getInstance().genData() +
-				".text\n" +
-				"main:\n" +
-				"move $s7, $sp\n"+
-				"addi $sp, $sp, " + TDS.getInstance().getCompteur() + "\n";
-			
+		return String.join (
+				"\t",
+				DataFactory.getInstance().genData(),
+				".text:",
+				"main:",
+				"\tmove $s7, $sp",
+				"\taddi $sp, $sp, " + TDS.getInstance().getCompteur()
+		) ;
 	}
 
     /**
      * @return mips clean ending and storage in $v1
      */
 	private String footer() {
-		return  "\n\nend:\n" +
-				"move $v1, $v0\n" +
-				"li $v0, 10\n" +
-				"syscall\n" ;
+		return String.join (
+				"\n",
+				"\nend:",
+				"\tmove $v1, $v0",
+				"\tli $v0, 10",
+				"\tsyscall"
+		) ;
 	}
 
 	public static void main(String[] args) {

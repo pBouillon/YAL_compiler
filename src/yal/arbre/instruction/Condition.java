@@ -1,6 +1,5 @@
 package yal.arbre.instruction;
 
-import yal.EtiquetteFactory;
 import yal.arbre.BlocDInstructions;
 import yal.arbre.expression.Expression;
 import yal.exceptions.ListeSemantiqueException;
@@ -43,26 +42,26 @@ public class Condition extends Instruction {
 		String blocSi = (si != null) ? si.toMIPS()
 									  : "" ;
 		return String.join (
-				"\n",
-				"\t# debut du si .. sinon ..",
+			"\n",
+			"\t# debut du si .. sinon ..",
 
-				"\t#SI",
-				et.getSi() + ": ",
-				"\t" + condition.toMIPS(),
-				"\tbeqz $v0, " + et.getNextSinon(),
+			"\t# si",
+			et.getSi() + ": ",
+			"\t" + condition.toMIPS(),
+			"\tbeqz $v0, " + et.getNextSinon(),
 
-				"\t# ALORS",
-				et.getAlors() + ":",
-				"\t" + blocSi,
-				"\tj " + et.getNextFsi(),
+			"\t# alors",
+			et.getAlors() + ":",
+			"\t" + blocSi,
+			"\tj " + et.getNextFsi(),
 
-				"\t# SINON",
-				et.getSinon() + ":",
-				"\t" + blocSinon,
+			"\t# sinon",
+			et.getSinon() + ":",
+			"\t" + blocSinon,
 
-				et.getFsi() + ":",
-				"\t# fin du si .. sinon .."
-				) ;
+			et.getFsi() + ":",
+			"\t# fin du si .. sinon .."
+		) ;
 	}
 
 }

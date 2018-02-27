@@ -14,7 +14,7 @@ public class OuLogique extends BinaireLogique {
 
 	@Override
 	public String operateur() {
-		return " ou " ;
+		return SYM_OR ;
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class Moins extends BinaireArithmetique {
 
 	@Override
 	public String operateur() {
-		return " - ";
+		return SYM_MIN ;
 	}
 
 	@Override

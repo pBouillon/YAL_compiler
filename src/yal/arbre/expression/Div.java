@@ -1,9 +1,6 @@
 package yal.arbre.expression;
 
 import yal.DataFactory;
-import yal.EtiquetteFactory;
-import yal.exceptions.ListeSemantiqueException;
-import yal.exceptions.SemantiqueException;
 
 /**
  * 3 déc. 2015
@@ -19,7 +16,7 @@ public class Div extends BinaireArithmetique {
 
 	@Override
 	public String operateur() {
-		return " / ";
+		return SYM_DIV ;
 	}
 
 	@Override

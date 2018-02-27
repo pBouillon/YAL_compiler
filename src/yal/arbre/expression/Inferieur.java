@@ -1,7 +1,5 @@
 package yal.arbre.expression;
 
-import yal.EtiquetteFactory;
-
 /**
  * 3 déc. 2015
  *
@@ -16,7 +14,7 @@ public class Inferieur extends Comparaison {
 
     @Override
     public String operateur() {
-        return " < ";
+        return SYM_INF ;
     }
 
 	@Override

@@ -14,7 +14,7 @@ public class EtLogique extends BinaireLogique {
     
     @Override
     public String operateur() {
-        return " et " ;
+        return SYM_AND ;
     }
 
 	@Override

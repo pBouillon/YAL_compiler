@@ -1,6 +1,5 @@
 package yal.arbre.expression;
 
-import yal.EtiquetteFactory;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.SemantiqueException;
 
@@ -20,7 +19,7 @@ public class NonLogique extends Unaire {
 
 	@Override
 	public String operateur() {
-		return " non " ;
+		return SYM_UNARY_NEG ;
 	}
 
 	@Override

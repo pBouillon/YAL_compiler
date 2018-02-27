@@ -14,7 +14,7 @@ public class Different extends Comparaison {
 
 	@Override
 	public String operateur() {
-		return " != ";
+		return SYM_DIFF;
 	}
 
 	@Override

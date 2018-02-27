@@ -11,21 +11,19 @@ import yal.exceptions.SemantiqueException;
 
 public class ConstanteBool extends Constante {
 
-	private final String TRUE  = "vrai" ;
-	private final String FALSE = "faux" ;
-
     public ConstanteBool(String texte, int n) {
         super(texte, n) ;
     }
 
     private int eval (String bool_expr) {
-    	return bool_expr.equals(TRUE) ? 1
-									  : 0 ;
+    	return bool_expr.equals(SYM_CSTE_BOOL_TRUE) ? 1
+									  				 : 0 ;
 	}
 
 	@Override
 	public void verifier() {
-		if (!cste.equals(TRUE) && !cste.equals(FALSE)) {
+		if (!cste.equals(SYM_CSTE_BOOL_TRUE)
+				&& !cste.equals(SYM_CSTE_BOOL_FALSE)) {
 			ListeSemantiqueException
 				.getInstance()
 				.addException (
