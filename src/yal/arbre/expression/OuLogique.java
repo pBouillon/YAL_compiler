@@ -19,23 +19,20 @@ public class OuLogique extends BinaireLogique {
 
 	@Override
 	public String toMIPS() {
-			return "# Evaluation de l'opérande gauche \n" +
-					gauche.toMIPS() + "\n" + 
-					"# Stocke la valeur de v0 dans la mémoire \n" +
-					"sw $v0, ($sp) \n" +
-					"# Dépilement dans $sp \n" +
-					"addi $sp, $sp -4 \n" +
-					"# Evaluation de l'opérande droite \n" +
-					droite.toMIPS() + "\n" +
-					"# Déplacement de sp \n" +
-					"addi $sp, $sp, +4 \n" +
-					"lw $t8, ($sp) \n" +
-					"# Comparaison de t8 ou v0  \n" +
-					"or $v0, $t8, $v0\n" ;
+		return String.join (
+				"\n",
+				"\t# ou logique",
+				gauche.toMIPS(),
+				"\tsw $v0, ($sp)",
+				"\taddi $sp, $sp -4",
+				droite.toMIPS(),
+				"\taddi $sp, $sp, +4",
+				"\tlw $t8, ($sp)",
+				"\tor $v0, $t8, $v0"
+		) ;
 	}
 	@Override
 	public String getType() {
-		return "boolean";
+		return TYPE_BOOLEAN;
 	}
-
 }

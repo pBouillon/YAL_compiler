@@ -21,32 +21,30 @@ public class Egal extends Comparaison {
 
 	@Override
 	public String toMIPS() {
-		return gauche.toMIPS() +
-				"\n" +
-				"sw $v0, ($sp)" +
-				"\n" +
-				"addi $sp, $sp -4" +
-				"\n" +
-				droite.toMIPS() +
-				"\n" +
-				"addi $sp, $sp, +4" +
-				"\n" +
-				"lw $t8, ($sp) " +
-				"\n" +
-				"sub $v0, $t8, $v0\n" +
-				"beqz $v0, "+ EtiquetteFactory.getInstance().getNextSiEg()+"\n" +
-				"j "+EtiquetteFactory.getInstance().getNextSiNonEg()+"\n" +
-				EtiquetteFactory.getInstance().getSiEg()+":\n" +
-				"li $v0, 1\n" +
-				"j "+EtiquetteFactory.getInstance().getNextFinSiEg()+"\n" +
-				EtiquetteFactory.getInstance().getSiNonEg()+":\n" +
-				"li $v0, 0\n" +
-				EtiquetteFactory.getInstance().getFinSiEg()+":\n";
+    	return String.join (
+    			"\n",
+				"\t# debut egalite",
+				gauche.toMIPS(),
+				"\tsw $v0, ($sp)",
+				"\taddi $sp, $sp -4",
+				droite.toMIPS(),
+				"\taddi $sp, $sp, +4",
+				"\tlw $t8, ($sp)",
+				"\tsub $v0, $t8, $v0",
+				"\tbeqz $v0, " + et.getNextSiEg(),
+				"\tj " + et.getNextSiNonEg(),
+				et.getSiEg() + ":",
+				"\tli $v0, 1",
+				"\tj " + et.getNextFinSiEg(),
+				et.getSiNonEg() + ":",
+				"\tli $v0, 0",
+				et.getFinSiEg() + ":"
+		) ;
 	}
 
 	@Override
 	public String getType() {
-		return "boolean";
+		return TYPE_BOOLEAN ;
 	}
     
 }

@@ -13,22 +13,20 @@ public class IDF extends Expression{
 
 	@Override
 	public String getType() {
-		return "idf";
+		return TYPE_IDF ;
 	}
 
 	@Override
-	public void verifier() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void verifier() {}
 
 	@Override
 	public String toMIPS() {
-		return  "# recuperation de la valeur de " +  idf +" \n" +
-        		"lw $v0, "+ TDS.getInstance().identifier(idf, this.noLigne).getPointeur() +"($s7) \n";
-    
+		return String.join (
+			"\n",
+			"# recuperation de la valeur de " +  idf,
+				"lw $v0, "+ TDS.getInstance()
+								.identifier (idf, noLigne)
+								.getPointeur()
+		) ;
 	}
-	
-	
-
 }

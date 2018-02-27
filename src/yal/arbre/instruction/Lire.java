@@ -11,8 +11,7 @@ public class Lire extends Instruction {
 	}
 
 	@Override
-	public void verifier() {
-	}
+	public void verifier() {}
 
 	@Override
 	public String toMIPS() {
@@ -20,7 +19,6 @@ public class Lire extends Instruction {
 			"\t# read code",
 			"\tli $v0, 5",
 			"\tsyscall",
-			"\t# Input is in v0",
 			"\tsw $v0, " +
 					TDS.getInstance()
 							.identifier(varName, super.noLigne)
@@ -28,5 +26,4 @@ public class Lire extends Instruction {
 					"($s7)"
 		) ;
 	}
-
 }

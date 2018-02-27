@@ -27,7 +27,6 @@ public class Yal {
 	private static final int ARG_REQUIRED = 1 ;
 	private static final int EXIT_FAILURE = 1 ;
 
-
     /**
      * References Yal
      * @param fichier .yal to compile

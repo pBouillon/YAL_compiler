@@ -17,29 +17,24 @@ public class Moins extends BinaireArithmetique {
 		return " - ";
 	}
 
-
 	@Override
 	public String toMIPS() {
-		StringBuilder s = new StringBuilder();
-		s.append(gauche.toMIPS())
-		 .append("\n")
-		 .append("sw $v0, ($sp)")
-		 .append("\n")
-		 .append("addi $sp, $sp -4")
-		 .append("\n")
-		 .append( droite.toMIPS() )
-		 .append("\n")
-		 .append("addi $sp, $sp, +4")
-		 .append("\n")
-		 .append("lw $t8, ($sp) ")
-		 .append("\n")
-		 .append("sub $v0, $t8, $v0\n") ;
-		return s.toString() ;
+		return String.join (
+				"\n",
+				"\t# moins",
+				gauche.toMIPS(),
+				"\tsw $v0, ($sp)",
+				"\taddi $sp, $sp -4",
+				droite.toMIPS(),
+				"\taddi $sp, $sp, +4",
+				"\tlw $t8, ($sp)",
+				"\tsub $v0, $t8, $v0"
+		) ;
 	}
 	
 	@Override
 	public String getType() {
-		return "int";
+		return TYPE_ENTIER;
 	}
 
 }

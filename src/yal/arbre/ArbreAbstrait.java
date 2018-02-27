@@ -1,5 +1,7 @@
 package yal.arbre;
 
+import yal.EtiquetteFactory;
+
 /**
  * 3 déc. 2015
  *
@@ -7,7 +9,13 @@ package yal.arbre;
  */
 
 public abstract class ArbreAbstrait {
-    
+
+    public static EtiquetteFactory et = EtiquetteFactory.getInstance() ;
+
+    public static String TYPE_BOOLEAN = "boolean" ;
+    public static String TYPE_ENTIER  = "int" ;
+    public static String TYPE_IDF     = "idf" ;
+
     // numéro de ligne du début de l'instruction
     protected int noLigne ;
     

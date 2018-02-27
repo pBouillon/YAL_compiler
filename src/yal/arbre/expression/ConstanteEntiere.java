@@ -13,20 +13,20 @@ public class ConstanteEntiere extends Constante {
     }
 
 	@Override
-	public void verifier() {
-		// TODO Auto-generated method stub
-
-	}
+	public void verifier() {}
 
 	@Override
 	public String toMIPS() {
-		return "\n# Evaluation d'une constante dans v0 \n"
-				+ "li $v0, " + cste + "\n" ;
+    	return String.join (
+    			"\n",
+				"\t# Evaluation d'une constante",
+				"\tli $v0, " + cste
+		) ;
 	}
 
 	@Override
 	public String getType() {
-		return "int";
+		return TYPE_ENTIER;
 	}
 
 }

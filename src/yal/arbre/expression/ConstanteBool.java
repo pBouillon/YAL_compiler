@@ -39,15 +39,15 @@ public class ConstanteBool extends Constante {
 
 	@Override
 	public String toMIPS() {
-    	int bool_expr = eval(cste) ;
-
-		return "# Chargement de la constante " + bool_expr + "\n" +
-				"li $v0, " + bool_expr ;
+    	return String.join(
+    			"\n# chargement de la constante " + eval(cste),
+				"\tli $v0, " + eval(cste)
+		) ;
 	}
 
 	@Override
 	public String getType() {
-		return "boolean";
+		return TYPE_BOOLEAN;
 	}
 
 }

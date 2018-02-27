@@ -1,6 +1,5 @@
 package yal.arbre.instruction;
 
-import yal.EtiquetteFactory;
 import yal.arbre.BlocDInstructions;
 import yal.arbre.expression.Expression;
 import yal.exceptions.ListeSemantiqueException;
@@ -18,7 +17,7 @@ public class Boucle extends Instruction {
 
 	@Override
 	public void verifier() {
-		if (condition.getType().equals("boolean")) return ;
+		if (condition.getType().equals(TYPE_BOOLEAN)) return ;
 
 		ListeSemantiqueException
 				.getInstance()
@@ -31,7 +30,6 @@ public class Boucle extends Instruction {
 
 	@Override
 	public String toMIPS() {
-		EtiquetteFactory et = EtiquetteFactory.getInstance() ;
 		return String.join (
 				"\n",
 				"\t# Debut tantque ...",
@@ -51,5 +49,4 @@ public class Boucle extends Instruction {
 				et.getFTantQue() + ":"
 		) ;
 	}
-
 }

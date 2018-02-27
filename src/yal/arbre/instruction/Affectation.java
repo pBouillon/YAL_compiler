@@ -21,9 +21,17 @@ public class Affectation extends Instruction {
 
     @Override
     public String toMIPS() {
-        return  exp.toMIPS()+
-        		"# Affectation de " +  exp.toString() + " dans " + idf + " \n" +
-        		"sw $v0, "+ TDS.getInstance().identifier(idf, this.noLigne ).getPointeur() +"($s7) \n";
+        return String.join (
+                "\n",
+                exp.toMIPS(),
+                "# affectation de " + exp.toString() + " -> " + idf,
+                "\tsw $v0, " + TDS.getInstance()
+                                    .identifier (
+                                            idf,
+                                            noLigne
+                                    )
+                                    .getPointeur() + "($s7)"
+        ) ;
     }
 
     @Override

@@ -4,6 +4,8 @@ import yal.EtiquetteFactory;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.SemantiqueException;
 
+import java.util.Objects;
+
 /**
  * 3 déc. 2015
  *
@@ -24,29 +26,35 @@ public class NonLogique extends Unaire {
 	@Override
 	public void verifier() {
 		expression.verifier();
-		if(expression.getType() != "boolean" ) {
+		if (!Objects.equals(expression.getType(), TYPE_BOOLEAN)) {
 			String s =  operateur() + " avec un " + expression.getType();
-			ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
+			ListeSemantiqueException.getInstance()
+					.addException (
+							new SemantiqueException (
+									noLigne,
+									s
+			));
 		}
 	}
 
 	@Override
 	public String toMIPS() {
-			return  expression.toMIPS() + "\n" + 
-					"bgtz $v0, "+EtiquetteFactory.getInstance().getNextSiEg()+"\n" +
-					"j "+EtiquetteFactory.getInstance().getNextSiNonEg()+"\n" +
-					EtiquetteFactory.getInstance().getSiEg()+":\n" +
-					"li $v0, 0\n" +
-					"j "+EtiquetteFactory.getInstance().getNextFinSiEg()+"\n" +
-					EtiquetteFactory.getInstance().getSiNonEg()+":\n" +
-					"li $v0, 1\n" +
-					EtiquetteFactory.getInstance().getFinSiEg()+":\n";
+		return String.join (
+				"\n",
+				"\t# non logique",
+				"\tbgtz $v0, " + et.getNextSiEg(),
+				"\tj, " + et.getNextSiNonEg(),
+				et.getSiEg() + ":",
+				"\tli $v0, 0",
+				"\tj " + et.getNextFinSiEg(),
+				et.getSiNonEg() + ":",
+				"\tli $v0, 1",
+				et.getFinSiEg()
+		) ;
 	}
-
 
 	@Override
 	public String getType() {
-		return "boolean";
+		return TYPE_BOOLEAN;
 	}
-
 }

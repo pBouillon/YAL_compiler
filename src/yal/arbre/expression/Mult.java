@@ -39,7 +39,7 @@ public class Mult extends BinaireArithmetique {
 	
 	@Override
 	public String getType() {
-		return "int";
+		return TYPE_ENTIER ;
 	}
 
 }

@@ -11,15 +11,15 @@ public class EcrireChaine extends Ecrire {
     }
 
     @Override
-    public void verifier() { }
+    public void verifier() {}
 
     @Override
     public String toMIPS() {
         DataFactory.getInstance().addData(cste) ;
         return String.join (
                 "\n",
-                "\t# affichage de la chaine de caractere",
-                "\tli $v0 , 4", // code d'affichage pour les chaines
+                "\t# affichage de " + cste,
+                "\tli $v0 , 4",
                 "\tla $a0 , " + DataFactory.getInstance().getVarFor(cste),
                 "\tsyscall"
             ) ;

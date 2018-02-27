@@ -24,7 +24,7 @@ public class Condition extends Instruction {
 
 	@Override
 	public void verifier() {
-		if (condition.getType().equals("boolean")) return ;
+		if (condition.getType().equals(TYPE_BOOLEAN)) return ;
 
 		ListeSemantiqueException
 				.getInstance()
@@ -37,8 +37,6 @@ public class Condition extends Instruction {
 
 	@Override
 	public String toMIPS() {
-		EtiquetteFactory et = EtiquetteFactory.getInstance() ;
-
 		String blocSinon = (sinon != null) ? sinon.toMIPS()
 										   : "" ;
 

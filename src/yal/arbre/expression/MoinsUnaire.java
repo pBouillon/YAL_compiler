@@ -37,16 +37,20 @@ public class MoinsUnaire extends Unaire {
 
 	@Override
 	public String toMIPS() {
-			return 	"li $v0, 0 \n" +  "\n" +
-					"sw $v0, ($sp) \n" +
-					expression.toMIPS()	+
-					"lw $t8, ($sp) \n" +
-					"sub $v0, $t8, $v0\n" ;
+		return String.join (
+				"\n",
+				"\t# moins unaire",
+				"\tli $v0, 0",
+				"\tsw $v0, ($sp)",
+				expression.toMIPS(),
+				"\tlw $t8, ($sp)",
+				"\tsub $v0, $t8, $v0"
+		) ;
 	}
 
 	@Override
 	public String getType() {
-		return "int";
+		return TYPE_ENTIER ;
 	}
 
 }

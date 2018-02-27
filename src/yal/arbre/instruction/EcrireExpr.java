@@ -12,38 +12,45 @@ public class EcrireExpr extends Ecrire {
     }
 
     @Override
-    public void verifier() { }
+    public void verifier() {}
 
     @Override
     public String toMIPS() {
-        String ret = "# ecriture de l'expression " + expr + "\n" ;
-        if (expr.getType().equals("boolean")) {
-            ret += String.join (
-               "\n",
-               "\tbeqz $v0, " + EtiquetteFactory.getInstance().getNextSiEg(),
-                    "\tj "+ EtiquetteFactory.getInstance().getNextSiNonEg(),
-                    "\t" + EtiquetteFactory.getInstance().getSiEg() + ": ",
+        String code ;
+
+        code = String.join (
+           "\n",
+           "\t# ecriture de " + expr.toString()
+        ) ;
+
+        if (expr.getType().equals(TYPE_BOOLEAN)) {
+            code += String.join (
+                    "\n",
+                    "\tbeqz $v0, " + et.getNextSiEg(),
+                    "\tj "+ et.getNextSiNonEg(),
+                    "\t" + et.getSiEg() + ": ",
                     "\t# affichage de vrai",
                     "\tli $v0 , 4",
                     "\tla $a0 , " + DataFactory.getInstance().getFalse(),
-                    "\tj " + EtiquetteFactory.getInstance().getNextFinSiEg(),
-                    "\t" + EtiquetteFactory.getInstance().getSiNonEg() + ":",
+                    "\tj " + et.getNextFinSiEg(),
+                    "\t" + et.getSiNonEg() + ":",
                     "\t# affichage de faux",
                     "\tli $v0 , 4",
                     "\tla $a0 , " + DataFactory.getInstance().getTrue(),
-                    "\t" + EtiquetteFactory.getInstance().getFinSiEg() + ":"
+                    "\t" +et.getFinSiEg() + ":"
             ) ;
-        } else {
-            ret += String.join(
-                "\n",
-                expr.toMIPS(),
-                "\tmove $a0, $v0",
-                "\t# affichage de la chaine de caractere",
-                "\tli $v0 , 1" // code d'affichage pour les entiers
+        }
+        else {
+            code += String.join (
+                    "\n",
+                    expr.toMIPS(),
+                    "\tmove $a0, $v0",
+                    "\t# affichage de la chaine de caractere",
+                    "\tli $v0 , 1"
             ) ;
         }
 
-        return ret + "\n\tsyscall\n";
+        return code ;
     }
 
     @Override
