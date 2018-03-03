@@ -45,6 +45,12 @@ Compilation will be:
 COMPILATION_OK
 ```
 
+## MIPS
+* Running MIPS
+Run MIPS with [MARS](http://courses.missouristate.edu/KenVollmar/MARS/download.htm)
+* Learning more about MIPS
+Documentation available [here](https://www.cs.cornell.edu/courses/cs3410/2008fa/MIPS_Vol2.pdf) or summary [here](http://www.mrc.uidaho.edu/mrc/people/jff/digital/MIPSir.html)
+
 ## Authors
 * [Jonathan Schmitt](https://github.com/kaysou)
 * [Pierre Bouillon](https://pierrebouillon.tech/)
