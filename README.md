@@ -5,8 +5,9 @@ School project: YAL compiler (Yet Another Language)
 `~$ java -jar Yal.jar source_code.yal` will generate a `.mips` file.
 
 
-Errors will be displayed with lines and columns in the terminal. If everything is fine, 
-you should see `COMPILATION OK` in your console prompt
+Errors will be displayed with lines and columns in the terminal. 
+
+If everything is fine, you should see `COMPILATION OK` in your console prompt.
 
 
 ## Yal sample
