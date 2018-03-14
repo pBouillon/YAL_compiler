@@ -20,6 +20,16 @@ public class Condition extends Instruction {
 		sinon = _sinon ;
 		si    = _si ;
 	}
+	
+	// Constructeur de Condition sans instruction dans le si
+	public Condition(
+			Expression _cond,
+			BlocDInstructions _sinon,
+			int no) {
+		super(no);
+		condition = _cond ;
+		sinon = _sinon ;
+	}
 
 	@Override
 	public void verifier() {
