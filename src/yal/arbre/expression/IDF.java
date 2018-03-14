@@ -26,7 +26,7 @@ public class IDF extends Expression{
 			"# recuperation de la valeur de " +  idf,
 				"lw $v0, "+ TDS.getInstance()
 								.identifier (idf, noLigne)
-								.getPointeur()
+								.getPointeur()+"($s7) \n"
 		) ;
 	}
 }
