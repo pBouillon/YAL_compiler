@@ -77,7 +77,7 @@ public class Yal {
      */
 	private String header() {
 		return String.join (
-				"\t",
+				"\n",
 				DataFactory.getInstance().genData(),
 				".text:",
 				"main:",
