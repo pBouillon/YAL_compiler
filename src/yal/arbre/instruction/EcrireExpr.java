@@ -50,7 +50,7 @@ public class EcrireExpr extends Ecrire {
             ) ;
         }
 
-        return code ;
+        return code + "\n\tsyscall";
     }
 
     @Override
