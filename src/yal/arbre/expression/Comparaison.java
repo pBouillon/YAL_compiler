@@ -10,17 +10,29 @@ import yal.exceptions.SemantiqueException;
  */
 
 public abstract class Comparaison extends Binaire {
-     
-    protected Comparaison(Expression gauche, Expression droite) {
-        super(gauche, droite);
-    }
-    
+
+	protected Comparaison(Expression gauche, Expression droite) {
+		super(gauche, droite);
+	}
+
 	public void verifier() {
 		gauche.verifier();
 		droite.verifier();
 		if(gauche.getType() != droite.getType()) {
-			String s =  operateur() + " entre un " + gauche.getType() + " et un " + droite.getType();
-			ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
+			if(gauche.getType() == TYPE_IDF) {
+				if(droite.getType() != "int") {
+					String s =  operateur() + " entre un " + gauche.getType() + " et un " + droite.getType();
+					ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
+				}
+			}else 
+				if(droite.getType() == TYPE_IDF) { 
+					if(gauche.getType() != "int") {
+						String s =  operateur() + " entre un " + gauche.getType() + " et un " + droite.getType();
+						ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
+
+					} 
+				}
+
 		}
 	}
 

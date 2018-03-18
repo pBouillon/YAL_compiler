@@ -59,7 +59,7 @@ public class Condition extends Instruction {
 			"\t# si",
 			et.getSi() + ": ",
 			"\t" + condition.toMIPS(),
-			"\tbeqz $v0, " + et.getNextSinon(),
+			"\tbnez $v0, " + et.getNextSinon(),
 
 			"\t# alors",
 			et.getAlors() + ":",
