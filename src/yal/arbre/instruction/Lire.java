@@ -11,7 +11,9 @@ public class Lire extends Instruction {
 	}
 
 	@Override
-	public void verifier() {}
+	public void verifier() {
+		TDS.getInstance().identifier(varName, noLigne);
+	}
 
 	@Override
 	public String toMIPS() {

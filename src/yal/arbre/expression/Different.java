@@ -29,15 +29,15 @@ public class Different extends Comparaison {
 				"\taddi $sp, $sp, +4",
 				"\tlw $t8, ($sp)",
 				"\tsub $v0, $t8, $v0",
-				"\tvérifie si v0 != t8",
-				"\tbne $v0, $v8, " + et.getNextSiEg(),
-				"\tj " + et.getSiNonNeg(),
-				et.getSiEg() + ":",
+				"\t#vérifie si v0 != t8",
+				"\tbne $v0, $t8, " + et.getNextSiNeg(),
+				"\tj " + et.getNextSiNonNeg(),
+				et.getSiNeg() + ":",
 				"\tli $v0, 1",
-				"\tj " + et.getFinSiEg(),
-				et.getSiNonEg() + ":",
+				"\tj " + et.getNextFinSiNeg(),
+				et.getSiNonNeg() + ":",
 				"\tli $v0, 0",
-				et.getFinSiEg() + ":"
+				et.getFinSiNeg() + ":"
 		) ;
 	}
 
