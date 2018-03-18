@@ -220,8 +220,11 @@ CONDITION ::= 	SI EXPR:cond ALORS LINSTR:si SINON LINSTR:sinon FSI
         |
         		SI EXPR:cond ALORS SINON LINSTR:sinon FSI
 				{: RESULT = new Condition(cond, sinon, condleft + 1) ; :}
+				
+		|
+		        SI EXPR:cond ALORS SINON FSI
+				{: RESULT = new Condition(cond, null, null, condleft + 1) ; :}
 				;
-
 			
 CSTE    ::=     CONSTANTEINT:e 
                 {: RESULT = new ConstanteEntiere(e, eleft+1) ; :}

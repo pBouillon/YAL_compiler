@@ -17,7 +17,9 @@ public class IDF extends Expression{
 	}
 
 	@Override
-	public void verifier() {}
+	public void verifier() {
+		TDS.getInstance().identifier(idf, noLigne);
+	}
 
 	@Override
 	public String toMIPS() {

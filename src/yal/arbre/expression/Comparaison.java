@@ -18,7 +18,7 @@ public abstract class Comparaison extends Binaire {
 	public void verifier() {
 		gauche.verifier();
 		droite.verifier();
-		if(gauche.getType() != "int" || droite.getType() != "int") {
+		if(gauche.getType() != droite.getType()) {
 			String s =  operateur() + " entre un " + gauche.getType() + " et un " + droite.getType();
 			ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
 		}

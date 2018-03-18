@@ -33,6 +33,7 @@ public class Condition extends Instruction {
 
 	@Override
 	public void verifier() {
+		condition.verifier();
 		if (condition.getType().equals(TYPE_BOOLEAN)) return ;
 
 		ListeSemantiqueException
