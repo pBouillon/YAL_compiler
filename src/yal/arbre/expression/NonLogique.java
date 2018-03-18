@@ -48,7 +48,7 @@ public class NonLogique extends Unaire {
 				"\tj " + et.getNextFinSiEg(),
 				et.getSiNonEg() + ":",
 				"\tli $v0, 1",
-				et.getFinSiEg()
+				et.getFinSiEg() + ":"
 		) ;
 	}
 
