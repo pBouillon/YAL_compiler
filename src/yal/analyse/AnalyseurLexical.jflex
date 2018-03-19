@@ -35,16 +35,21 @@ csteC      = \"([^\"\n]|\\n|\\\")*\"
 
 entier     = "entier"
 idf        = [a-zA-Z0-9]+
-ecrire     = "ecrire"
-lire       = "lire"
-tantque    = "tantque"
-repeter    = "repeter"
-fintantque = "fintantque"
+
 si         = "si"
 alors      = "alors"
 sinon      = "sinon"
-fsi      = "fsi"
+fsi        = "fsi"
+
+tantque    = "tantque"
+repeter    = "repeter"
+fintantque = "fintantque"
+
+ecrire     = "ecrire"
+lire       = "lire"
+
 programme  = "programme"
+fonction   = "fonction"
 debut      = "debut"
 fin        = "fin"
 
@@ -54,25 +59,30 @@ espace     = {finDeLigne}  | [ \t\f]
 commentaireSlashSlash = [/][/].*
 
 %%
+{entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
+
 {si}                    { return symbol(CodesLexicaux.SI, yytext()); }
 {alors}                 { return symbol(CodesLexicaux.ALORS, yytext()); }
 {sinon}                 { return symbol(CodesLexicaux.SINON, yytext()); }
-{fsi}                 	{ return symbol(CodesLexicaux.FSI, yytext()); }
+{fsi}                 	{ return symbol(CodesLexicaux.FSI, yytext());   }
+
 {tantque}               { return symbol(CodesLexicaux.TANTQUE, yytext()); }
 {repeter}               { return symbol(CodesLexicaux.REPETER, yytext()); }
 {fintantque}            { return symbol(CodesLexicaux.FINTANTQUE, yytext()); }
-{entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
+
 {ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
+{lire}                  { return symbol(CodesLexicaux.LIRE, yytext());   }
+
 {programme}             { return symbol(CodesLexicaux.PROGRAMME, yytext()); }
+{fonction}              { return symbol(CodesLexicaux.FONCTION, yytext()); }
 {debut}                 { return symbol(CodesLexicaux.DEBUT, yytext()); }
-{fin}                   { return symbol(CodesLexicaux.FIN, yytext()); }
-{lire}                  { return symbol(CodesLexicaux.LIRE, yytext()); }
+{fin}                   { return symbol(CodesLexicaux.FIN, yytext());   }
 
 ";"                		{ return symbol(CodesLexicaux.POINTVIRGULE); }
 "+"              	    { return symbol(CodesLexicaux.PLUS);  }
 "-"               	    { return symbol(CodesLexicaux.MOINS); }
-"*"                	    { return symbol(CodesLexicaux.MULT); }
-"/"                	    { return symbol(CodesLexicaux.DIV);  }
+"*"                	    { return symbol(CodesLexicaux.MULT);  }
+"/"                	    { return symbol(CodesLexicaux.DIV);   }
 
 "="                     { return symbol(CodesLexicaux.EGAL); }
 "=="                    { return symbol(CodesLexicaux.EGALEGAL); }
@@ -92,7 +102,6 @@ commentaireSlashSlash = [/][/].*
 {csteE}      	        { return symbol(CodesLexicaux.CONSTANTEINT, yytext());    }
 
 {idf}                   { return symbol(CodesLexicaux.IDF, yytext()); }
-
 
 {espace}                { }
 
