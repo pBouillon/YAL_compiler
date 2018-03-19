@@ -3,6 +3,8 @@ package yal.arbre.expression;
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
 import yal.arbre.instruction.Instruction;
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.ReturnManquantException;
 
 public class Fonction extends Expression {
     private String name ;
@@ -30,7 +32,13 @@ public class Fonction extends Expression {
         }
 
         if (!returnFound) {
-
+            ListeSemantiqueException.getInstance()
+                    .addException (
+                            new ReturnManquantException (
+                                    super.noLigne,
+                                    name
+                            )
+                    );
         }
 
         linstr.verifier() ;
