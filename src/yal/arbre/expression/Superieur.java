@@ -24,6 +24,7 @@ public class Superieur extends Comparaison {
 				"\t# superieur",
 				gauche.toMIPS(),
 				"\tsw $v0, ($sp)" ,
+				"addi $sp, $sp -4\n" ,
 				droite.toMIPS(),
 				"\taddi $sp, $sp, +4",
 				"\tlw $t8, ($sp)",
