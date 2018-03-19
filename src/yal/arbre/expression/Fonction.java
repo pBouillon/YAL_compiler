@@ -1,6 +1,8 @@
 package yal.arbre.expression;
 
+import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
+import yal.arbre.instruction.Instruction;
 
 public class Fonction extends Expression {
     private String name ;
@@ -19,6 +21,18 @@ public class Fonction extends Expression {
 
     @Override
     public void verifier() {
+        boolean returnFound = false ;
+        for (ArbreAbstrait i : linstr.getInstr()) {
+            if (i instanceof Instruction) {
+                returnFound = true ;
+                break ;
+            }
+        }
+
+        if (!returnFound) {
+
+        }
+
         linstr.verifier() ;
     }
 

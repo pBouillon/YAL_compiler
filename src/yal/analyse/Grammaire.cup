@@ -196,6 +196,9 @@ INSTR ::=       PRINT:p POINTVIRGULE
         |
         		CONDITION:c
         		{: RESULT = c ; :}
+        |
+                RETOURNE EXPR:e
+                {: new Retourne(e, eleft+1) ; :}
                 ;
 
 READ ::= 	LIRE IDF:i
@@ -250,6 +253,6 @@ DECL_FONCTION ::=  FONCTION IDF:i PARAMETRES DEBUT LINSTR:li FIN
 */
         ;
 
-PARAMETRES ::= PAROUV PARFER
-               {:  :}
+PARAMETRES ::=  PAROUV PARFER
+                {:  :}
         ;
