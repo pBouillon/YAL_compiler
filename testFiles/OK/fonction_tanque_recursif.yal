@@ -1,0 +1,28 @@
+programme idf debut
+
+entier a;
+entier b;
+
+fonction fonc () debut
+  retourne fonc1()+a;
+fin
+
+fonction fonc1 () debut
+  si b==0 alors
+    retourne 20;
+  fsi
+  b=b-1;
+  retourne fonc1()+20;
+fin
+
+a = 1;
+b = 10 ;
+ecrire "On doit avoir 221222\n";
+tantque a<3
+
+repeter
+  b = 10;
+  ecrire fonc();
+  a = a +1;
+fintantque
+fin

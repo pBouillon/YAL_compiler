@@ -1,0 +1,5 @@
+programme idf debut
+entier a;
+a = 100;
+ecrire a;
+fin

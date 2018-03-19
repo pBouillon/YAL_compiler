@@ -1,0 +1,14 @@
+programme idf debut
+entier a;
+fonction fonc () debut
+si a==0 alors
+  retourne 20;
+fsi
+a=a-1;
+retourne fonc()+20;
+fin
+
+a=10;
+ecrire "On doit avoir 220\n";
+ecrire fonc();
+fin

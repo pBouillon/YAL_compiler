@@ -1,0 +1,13 @@
+programme idf debut
+entier a;
+
+fonction fonc () debut
+a = 0;
+fin
+
+
+a = 10;
+a = fonc();
+ecrire "On doit normalement voir 0\n";
+ecrire a;
+fin

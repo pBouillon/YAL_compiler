@@ -1,0 +1,5 @@
+programme idf debut
+entier a;
+a = 10*2+5*(3+5)*2;
+ecrire a;
+fin

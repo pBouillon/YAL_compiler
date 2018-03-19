@@ -1,0 +1,16 @@
+programme idf debut
+entier a;
+
+fonction fonc () debut
+si a<5
+alors
+  retourne 1;
+fsi
+fin
+
+
+a = 10;
+a = fonc();
+ecrire "On doit normalement voir 0\n";
+ecrire a;
+fin

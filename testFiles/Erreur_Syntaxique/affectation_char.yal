@@ -1,0 +1,5 @@
+programme idf debut
+entier a;
+a = "coucou";
+ecrire a;
+fin

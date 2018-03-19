@@ -1,0 +1,12 @@
+programme idf debut
+entier a;
+entier b;
+a = 1;
+b = 3;
+
+tantque vrai
+repeter
+  ecrire "Je boucle à l'infini, c'est normal !\n";
+fintantque
+
+fin

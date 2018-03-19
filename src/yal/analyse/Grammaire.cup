@@ -37,9 +37,9 @@ parser code {:
             java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
 
             if (s.left >= 0) {                
-                m.append("\tligne : " + (s.left + 1)) ;
+                m.append("\tligne : " + (s.left + 1) + " | ") ;
                 if (s.right >= 0)                    
-                    m.append(" colonne : " + (s.right+1)) ;
+                    m.append(" colonne : " + (s.right+1) + " => ") ;
             }
             
             if (s.value != null) {
@@ -73,6 +73,7 @@ terminal String    PROGRAMME, DEBUT, FIN ;
 terminal String    IDF, LIRE, TANTQUE, REPETER, FINTANTQUE  ;
 terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE ;
 terminal String	   SI, ALORS, SINON, FSI;
+terminal String    FONCTION, RETOURNE ;
 
 terminal String    ENTIER, ECRIRE ;
 
@@ -84,6 +85,9 @@ non terminal Expression EXPR, CSTE ;
 non terminal Instruction DECLARATION, DECL_VAR, AFFECT, PRINT, READ, BOUCLE, CONDITION, ELSE;
 non terminal BlocDInstructions LINSTR;
 non terminal BlocDInstructions LDECL;
+
+non terminal Fonction DECL_FONCTION ;
+non terminal Symbol PARAMETRES;
 
 precedence left OU ;
 precedence left ET ;
@@ -203,7 +207,7 @@ PRINT ::=      ECRIRE EXPR:e
         |
                ECRIRE CONSTANTECHAINE:c
                {:  RESULT = new EcrireChaine(c, cleft + 1) ; :}
-               ;
+        ;
 
 BOUCLE ::= 	TANTQUE EXPR:e REPETER LINSTR:l FINTANTQUE
 			{:  RESULT = new Boucle(e, l, eleft + 1) ; :}
@@ -231,3 +235,21 @@ CSTE    ::=     CONSTANTEINT:e
         |       CONSTANTEBOOL:e 
                 {: RESULT = new ConstanteBool(e, eleft+1) ; :}
                 ;
+
+/* FONCTIONS */
+
+DECL_FONCTION ::=  FONCTION IDF:i PARAMETRES DEBUT LINSTR:li FIN
+                   {:
+                     TDS.getInstance().ajouter(new Entree(i), new Symbole(), ileft+1) ;
+                     RESULT = new Fonction(i, li, lileft+1) ;
+                   :}
+/*
+        |
+                   FONCTION IDF PARAMETRES DEBUT LDECL:ld LINSTR:li FIN
+                   {:  :}
+*/
+        ;
+
+PARAMETRES ::= PAROUV PARFER
+               {:  :}
+        ;

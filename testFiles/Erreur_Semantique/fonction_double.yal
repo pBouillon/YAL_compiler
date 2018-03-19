@@ -1,0 +1,9 @@
+programme idf debut
+fonction fonc () debut
+retourne 20;
+fin
+fonction fonc () debut
+retourne 30;
+fin
+ecrire 10;
+fin

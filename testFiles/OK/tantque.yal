@@ -1,0 +1,20 @@
+programme idf debut
+entier a;
+entier b;
+a = 1;
+b = 3;
+
+tantque a<b
+repeter
+  ecrire "Je boucle via des variables\n";
+  a = a + 1;
+fintantque
+
+a = 1;
+tantque a<3
+repeter
+  ecrire "Je boucle via des entiers/variables\n";
+  a = a +1;
+fintantque
+
+fin

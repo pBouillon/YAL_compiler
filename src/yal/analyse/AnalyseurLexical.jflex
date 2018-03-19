@@ -31,22 +31,28 @@ import yal.exceptions.AnalyseLexicaleException;
 
 csteE      = [0-9]+
 csteB      = "vrai" | "faux"
-csteC      = \"([^\"\n]|\\n|\\\")*\"
+csteC      = \"([^\"\n]|\\n|\"\")*\"
 
 entier     = "entier"
 idf        = [a-zA-Z0-9]+
 ecrire     = "ecrire"
 lire       = "lire"
+
 tantque    = "tantque"
 repeter    = "repeter"
 fintantque = "fintantque"
+
 si         = "si"
 alors      = "alors"
 sinon      = "sinon"
-fsi      = "fsi"
+fsi        = "fsi"
+
 programme  = "programme"
 debut      = "debut"
 fin        = "fin"
+
+fonction   = "fonction"
+retourne   = "retourne"
 
 finDeLigne = \r|\n|;
 espace     = {finDeLigne}  | [ \t\f]
@@ -54,19 +60,25 @@ espace     = {finDeLigne}  | [ \t\f]
 commentaireSlashSlash = [/][/].*
 
 %%
+{entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
+{ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
+{lire}                  { return symbol(CodesLexicaux.LIRE, yytext()); }
+
 {si}                    { return symbol(CodesLexicaux.SI, yytext()); }
 {alors}                 { return symbol(CodesLexicaux.ALORS, yytext()); }
 {sinon}                 { return symbol(CodesLexicaux.SINON, yytext()); }
 {fsi}                 	{ return symbol(CodesLexicaux.FSI, yytext()); }
+
 {tantque}               { return symbol(CodesLexicaux.TANTQUE, yytext()); }
 {repeter}               { return symbol(CodesLexicaux.REPETER, yytext()); }
 {fintantque}            { return symbol(CodesLexicaux.FINTANTQUE, yytext()); }
-{entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
-{ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
+
 {programme}             { return symbol(CodesLexicaux.PROGRAMME, yytext()); }
 {debut}                 { return symbol(CodesLexicaux.DEBUT, yytext()); }
 {fin}                   { return symbol(CodesLexicaux.FIN, yytext()); }
-{lire}                  { return symbol(CodesLexicaux.LIRE, yytext()); }
+
+{fonction}              { return symbol(CodesLexicaux.FONCTION, yytext()); }
+{retourne}              { return symbol(CodesLexicaux.RETOURNE, yytext()); }
 
 ";"                		{ return symbol(CodesLexicaux.POINTVIRGULE); }
 "+"              	    { return symbol(CodesLexicaux.PLUS);  }

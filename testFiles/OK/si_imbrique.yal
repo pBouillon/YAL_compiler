@@ -1,0 +1,16 @@
+programme idf debut
+
+si 10<20 
+alors
+  ecrire "Premier if\n";
+  si 10<20
+  alors
+    ecrire "\tif dans le if\n";
+    si 10<20
+    alors
+      ecrire "\t\tINCEPTION !\n";
+    fsi
+  fsi
+fsi
+
+fin
