@@ -1,19 +1,26 @@
 programme idf debut
-entier a;
-fonction fonc() debut
-retourne a;
-fin
-entier b;
-fonction fonc2() debut
-retourne b;
-fin
-fonction fonc3() debut
-retourne c;
-fin
-entier c;
-entier d;
-fonction fonc4() debut
-retourne d;
-fin
-ecrire 10;
+    entier a;
+
+    fonction fonc() debut
+        retourne a;
+    fin
+
+    entier b;
+
+    fonction fonc2() debut
+        retourne b;
+    fin
+
+    fonction fonc3() debut
+        retourne c;
+    fin
+
+    entier c;
+    entier d;
+
+    fonction fonc4() debut
+        retourne d;
+    fin
+
+    ecrire 10;
 fin

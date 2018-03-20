@@ -19,7 +19,8 @@ public class Retourne extends Instruction {
     public String toMIPS() {
         return String.join (
            "\n",
-           "\n\t# Retour fonction",
+           "\n\t# RETOUR",
+                "\t# Retour fonction",
                 exp.toMIPS(),
 
                 "\t# Stockage $v0 dans val retour",

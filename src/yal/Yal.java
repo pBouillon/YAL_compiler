@@ -57,7 +57,7 @@ public class Yal {
 			} else {
 				String mipsCode = arbre.toMIPS() ;
 
-				check_ret() ;
+				check_ret(header() + mipsCode) ;
 				liste = ListeSemantiqueException.getInstance() ;
 				if (liste.isError()) {
 					for(RuntimeException s : liste.getListeException()) {
@@ -97,8 +97,9 @@ public class Yal {
 		++funCpt ;
 	}
 
-	private void check_ret() {
-		if (funCpt != retCpt) {
+	private void check_ret(String mips) {
+		String substr = mips.substring(mips.indexOf("main:"), mips.indexOf("end:"));
+		if (substr.indexOf("# RETOUR") != 0 ) {
 			ListeSemantiqueException.getInstance()
 					.addException (
 							new ReturnException(
@@ -106,6 +107,7 @@ public class Yal {
 							)
 					);
 		}
+//		if (funCpt != retCpt) {
 	}
 
     /**
