@@ -4,6 +4,7 @@ import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.ReturnManquantException;
+import yal.tabledessymboles.TDS;
 
 public class Fonction extends ArbreAbstrait {
     private String name ;
@@ -49,20 +50,31 @@ public class Fonction extends ArbreAbstrait {
                 "\tsw $ra, ($sp)",
                 "\taddi $sp, $sp, -4",
 
-                // Allocation espace
-                // ...
-
+                "\t# sauvegarde de la base locale dans la pile (ch dynamique)",
+                "\tsw $sp, ($sp)",
+                "\taddi $sp, $sp, -4",
+                
+                 "\t# empiler le numero de bloc",
+                 "\tli $v0," +TDS.getInstance().getNextCompteurBloc(),
+                 "\tsw $v0, ($sp)",
+                 "\taddi $sp, $sp, -4",
+                
+                 "\t# initialisation de la base locale des variables",
+                 "\tmove $s7, $sp",
+                 "\t# reserver espace des variables locales ( pas besoin pour ce yal) ",
+                 
                 // Corps de fonction
                 linstr.toMIPS(),
 
-                // Nettoyage pile
-                // ...
 
-                "\t# Recuperation addresse pour chainage arrière",
-                "\tlw $ra, ($sp)",
-
-                "\t# Retour",
-                "\tjr $ra"
+                "end"+name+":",
+                "# restaurer le pointeur de pile ",
+                "lw $sp, 12($s7)",
+                "# restaurer la base locale s7",
+                "lw $s7, 8($s7)",
+                "restaurer le compteur (@ retour)",
+                "lw $ra, ($sp)",
+                "jr $ra"
                 
                 /*Appel fonc : 
                  * #reserver espace val retour

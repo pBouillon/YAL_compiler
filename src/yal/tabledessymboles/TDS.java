@@ -13,11 +13,13 @@ public class TDS {
 	private HashMap<Entree,Symbole> map;
 	private int compteur;
 	private ArrayList<TDS> tds;
+	private int compteurBloc; // permet de connaitre le numero du bloc 
 	
 	private TDS()
 	{
 		this.map = new HashMap<>();
 		compteur = 0 ;
+		compteurBloc = 0;
 		this.tds = new ArrayList<>();
 	}
 
@@ -71,6 +73,9 @@ public class TDS {
 		this.tds = tds;
 	}
 
-	
+	public int getNextCompteurBloc(){
+		compteurBloc++;
+		return compteurBloc;
+	}
 
 }
