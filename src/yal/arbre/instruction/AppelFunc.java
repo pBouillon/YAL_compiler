@@ -13,7 +13,7 @@ public class AppelFunc extends Expression {
 
     @Override
     public void verifier() {
-        TDS.getInstance().identifier("fun_" + name, noLigne) ;
+        TDS.getInstance().identifier("func_" + name, noLigne) ;
     }
 
     @Override

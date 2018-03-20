@@ -90,15 +90,16 @@ public class Yal {
 	public static void incRet(int no) {
 		if (no > line) line = no ;
 	}
+
 	private void check_ret(String mips) {
 		String substr = mips.substring(mips.indexOf("main:"), mips.indexOf("end:"));
 		if (substr.contains("# RETOUR")) {
 			ListeSemantiqueException.getInstance()
-					.addException (
-							new ReturnException(
-									line
-							)
-					);
+				.addException (
+					new ReturnException(
+						line
+					)
+				) ;
 		}
 	}
 
