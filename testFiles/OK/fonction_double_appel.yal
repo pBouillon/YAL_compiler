@@ -14,4 +14,6 @@ programme idf debut
     a = fonc();
     ecrire "On est censé voir 30\n";
     ecrire a;
+
+    retourne 10;
 fin

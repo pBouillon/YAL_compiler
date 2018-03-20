@@ -260,7 +260,7 @@ CSTE    ::=     CONSTANTEINT:e
 
 DECL_FONCTION ::=  FONCTION IDF:i PAROUV PARFER DEBUT LINSTR:li FIN
                    {:
-                     TDS.getInstance().ajouter(new Entree(i), new Symbole(), ileft+1) ;
+                     TDS.getInstance().ajouter(new Entree("func_" + i), new Symbole(), ileft+1) ;
                      RESULT = new Fonction(i, li, lileft+1) ;
                    :}
 /*
