@@ -1,0 +1,6 @@
+programme idf debut
+fonction vrai () debut
+retourne 20;
+fin
+ecrire 10;
+fin

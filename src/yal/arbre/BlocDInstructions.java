@@ -10,12 +10,16 @@ import java.util.ArrayList;
 
 public class BlocDInstructions extends ArbreAbstrait {
     
-    protected ArrayList<ArbreAbstrait> linst ;
+    private ArrayList<ArbreAbstrait> linst ;
     
     public BlocDInstructions(int n) {
         super(n) ;
-        linst = new ArrayList<ArbreAbstrait>();
+        linst = new ArrayList<>();
     }
+
+    public ArrayList<ArbreAbstrait> getInstr() {
+    	return linst ;
+	}
     
     public void ajouter(ArbreAbstrait a) {
         linst.add(a) ;
@@ -23,33 +27,27 @@ public class BlocDInstructions extends ArbreAbstrait {
     
     @Override
     public String toString() {
-    	String res = "";
-			for (ArbreAbstrait a: linst){
-				if (a != null){
-					res = res + a.toString();
-				}
-			}
-		return res;
+    	StringBuilder res = new StringBuilder();
+        for (ArbreAbstrait a: linst){
+            if (a != null) res.append(a.toString()) ;
+        }
+		return res.toString();
     }
 
 	@Override
 	public void verifier() {
-			for (ArbreAbstrait a: linst){
-			if (a != null){
-				a.verifier();
-				}
-			}
+        for (ArbreAbstrait a: linst) {
+            if (a != null) a.verifier() ;
+        }
 	}
 
 	@Override
 	public String toMIPS() {
-		String res = "";
-			for (ArbreAbstrait a: linst){
-				if (a != null){
-					res = res + a.toMIPS();
-				}
-			}
-		return res;
+		StringBuilder res = new StringBuilder() ;
+        for (ArbreAbstrait a: linst) {
+            if (a != null) res.append (a.toMIPS()) ;
+        }
+		return res.toString();
 	}
 
 }

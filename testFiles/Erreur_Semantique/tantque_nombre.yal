@@ -1,0 +1,12 @@
+programme idf debut
+entier a;
+entier b;
+a = 1;
+b = 3;
+
+tantque 42
+repeter
+  ecrire "Je boucle\n";
+fintantque
+
+fin

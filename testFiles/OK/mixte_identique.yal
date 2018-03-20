@@ -1,0 +1,7 @@
+programme idf debut
+entier a;
+fonction a () debut
+retourne 20;
+fin
+ecrire 10;
+fin

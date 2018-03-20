@@ -1,0 +1,8 @@
+programme idf debut
+
+si "coucou" 
+alors
+  ecrire "Premier if\n";
+fsi
+
+fin

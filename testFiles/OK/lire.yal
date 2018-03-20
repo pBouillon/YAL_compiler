@@ -1,0 +1,6 @@
+programme idf debut
+entier a;
+ecrire "Entrez quelque chose\n";
+lire a;
+ecrire a;
+fin

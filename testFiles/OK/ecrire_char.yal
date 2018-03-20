@@ -1,0 +1,15 @@
+programme test
+debut
+ecrire "Et de un guillemet ";
+ecrire """";
+ecrire "\n";
+ecrire "Guillemet avec le backslash : \""\n";
+ecrire "On va afficher 3 guillemets : "" "" ""  Alors ?\n";
+ecrire "Encore une fois : """"""";
+ecrire "\n";
+//On peut tester le cas où l'utilisateur se plante et met un nombre impair de guillemet
+//ecrire "Je suis un utilisateur un peu bete : """ \n";
+ecrire "Un dernier bien venere\n";
+ecrire "On écrit sur une seule ligne,"; ecrire " deux instructions ecrire\n";
+ecrire "Bravo !";
+fin

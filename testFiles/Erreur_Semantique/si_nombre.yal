@@ -1,0 +1,8 @@
+programme idf debut
+
+si 1 
+alors
+  ecrire "Premier if\n";
+fsi
+
+fin

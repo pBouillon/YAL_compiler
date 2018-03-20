@@ -1,0 +1,107 @@
+programme idf debut
+entier a;
+entier b;
+a = 10;
+b = 15;
+
+si a<b 
+alors
+ecrire "On rentre dans le alors via des variables (Et on a un sinon après)\n";
+sinon
+ecrire "On rentre dans le sinon via des variables (Apres un alors)\n";
+fsi
+
+si a<b 
+alors
+ecrire "On rentre dans le alors via des variables (Et il n'y a pas de sinon)\n";
+fsi
+
+si a>b 
+alors
+ecrire "On rentre dans le alors via des variables (Et on a un sinon après)\n";
+sinon
+ecrire "On rentre dans le sinon via des variables (Apres un alors)\n";
+fsi
+
+si a>b
+alors
+sinon
+ecrire "On rentre dans le sinon via des variables (Et il y un alors VIDE)\n";
+fsi
+
+si 1<2 
+alors
+ecrire "On rentre dans le alors via des entiers (Et on a un sinon après)\n";
+sinon
+ecrire "On rentre dans le sinon via des entiers (Apres un alors)\n";
+fsi
+
+si 1<2 
+alors
+ecrire "On rentre dans le alors via des entiers (Et il n'y a pas de sinon)\n";
+fsi
+
+si 1>2 
+alors
+ecrire "On rentre dans le alors via des entiers (Et on a un sinon après)\n";
+sinon
+ecrire "On rentre dans le sinon via des entiers (Apres un alors)\n";
+fsi
+
+si 1>2 
+alors
+sinon
+ecrire "On rentre dans le sinon via des entiers (Et il y a un alors VIDE)\n";
+fsi
+
+si 1<a 
+alors
+ecrire "On rentre dans le alors via des variables/entiers (Et on a un sinon après)\n";
+sinon
+ecrire "On rentre dans le sinon via des variables/entiers (Apres un alors)\n";
+fsi
+
+si 1<a
+alors
+ecrire "On rentre dans le alors via des variables/entiers (Et il n'y a pas de sinon)\n";
+fsi
+
+si 1>a
+alors
+ecrire "On rentre dans le alors via des variables/entiers (Et on a un sinon après)\n";
+sinon
+ecrire "On rentre dans le sinon via des variables/entiers (Apres un alors)\n";
+fsi
+
+si 1>a
+alors
+sinon
+ecrire "On rentre dans le alors via des variables/entiers (Et il y a un alors VIDE)\n";
+fsi
+
+si vrai
+alors
+ecrire "On rentre dans le alors via des booleans (Et on a un sinon après)\n";
+sinon
+ecrire "On rentre dans le sinon via des booleans (Apres un alors)\n";
+fsi
+
+si vrai
+alors
+ecrire "On rentre dans le alors via des booleans (Et il n'y a pas de sinon)\n";
+fsi
+
+si faux
+alors
+ecrire "On rentre dans le alors via des booleans (Et on a un sinon après)\n";
+sinon
+ecrire "On rentre dans le sinon via des booleans (Apres un alors)\n";
+fsi
+
+si faux
+alors
+sinon
+ecrire "On rentre dans le alors via des booleans (Et il y a un alors VIDE)\n";
+fsi
+
+fin
