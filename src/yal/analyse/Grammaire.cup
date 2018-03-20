@@ -126,6 +126,8 @@ LDECL ::= 	DECLARATION
 
 
 DECLARATION ::= DECL_VAR
+        |
+                DECL_FONCTION
 				;
 				
 DECL_VAR ::= 	ENTIER IDF:i POINTVIRGULE
@@ -197,7 +199,7 @@ INSTR ::=       PRINT:p POINTVIRGULE
         		CONDITION:c
         		{: RESULT = c ; :}
         |
-                RETOURNE EXPR:e
+                RETOURNE EXPR:e POINTVIRGULE
                 {: new Retourne(e, eleft+1) ; :}
                 ;
 
@@ -241,7 +243,7 @@ CSTE    ::=     CONSTANTEINT:e
 
 /* FONCTIONS */
 
-DECL_FONCTION ::=  FONCTION IDF:i PARAMETRES DEBUT LINSTR:li FIN
+DECL_FONCTION ::=  FONCTION IDF:i PAROUV PARFER DEBUT LINSTR:li FIN
                    {:
                      TDS.getInstance().ajouter(new Entree(i), new Symbole(), ileft+1) ;
                      RESULT = new Fonction(i, li, lileft+1) ;

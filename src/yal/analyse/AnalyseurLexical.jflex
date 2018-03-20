@@ -48,7 +48,6 @@ sinon      = "sinon"
 fsi        = "fsi"
 
 programme  = "programme"
-fonction   = "fonction"
 debut      = "debut"
 fin        = "fin"
 

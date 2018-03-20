@@ -5,7 +5,7 @@ import yal.arbre.instruction.Instruction;
 public class Retourne extends Instruction {
     private Expression exp ;
 
-    protected Retourne(Expression e, int no) {
+    public Retourne(Expression e, int no) {
         super(no);
         exp = e ;
     }
