@@ -67,7 +67,6 @@ public class Fonction extends ArbreAbstrait {
                 linstr.toMIPS(),
 
 
-                "end"+name+":",
                 "# restaurer le pointeur de pile ",
                 "lw $sp, 12($s7)",
                 "# restaurer la base locale s7",
