@@ -1,6 +1,6 @@
 programme idf debut
-fonction fonc () debut
-retourne 20;
-fin
-ecrire 10;
+    fonction fonc () debut
+        retourne 20;
+    fin
+    ecrire 10;
 fin

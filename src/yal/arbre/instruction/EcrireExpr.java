@@ -1,7 +1,7 @@
 package yal.arbre.instruction;
+
 import yal.DataFactory;
-import yal.EtiquetteFactory;
-import yal.arbre.expression.*;
+import yal.arbre.expression.Expression;
 
 public class EcrireExpr extends Ecrire {
 	private Expression expr;
@@ -20,7 +20,7 @@ public class EcrireExpr extends Ecrire {
 
         code = String.join (
            "\n",
-           "\t# ecriture de " + expr.toString()
+           "\n\t# ecriture de " + expr.toString()
         ) ;
 
         if (expr.getType().equals(TYPE_BOOLEAN)) {

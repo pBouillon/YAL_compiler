@@ -19,7 +19,7 @@ public class ConstanteEntiere extends Constante {
 	public String toMIPS() {
     	return String.join (
     			"\n",
-				"\t# Evaluation d'une constante",
+				"\n\t# Evaluation d'une constante",
 				"\tli $v0, " + cste
 		) ;
 	}

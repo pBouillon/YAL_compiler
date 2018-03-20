@@ -6,7 +6,7 @@ import yal.arbre.instruction.Instruction;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.ReturnManquantException;
 
-public class Fonction extends Expression {
+public class Fonction extends ArbreAbstrait {
     private String name ;
     private BlocDInstructions linstr ;
 
@@ -14,11 +14,6 @@ public class Fonction extends Expression {
         super(n);
         name   = _name ;
         linstr = _linstr ;
-    }
-
-    @Override
-    public String getType() {
-        return TYPE_ENTIER ;
     }
 
     @Override
