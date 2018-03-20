@@ -42,8 +42,10 @@ public class Fonction extends ArbreAbstrait {
     public String toMIPS() {
         return String.join (
                 "\n",
+
                 "\n\t# Declaration de la fonction " + name,
                 "\t" + name + ":",
+
                 "\t# Sauvegarde addresse retour",
                 "\tsw $ra, ($sp)",
                 "\taddi $sp, $sp, -4",
@@ -59,6 +61,7 @@ public class Fonction extends ArbreAbstrait {
 
                 "\t# Recuperation addresse pour chainage arrière",
                 "\tlw $ra, ($sp)",
+
                 "\t# Retour",
                 "\tjr $ra"
         ) ;

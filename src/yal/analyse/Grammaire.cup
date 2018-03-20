@@ -101,8 +101,13 @@ precedence left NON ;
  
 start with PROG ;
 
-PROG    ::=     PROGRAMME IDF DEBUT LDECL LINSTR:e FIN
-				{: RESULT = e; :}
+PROG    ::=     PROGRAMME IDF DEBUT LDECL:d LINSTR:e FIN
+				{:
+				    BlocDInstructions bloc = new BlocDInstructions(dleft+1) ;
+				    bloc.ajouter(e) ;
+				    bloc.ajouter(d) ;
+				    RESULT = e;
+				:}
         |
                 PROGRAMME IDF DEBUT LINSTR:e FIN
                 {: RESULT = e; :}
@@ -119,10 +124,15 @@ LINSTR    ::=     INSTR:e
                 	RESULT = li ; :}
                 ;
                 
-LDECL ::= 	DECLARATION
+LDECL ::= 	DECLARATION:d
+            {:  BlocDInstructions bloc = new BlocDInstructions(dleft+1) ;
+                bloc.ajouter(d) ;
+                RESULT = bloc ; :}
 	  |
-	  		LDECL DECLARATION
-	  		;
+	  		LDECL:ld DECLARATION:d
+	  		{: 	ld.ajouter(d) ;
+                RESULT = ld ; :}
+            ;
 
 
 DECLARATION ::= DECL_VAR:v
