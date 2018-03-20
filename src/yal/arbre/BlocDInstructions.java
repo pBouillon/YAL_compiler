@@ -1,5 +1,7 @@
 package yal.arbre;
 
+import yal.arbre.expression.Fonction;
+
 import java.util.ArrayList;
 
 /**
@@ -24,7 +26,20 @@ public class BlocDInstructions extends ArbreAbstrait {
     public void ajouter(ArbreAbstrait a) {
         linst.add(a) ;
     }
-    
+
+    /**
+     * @return mips clean ending and storage in $v1
+     */
+    private String footer() {
+        return String.join (
+                "\n",
+                "\nend:",
+                "\tmove $v1, $v0",
+                "\tli $v0, 10",
+                "\tsyscall"
+        ) ;
+    }
+
     @Override
     public String toString() {
     	StringBuilder res = new StringBuilder();
@@ -43,8 +58,16 @@ public class BlocDInstructions extends ArbreAbstrait {
 
 	@Override
 	public String toMIPS() {
+        boolean funcDeclared = false ;
+
 		StringBuilder res = new StringBuilder() ;
         for (ArbreAbstrait a: linst) {
+            if (a instanceof Fonction && !funcDeclared){
+                res.append("\n");
+                res.append(footer()) ;
+                res.append("\n");
+                funcDeclared = false ;
+            }
             if (a != null) res.append (a.toMIPS()) ;
         }
 		return res.toString();

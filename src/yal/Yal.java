@@ -52,8 +52,7 @@ public class Yal {
 				String mipsCode = arbre.toMIPS() ;
 				out.println (
 						header() +
-						mipsCode +
-						footer()
+						mipsCode
 					) ;
 				out.close() ;
 				System.out.println (COMP_OK) ;
@@ -83,19 +82,6 @@ public class Yal {
 				"main:",
 				"\tmove $s7, $sp",
 				"\taddi $sp, $sp, " + TDS.getInstance().getCompteur()
-		) ;
-	}
-
-    /**
-     * @return mips clean ending and storage in $v1
-     */
-	private String footer() {
-		return String.join (
-				"\n",
-				"\nend:",
-				"\tmove $v1, $v0",
-				"\tli $v0, 10",
-				"\tsyscall"
 		) ;
 	}
 
