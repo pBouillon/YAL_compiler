@@ -23,6 +23,27 @@ public class Retourne extends Instruction {
                 exp.toMIPS(),
                 "\t# Retour au programme",
                 "\tjr $ra"
+                
+                /* 
+                 * # c'est ce que j'ai noté du td mais j'ai l'impression que brigitte a donné de la merde incompréhensible 
+                 * # retourne
+                 * 
+                 * #initialiser la base courante
+                 * 		  move $t8, $s7
+                 * 
+                 *  iter :
+                 * 		  si (4($t8) == n° bloc) alors aller a etiquette de fin
+                 * 		  lw $v0, 8($ oublié de noté ce qu'il y a ici)
+                 * 		  j iter
+                 * 
+                 *  fin :
+                 *  # acces a la variable deplacement($t8)
+                 * 	
+                 * 
+                 * 
+                 * 
+                 * 
+                 */
         ) ;
     }
 }
