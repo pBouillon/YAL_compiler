@@ -34,7 +34,7 @@ fin
 
 Compilation will be:
 ```shell
-~$java -jar yal.jar YALsample.yal
+~$ java -jar yal.jar YALsample.yal
 COMPILATION_OK
 ```
 
