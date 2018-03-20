@@ -35,7 +35,6 @@ public class Fonction extends ArbreAbstrait {
                             )
                     );
         }
-
         linstr.verifier() ;
     }
 
@@ -44,7 +43,24 @@ public class Fonction extends ArbreAbstrait {
         return String.join (
                 "\n",
                 "\n\t# Declaration de la fonction " + name,
-                "\n\t" + name + ":"
+                "\t" + name + ":",
+                "\t# Sauvegarde addresse retour",
+                "\tsw $ra, ($sp)",
+                "\taddi $sp, $sp, -4",
+
+                // Allocation espace
+                // ...
+
+                // Corps de fonction
+                linstr.toMIPS(),
+
+                // Nettoyage pile
+                // ...
+
+                "\t# Recuperation addresse pour chainage arrière",
+                "\tlw $ra, ($sp)",
+                "\t# Retour",
+                "\tjr $ra"
         ) ;
     }
 }
