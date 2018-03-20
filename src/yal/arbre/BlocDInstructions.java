@@ -71,9 +71,6 @@ public class BlocDInstructions extends ArbreAbstrait {
             if (a instanceof Retourne) {
                 Yal.incRet(a.noLigne);
             }
-            if (a instanceof Fonction) {
-                Yal.incFun();
-            }
 
             if (a instanceof Fonction && !funcDeclared){
                 res.append("\n");

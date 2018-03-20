@@ -29,8 +29,6 @@ public class Yal {
 	private static final int ARG_REQUIRED = 1 ;
 	private static final int EXIT_FAILURE = 1 ;
 
-	private static int retCpt = 0 ;
-	private static int funCpt = 0 ;
 	private static int line   = 0 ;
 
     /**
@@ -90,13 +88,8 @@ public class Yal {
 	}
 
 	public static void incRet(int no) {
-		++retCpt ;
 		if (no > line) line = no ;
 	}
-	public static void incFun() {
-		++funCpt ;
-	}
-
 	private void check_ret(String mips) {
 		String substr = mips.substring(mips.indexOf("main:"), mips.indexOf("end:"));
 		if (substr.contains("# RETOUR")) {
