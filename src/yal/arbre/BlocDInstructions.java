@@ -66,7 +66,7 @@ public class BlocDInstructions extends ArbreAbstrait {
                 res.append("\n");
                 res.append(footer()) ;
                 res.append("\n");
-                funcDeclared = false ;
+                funcDeclared = true ;
             }
             if (a != null) res.append (a.toMIPS()) ;
         }
