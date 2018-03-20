@@ -21,7 +21,27 @@ public class Retourne extends Instruction {
            "\n",
            "\n\t# Retour fonction",
                 exp.toMIPS(),
-                "\t# Retour au programme",
+
+                "\t# Stockage $v0 dans val retour",
+                "\tsw $v0, 16($sp)", // 4 * champs obligatoires ( == 4)
+
+                "\t# Remontee de sp jusqu'au chainage dyn",
+                "\tadd $sp, $sp, 8", // nb_var + no region + ch dyn
+
+                "\t# Depilement de la base: $s7 = $sp",
+                "\tlw $s7, ($sp)",
+                "\tadd $sp, $sp, 4",
+
+//                FONCTIONS AVEC PARAM:
+//                "\tmove $sp, $sp + nb_var + no_region + ch_dyn"
+
+                "\t# Recuperation addresse pour addr de retour",
+                "\tlw $ra, ($sp)",
+
+                "\t# Remonte sp a val retour",
+                "\taddi $sp, $sp, 4",
+
+                "\t# Retour",
                 "\tjr $ra"
                 
                 /* 

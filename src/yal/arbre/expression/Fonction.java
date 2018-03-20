@@ -49,20 +49,22 @@ public class Fonction extends ArbreAbstrait {
                 "\tsw $ra, ($sp)",
                 "\taddi $sp, $sp, -4",
 
-                // Allocation espace
-                // ...
+                "\t# Empilement de $s7 pour chainage arriere",
+                "\tsw $s7, ($sp)",
+                "\taddi $sp, $sp, -4",
+
+                "\t# Empilement de num de region",
+                "\tsw $zero, ($sp)",
+                "\taddi $sp, $sp, -4",
+
+                "\t# Deplacement de la base",
+                "\tmove $s7, $sp",
+
+//                FONCTIONS AVEC PARAM:
+//                "\tmove $sp, $sp - nb_vars"
 
                 // Corps de fonction
-                linstr.toMIPS(),
-
-                // Nettoyage pile
-                // ...
-
-                "\t# Recuperation addresse pour chainage arrière",
-                "\tlw $ra, ($sp)",
-
-                "\t# Retour",
-                "\tjr $ra"
+                linstr.toMIPS()
                 
                 /*Appel fonc : 
                  * #reserver espace val retour
