@@ -13,35 +13,28 @@ If everything is fine, you should see `COMPILATION OK` in your console prompt.
 ## Yal sample
 ```
 programme YALsample debut
-
     // declarations
-    entier someVar ;
-    entier someOtherVar ;
-    
-    // core
-    ecrire "Your number: " ;
-    lire someVar ;
-    
-    someOtherVar = 0 ;
-    si someVar > 0 alors
-        tantque someVar > someOtherVar repeter
-            someVar = someVar + 1 ;
-        fintantque
-    sinon
-        tantque someVar < someOtherVar repeter
-            someVar = someVar - 1 ;
-        fintantque
-    fsi
-    
-    ecrire "Steps: " ;
-    ecrire someOtherVar ;
-        
+    entier a ;
+    entier b ;
+
+    fonction fonc() debut
+        b = fonc1() ;
+        retourne b ;
+    fin
+
+    fonction fonc1 () debut
+        retourne 30 ;
+    fin
+
+    a = fonc() ;
+    ecrire "You should see 30 below\n" ;
+    ecrire a ;
 fin
 ```
 
 Compilation will be:
 ```shell
-~$java -jar yal.jar YALsample.yal
+~$ java -jar yal.jar YALsample.yal
 COMPILATION_OK
 ```
 
