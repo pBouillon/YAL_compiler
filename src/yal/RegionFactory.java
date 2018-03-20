@@ -14,4 +14,21 @@ public class RegionFactory {
         noCurrent = 0 ;
         noMax = 0 ;
     }
+
+    public int getNewNum() {
+        return ++noMax ;
+    }
+
+    public void incrCurr() {
+        ++noCurrent ;
+    }
+
+    public void decrCurr() {
+        --noCurrent ;
+    }
+
+    public int getNoCurrent() {
+        return noCurrent ;
+    }
+
 }

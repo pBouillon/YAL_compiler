@@ -1,17 +1,17 @@
 programme idf debut
-entier a;
-entier b;
+    entier a;
+    entier b;
 
-fonction fonc () debut
-b = fonc1();
-retourne b;
-fin
+    fonction fonc () debut
+        b = fonc1();
+        retourne b;
+    fin
 
-fonction fonc1 () debut
-retourne 30;
-fin
+    fonction fonc1 () debut
+        retourne 30;
+    fin
 
-a = fonc();
-ecrire "On est censé voir 30\n";
-ecrire a;
+    a = fonc();
+    ecrire "On est censé voir 30\n";
+    ecrire a;
 fin

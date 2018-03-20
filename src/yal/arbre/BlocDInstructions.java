@@ -1,6 +1,11 @@
 package yal.arbre;
 
+import yal.Yal;
 import yal.arbre.expression.Fonction;
+import yal.arbre.expression.Retourne;
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.ReturnException;
+import yal.exceptions.ReturnManquantException;
 
 import java.util.ArrayList;
 
@@ -61,7 +66,15 @@ public class BlocDInstructions extends ArbreAbstrait {
         boolean funcDeclared = false ;
 
 		StringBuilder res = new StringBuilder() ;
+
         for (ArbreAbstrait a: linst) {
+            if (a instanceof Retourne) {
+                Yal.incRet(a.noLigne);
+            }
+            if (a instanceof Fonction) {
+                Yal.incFun();
+            }
+
             if (a instanceof Fonction && !funcDeclared){
                 res.append("\n");
                 res.append(footer()) ;

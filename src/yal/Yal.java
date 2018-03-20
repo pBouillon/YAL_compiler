@@ -5,6 +5,7 @@ import yal.analyse.AnalyseurSyntaxique;
 import yal.arbre.ArbreAbstrait;
 import yal.exceptions.AnalyseException;
 import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.ReturnException;
 import yal.tabledessymboles.TDS;
 
 import java.io.FileNotFoundException;
@@ -12,6 +13,8 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static java.lang.System.exit;
 
 /**
  * 24 mars 2015 
@@ -25,6 +28,10 @@ public class Yal {
 
 	private static final int ARG_REQUIRED = 1 ;
 	private static final int EXIT_FAILURE = 1 ;
+
+	private static int retCpt = 0 ;
+	private static int funCpt = 0 ;
+	private static int line   = 0 ;
 
     /**
      * References Yal
@@ -46,10 +53,21 @@ public class Yal {
 				for(RuntimeException s : liste.getListeException()) {
 					System.err.println (s.getMessage()) ;
 				}
+				exit(1) ;
 			} else {
+				String mipsCode = arbre.toMIPS() ;
+
+				check_ret() ;
+				liste = ListeSemantiqueException.getInstance() ;
+				if (liste.isError()) {
+					for(RuntimeException s : liste.getListeException()) {
+						System.err.println (s.getMessage()) ;
+					}
+					exit(1) ;
+				}
+
 				String fileName = fichier.substring (0, fichier.length() - 4) ;
 				PrintWriter out = new PrintWriter (fileName + ".mips") ;
-				String mipsCode = arbre.toMIPS() ;
 				out.println (
 						header() +
 						mipsCode
@@ -71,6 +89,25 @@ public class Yal {
 		}
 	}
 
+	public static void incRet(int no) {
+		++retCpt ;
+		if (no > line) line = no ;
+	}
+	public static void incFun() {
+		++funCpt ;
+	}
+
+	private void check_ret() {
+		if (funCpt != retCpt) {
+			ListeSemantiqueException.getInstance()
+					.addException (
+							new ReturnException(
+									line
+							)
+					);
+		}
+	}
+
     /**
      * @return mips prog begin and data declarations
      */
@@ -89,7 +126,7 @@ public class Yal {
 		if (args.length != ARG_REQUIRED) {
 			System.err.println ("Nombre incorrect d'arguments") ;
 			System.err.println ("\tjava -jar yal.jar <fichierSource.yal>") ;
-			System.exit(EXIT_FAILURE) ;
+			exit(EXIT_FAILURE) ;
 		}
 		new Yal(args[0]) ;
 	}
