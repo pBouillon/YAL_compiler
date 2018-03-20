@@ -2,7 +2,6 @@ package yal.arbre.expression;
 
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
-import yal.arbre.instruction.Instruction;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.ReturnManquantException;
 
@@ -20,7 +19,7 @@ public class Fonction extends ArbreAbstrait {
     public void verifier() {
         boolean returnFound = false ;
         for (ArbreAbstrait i : linstr.getInstr()) {
-            if (i instanceof Instruction) {
+            if (i instanceof Retourne) {
                 returnFound = true ;
                 break ;
             }
@@ -44,7 +43,7 @@ public class Fonction extends ArbreAbstrait {
                 "\n",
 
                 "\n\t# Declaration de la fonction " + name,
-                "\t" + name + ":",
+                name + ":",
 
                 "\t# Sauvegarde addresse retour",
                 "\tsw $ra, ($sp)",

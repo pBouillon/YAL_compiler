@@ -106,7 +106,7 @@ PROG    ::=     PROGRAMME IDF DEBUT LDECL:d LINSTR:e FIN
 				    BlocDInstructions bloc = new BlocDInstructions(dleft+1) ;
 				    bloc.ajouter(e) ;
 				    bloc.ajouter(d) ;
-				    RESULT = e;
+				    RESULT = bloc;
 				:}
         |
                 PROGRAMME IDF DEBUT LINSTR:e FIN
@@ -215,7 +215,7 @@ INSTR ::=       PRINT:p POINTVIRGULE
         		{: RESULT = c ; :}
         |
                 RETOURNE EXPR:e POINTVIRGULE
-                {: new Retourne(e, eleft+1) ; :}
+                {: RESULT = new Retourne(e, eleft+1) ; :}
                 ;
 
 READ ::= 	LIRE IDF:i
