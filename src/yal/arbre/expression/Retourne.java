@@ -19,10 +19,10 @@ public class Retourne extends Instruction {
     public String toMIPS() {
         return String.join (
            "\n",
-           "\n # Retour fonction",
+           "\n\t# Retour fonction",
                 exp.toMIPS(),
-                "# on stocke la valeur de v0 à la fin de la pile",
-                "sw $v0, 16(s7)"
+                "\t# Retour au programme",
+                "\tjr $ra"
         ) ;
     }
 }

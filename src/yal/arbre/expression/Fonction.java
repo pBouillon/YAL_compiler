@@ -43,6 +43,8 @@ public class Fonction extends ArbreAbstrait {
     public String toMIPS() {
         return String.join (
                 "\n",
-                "\n# Declaration de la fonction " + name) ;
+                "\n\t# Declaration de la fonction " + name,
+                "\n\t" + name + ":"
+        ) ;
     }
 }
