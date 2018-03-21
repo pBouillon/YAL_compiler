@@ -195,6 +195,9 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 IDF:i
                 {: RESULT = new IDF(i, ileft+1) ; :}
         |
+                PAROUV  EXPR:e  PARFER
+                {: RESULT = e ; :}
+        |
                 IDF:i PAROUV PARFER
                 {: RESULT = new AppelFunc(i, ileft + 1) ; :}
 				;
