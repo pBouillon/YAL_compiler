@@ -9,6 +9,8 @@ import yal.exceptions.ReturnManquantException;
 
 import java.util.ArrayList;
 
+import static yal.Yal.footer;
+
 /**
  * 3 déc. 2015
  *
@@ -32,18 +34,7 @@ public class BlocDInstructions extends ArbreAbstrait {
         linst.add(a) ;
     }
 
-    /**
-     * @return mips clean ending and storage in $v1
-     */
-    private String footer() {
-        return String.join (
-                "\n",
-                "\nend:",
-                "\tmove $v1, $v0",
-                "\tli $v0, 10",
-                "\tsyscall"
-        ) ;
-    }
+
 
     @Override
     public String toString() {
@@ -79,7 +70,6 @@ public class BlocDInstructions extends ArbreAbstrait {
             if (a != null) res.append (a.toMIPS()) ;
         }
 
-        if (!funcDeclared) res.append(footer()) ;
 		return res.toString();
 	}
 

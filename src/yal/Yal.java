@@ -65,6 +65,10 @@ public class Yal {
 					exit(1) ;
 				}
 
+				if (!mipsCode.contains(footer())) {
+					mipsCode += footer() ;
+				}
+
 				String fileName = fichier.substring (0, fichier.length() - 4) ;
 				PrintWriter out = new PrintWriter (fileName + ".mips") ;
 				out.println (
@@ -115,6 +119,19 @@ public class Yal {
 				"main:",
 				"\tmove $s7, $sp",
 				"\taddi $sp, $sp, " + TDS.getInstance().getCompteur()
+		) ;
+	}
+
+	/**
+	 * @return mips clean ending and storage in $v1
+	 */
+	public static String footer() {
+		return String.join (
+				"\n",
+				"\nend:",
+				"\tmove $v1, $v0",
+				"\tli $v0, 10",
+				"\tsyscall"
 		) ;
 	}
 
