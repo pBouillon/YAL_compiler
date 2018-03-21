@@ -18,7 +18,7 @@ public abstract class BinaireLogique extends Binaire {
 	public void verifier() {
 		gauche.verifier();
 		droite.verifier();
-		if(gauche.getType() != "boolean" || droite.getType() != "boolean") {
+		if(gauche.getType() != TYPE_BOOLEAN || droite.getType() != TYPE_BOOLEAN) {
 			String s = operateur() + " entre un " + gauche.getType() + " et un " + droite.getType();
 			ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
 		}

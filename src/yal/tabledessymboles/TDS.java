@@ -14,6 +14,7 @@ public class TDS {
 	private int compteur;
 	private ArrayList<TDS> tds;
 	private int compteurBloc; // permet de connaitre le numero du bloc 
+	private boolean func = false;
 	
 	private TDS()
 	{
@@ -34,6 +35,9 @@ public class TDS {
 			ListeSemantiqueException.getInstance().addException(new DoubleDeclarationException(ligne, "variable : " + e.getIdentifier()));
 		}else {
 			this.map.put(e,s);
+			if(e.getIdentifier().contains("func")) {
+				func = true;
+			}
 		}
 	}
 
@@ -77,5 +81,11 @@ public class TDS {
 		compteurBloc++;
 		return compteurBloc;
 	}
+
+	public boolean containsFunc() {
+		return func;
+	}
+	
+	
 
 }

@@ -54,8 +54,9 @@ public class Yal {
 				exit(1) ;
 			} else {
 				String mipsCode = arbre.toMIPS() ;
-
-				check_ret(header() + mipsCode) ;
+				if(TDS.getInstance().containsFunc()) {
+					check_ret(header() + mipsCode) ;
+				}
 				liste = ListeSemantiqueException.getInstance() ;
 				if (liste.isError()) {
 					for(RuntimeException s : liste.getListeException()) {

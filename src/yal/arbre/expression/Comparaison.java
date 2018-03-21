@@ -20,13 +20,13 @@ public abstract class Comparaison extends Binaire {
 		droite.verifier();
 		if(gauche.getType() != droite.getType()) {
 			if(gauche.getType() == TYPE_IDF) {
-				if(droite.getType() != "int") {
+				if(droite.getType() != TYPE_ENTIER) {
 					String s =  operateur() + " entre un " + gauche.getType() + " et un " + droite.getType();
 					ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
 				}
 			}else 
 				if(droite.getType() == TYPE_IDF) { 
-					if(gauche.getType() != "int") {
+					if(gauche.getType() != TYPE_ENTIER) {
 						String s =  operateur() + " entre un " + gauche.getType() + " et un " + droite.getType();
 						ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne,s));
 
