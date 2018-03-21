@@ -32,7 +32,11 @@ public class TDS {
 
 	public void ajouter(Entree e,Symbole s, int ligne) throws DoubleDeclarationException { 
 		if(this.map.containsKey(e)) {
-			ListeSemantiqueException.getInstance().addException(new DoubleDeclarationException(ligne, "variable : " + e.getIdentifier()));
+			String name = e.getIdentifier() ;
+			if (name.contains("func_") && name.length() > "func_".length()) {
+				name = name.substring("func_".length()) ;
+			}
+			ListeSemantiqueException.getInstance().addException(new DoubleDeclarationException(ligne, "variable : " + name));
 		}else {
 			this.map.put(e,s);
 			if(e.getIdentifier().contains("func")) {
@@ -85,7 +89,4 @@ public class TDS {
 	public boolean containsFunc() {
 		return func;
 	}
-	
-	
-
 }

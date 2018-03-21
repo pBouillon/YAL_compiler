@@ -33,7 +33,7 @@ public class Div extends BinaireArithmetique {
 				et.getSinon() + ":",
 				"\tla $a0, "+ DataFactory.getInstance().getErrDiv(),
 				"\tli $v0, 4",
-				//"\tj end",
+				"\tj end",
 				"\tsyscall",
 
 				et.getSi() + ":",

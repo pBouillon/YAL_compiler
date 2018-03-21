@@ -7,6 +7,6 @@ retourne 10;
 fin
 
 a = fonc();
-ecrire "On doit normalement voir 1\n";
-ecrire a;
+ecrire "On doit normalement voir 2\n";
+ecrire fonc ()+a;
 fin

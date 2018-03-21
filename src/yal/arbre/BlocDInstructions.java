@@ -68,9 +68,7 @@ public class BlocDInstructions extends ArbreAbstrait {
 		StringBuilder res = new StringBuilder() ;
 
         for (ArbreAbstrait a: linst) {
-            if (a instanceof Retourne) {
-                Yal.incRet(a.noLigne);
-            }
+            if (a instanceof Retourne) Yal.incRet(a.noLigne);
 
             if (a instanceof Fonction && !funcDeclared){
                 res.append("\n");
@@ -80,6 +78,8 @@ public class BlocDInstructions extends ArbreAbstrait {
             }
             if (a != null) res.append (a.toMIPS()) ;
         }
+
+        if (!funcDeclared) res.append(footer()) ;
 		return res.toString();
 	}
 

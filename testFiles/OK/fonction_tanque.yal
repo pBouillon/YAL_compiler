@@ -1,15 +1,15 @@
 programme idf debut
 
-entier a;
-fonction fonc () debut
-retourne 20;
-fin
+   entier a;
+   fonction fonc () debut
+   retourne 20;
+   fin
 
-a = 1;
-tantque a<3
-repeter
-  ecrire fonc();
-  a = a +1;
-fintantque
-ecrire 10;
-fin
+   a = 1;
+   tantque a<3
+   repeter
+     ecrire fonc();
+     a = a +1;
+   fintantque
+   ecrire 10;
+   fin

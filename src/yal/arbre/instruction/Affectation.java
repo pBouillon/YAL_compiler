@@ -1,6 +1,8 @@
 package yal.arbre.instruction;
 
 import yal.arbre.expression.Expression;
+import yal.exceptions.BadAffectationException;
+import yal.exceptions.ListeSemantiqueException;
 import yal.tabledessymboles.TDS;
 
 public class Affectation extends Instruction {
@@ -17,6 +19,9 @@ public class Affectation extends Instruction {
     @Override
     public void verifier() {
     	 TDS.getInstance().identifier(idf, noLigne);
+    	 if (!exp.getType().equals(TYPE_ENTIER)) {
+             ListeSemantiqueException.getInstance().addException(new BadAffectationException(noLigne));
+         }
     }
 
     @Override
