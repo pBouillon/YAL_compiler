@@ -26,6 +26,7 @@ programme YALsample debut
         retourne 30 ;
     fin
 
+    // core
     a = fonc() ;
     ecrire "You should see 30 below\n" ;
     ecrire a ;
