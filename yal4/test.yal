@@ -8,12 +8,17 @@ programme test debut
         ecrire j ;
         ecrire "\nOn devrait voir 3 -> " ;
         ecrire k ;
+        retourne 0 ;
     fin
 
     fonction f2 (entier i; entier j) debut
-        retourne 5 ;
+        entier a ;
+        entier b ;
+
+        a = 5 ;
+        b = 10 ;
+        retourne a + b ;
     fin
 
-    a = f1(1, 2, 3) ;
-    ecrire f2(0, 0) ;
+    ecrire "ok" ;
 fin
