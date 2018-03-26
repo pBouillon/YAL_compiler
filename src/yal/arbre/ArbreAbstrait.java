@@ -1,6 +1,6 @@
 package yal.arbre;
 
-import yal.EtiquetteFactory;
+import yal.ETQ;
 
 /**
  * 3 déc. 2015
@@ -10,7 +10,7 @@ import yal.EtiquetteFactory;
 
 public abstract class ArbreAbstrait {
 
-    public static EtiquetteFactory et = EtiquetteFactory.getInstance() ;
+    public static ETQ et = ETQ.getInstance() ;
 
     protected static String TYPE_BOOLEAN = "boolean" ;
     protected static String TYPE_ENTIER  = "int" ;

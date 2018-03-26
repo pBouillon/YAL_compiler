@@ -6,11 +6,11 @@ import yal.arbre.instruction.Retourne;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.ReturnManquantException;
 
-public class Fonction extends ArbreAbstrait {
+public class DeclFonction extends ArbreAbstrait {
     private String name ;
     private BlocDInstructions linstr ;
 
-    public Fonction(String _name, BlocDInstructions _linstr, int n) {
+    public DeclFonction(String _name, BlocDInstructions _linstr, int n) {
         super(n);
         name   = _name ;
         linstr = _linstr ;
