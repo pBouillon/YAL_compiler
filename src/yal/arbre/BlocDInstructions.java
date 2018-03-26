@@ -2,10 +2,7 @@ package yal.arbre;
 
 import yal.Yal;
 import yal.arbre.expression.Fonction;
-import yal.arbre.expression.Retourne;
-import yal.exceptions.ListeSemantiqueException;
-import yal.exceptions.ReturnException;
-import yal.exceptions.ReturnManquantException;
+import yal.arbre.instruction.Retourne;
 
 import java.util.ArrayList;
 

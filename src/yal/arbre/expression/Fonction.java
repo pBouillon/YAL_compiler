@@ -2,6 +2,7 @@ package yal.arbre.expression;
 
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
+import yal.arbre.instruction.Retourne;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.ReturnManquantException;
 

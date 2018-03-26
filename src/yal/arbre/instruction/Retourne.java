@@ -1,6 +1,6 @@
-package yal.arbre.expression;
+package yal.arbre.instruction;
 
-import yal.arbre.instruction.Instruction;
+import yal.arbre.expression.Expression;
 
 public class Retourne extends Instruction {
     private Expression exp ;

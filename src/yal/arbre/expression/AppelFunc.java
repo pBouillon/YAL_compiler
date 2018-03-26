@@ -1,6 +1,5 @@
-package yal.arbre.instruction;
+package yal.arbre.expression;
 
-import yal.arbre.expression.Expression;
 import yal.tabledessymboles.TDS;
 
 public class AppelFunc extends Expression {
