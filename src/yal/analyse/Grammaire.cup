@@ -83,7 +83,7 @@ non terminal ArbreAbstrait PROG ;
 non terminal Instruction INSTR ;
 non terminal Expression EXPR, CSTE ;
 non terminal Instruction AFFECT, PRINT, READ, BOUCLE, CONDITION, ELSE;
-non terminal BlocDInstructions LINSTR, LDECL, LPARAM ;
+non terminal BlocDInstructions LINSTR, LDECL, LPARAM, VLDECL ;
 non terminal Object PAR_EFF ;
 
 non terminal ArbreAbstrait DECL_FONCTION, DECL_VAR, DECLARATION ;
@@ -134,13 +134,19 @@ LDECL ::= 	DECLARATION:d
                 RESULT = ld ; :}
             ;
 
+VLDECL ::=  VLDECL DECL_VAR
+            {: :}
+      |
+            DECL_VAR:v
+            {: :}
+      ;
 
 DECLARATION ::= DECL_VAR:v
                 {: RESULT = v ; :}
         |
                 DECL_FONCTION:f
                 {: RESULT = f ; :}
-				;
+        ;
 				
 DECL_VAR ::= 	ENTIER IDF:i POINTVIRGULE
 				{:
@@ -270,11 +276,8 @@ DECL_FONCTION ::=  FONCTION IDF:i PARAMETRES DEBUT LINSTR:li FIN
                      RESULT = new Fonction(i, li, lileft+1) ;
                    :}
         |
-                   FONCTION IDF:i PARAMETRES DEBUT LDECL:ld LINSTR:li FIN
-                   {:
-                        TDS.getInstance().ajouter(new Entree("func_" + i), new Symbole(), ileft+1) ;
-                        RESULT = new Fonction(i, li, lileft+1) ;
-                   :}
+                   FONCTION IDF:i PARAMETRES DEBUT VLDECL:vld LINSTR:li FIN
+                   {: :}
         ;
 
 PARAMETRES ::=  PAROUV PARFER
