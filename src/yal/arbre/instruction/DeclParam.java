@@ -44,6 +44,7 @@ public class DeclParam extends Instruction {
                         TDSv2.getInstance().getParamValue()
                 )
         ) ;
+        exists = false ;
     }
 
     @Override

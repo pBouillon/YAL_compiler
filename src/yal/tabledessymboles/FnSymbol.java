@@ -7,7 +7,7 @@ public class FnSymbol extends Symbol {
     int nbParam;
     DeclFonction fn ;
 
-    FnSymbol(String _name, int _noRegion, int _paramNb, String _etq, DeclFonction _fn) {
+    public FnSymbol(String _name, int _noRegion, int _paramNb, String _etq, DeclFonction _fn) {
         super(_name, _noRegion, _etq);
         nbParam = _paramNb ;
         fn = _fn ;
