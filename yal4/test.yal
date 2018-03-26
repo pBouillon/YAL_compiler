@@ -1,0 +1,19 @@
+programme test debut
+    entier a ;
+
+    fonction f1 (entier i, entier j, entier k) debut
+        ecrire "On devrait voir 1 -> " ;
+        ecrire i ;
+        ecrire "\nOn devrait voir 2 -> " ;
+        ecrire j ;
+        ecrire "\nOn devrait voir 3 -> " ;
+        ecrire k ;
+    fin
+
+    fonction f2 (entier i, entier j) debut
+        retourne 5 ;
+    fin
+
+    a = f1(1, 2, 3) ;
+    ecrire f2(0, 0) ;
+fin
