@@ -294,9 +294,12 @@ LPARAM ::= LPARAM POINTVIRGULE ENTIER IDF:i
             {:  :}
         ;
 
-PAR_EFF ::= PAR_EFF VIRGULE EXPR:e
-            {: :}
+PAR_EFF ::= EXPR:e VIRGULE PAR_EFF:pe
+            {:
+                pe.add(e) ;
+                RESULT = pe ;
+            :}
         |
             EXPR:e
-            {: :}
+            {: RESULT = new ArrayList<Expression>(e); :}
         ;

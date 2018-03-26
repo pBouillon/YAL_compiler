@@ -28,7 +28,7 @@ public class AppelFunc extends Expression {
             ListeSemantiqueException.getInstance().addException (
                     new VariableUndefinedException (
                             noLigne,
-                            "fonction : " + name
+                            "fonction : " + name + " déjà déclarée"
                     )
                 ) ;
         }
@@ -37,17 +37,15 @@ public class AppelFunc extends Expression {
 
     @Override
     public String toMIPS() {
-//        return String.join(
-//                "\n",
-//                "\n\t# allocation place pour return",
-//                "\taddi $sp, $sp, -4",
-//                "\t# appel de " + name + "()",
-//                "\tjal " + name
-//        );
+        int i = 0 ;
         StringBuilder mips = new StringBuilder() ;
 
-        mips.append("\n# Appel de " + name + " avec " + nbParam + "parametres") ;
-        int i = 0 ;
+        mips.append("\n# Appel de ")
+                .append(name)
+                .append(" avec ")
+                .append(nbParam)
+                .append("parametres") ;
+
         for (Expression e : param) {
             mips.append (String.join(
                     "\n",

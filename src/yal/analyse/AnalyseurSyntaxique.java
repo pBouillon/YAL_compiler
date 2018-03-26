@@ -510,7 +510,7 @@ class CUP$AnalyseurSyntaxique$actions {
 		BlocDInstructions li = (BlocDInstructions)((java_cup.runtime.Symbol) CUP$AnalyseurSyntaxique$stack.elementAt(CUP$AnalyseurSyntaxique$top-1)).value;
 		
                      TDS.getInstance().ajouter(new Entree("func_" + i), new Symbole(), ileft+1) ;
-                     RESULT = new Fonction(i, li, lileft+1) ;
+                     RESULT = new DeclFonction(i, li, lileft+1) ;
                    
               CUP$AnalyseurSyntaxique$result = parser.getSymbolFactory().newSymbol("DECL_FONCTION",15, ((java_cup.runtime.Symbol)CUP$AnalyseurSyntaxique$stack.elementAt(CUP$AnalyseurSyntaxique$top-5)), ((java_cup.runtime.Symbol)CUP$AnalyseurSyntaxique$stack.peek()), RESULT);
             }
