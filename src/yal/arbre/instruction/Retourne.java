@@ -1,6 +1,7 @@
 package yal.arbre.instruction;
 
 import yal.arbre.expression.Expression;
+import yal.tabledessymboles.TDSv2;
 
 public class Retourne extends Instruction {
     private Expression exp ;
@@ -23,11 +24,11 @@ public class Retourne extends Instruction {
                 "\t# Retour fonction",
                 exp.toMIPS(),
 
-                "\t# Stockage $v0 dans val retour",
-                "\tsw $v0, 16($sp)", // 4 * champs obligatoires ( == 4)
+//                "\t# Stockage $v0 dans val retour",
+//                "\tsw $v0, 16($sp)", // 4 * champs obligatoires ( == 4)
 
                 "\t# Remontee de $sp jusqu'au chainage dyn",
-                "\tadd $sp, $sp, 8", // nb_var * 4 + no region + ch dyn
+                "\tadd $sp, $sp, " + (-TDSv2.getInstance().getVarValue() + 4 + 4),
 
                 "\t# Depilement de la base: $s7 = $sp",
                 "\tlw $s7, ($sp)",
