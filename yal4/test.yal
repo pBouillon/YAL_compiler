@@ -1,7 +1,7 @@
 programme test debut
     entier a ;
 
-    fonction f1 (entier i, entier j, entier k) debut
+    fonction f1 (entier i; entier j; entier k) debut
         ecrire "On devrait voir 1 -> " ;
         ecrire i ;
         ecrire "\nOn devrait voir 2 -> " ;
@@ -10,7 +10,7 @@ programme test debut
         ecrire k ;
     fin
 
-    fonction f2 (entier i, entier j) debut
+    fonction f2 (entier i; entier j) debut
         retourne 5 ;
     fin
 
