@@ -3,13 +3,16 @@ package yal.tabledessymboles;
 import yal.arbre.expression.DeclFonction;
 
 public class VarSymbol extends Symbol {
-    VarSymbol(String _name, int _noRegion) {
+    int padding ;
+
+    public VarSymbol(String _name, int _noRegion, int _padding) {
         super(_name, _noRegion, "") ;
+        padding = _padding ;
     }
 
     @Override
     int getPadding() {
-        return 0;
+        return padding ;
     }
 
     @Override
