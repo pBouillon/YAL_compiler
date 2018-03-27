@@ -18,8 +18,12 @@ public class AppelFunc extends Expression {
         super(no);
         name = _name ;
         entry = new FnEntry(name, null) ;
-        param = _param ;
-        nbParam = param.size() ;
+
+        nbParam = 0 ;
+        if (_param != null) {
+            param = _param ;
+            nbParam = param.size() ;
+        }
     }
 
     @Override
@@ -46,15 +50,17 @@ public class AppelFunc extends Expression {
                 .append(nbParam)
                 .append("parametres") ;
 
-        for (Expression e : param) {
-            mips.append (String.join(
-                    "\n",
-                    "\n\t# Eval du " + i + "eme parametre",
-                    e.toMIPS(),
-                    "sw $v0, (sp)",
-                    "addi $sp, $sp, -4"
-                )
-            ) ;
+        if (param != null) {
+            for (Expression e : param) {
+                mips.append(String.join(
+                        "\n",
+                        "\n\t# Eval du " + i + "eme parametre",
+                        e.toMIPS(),
+                        "sw $v0, (sp)",
+                        "addi $sp, $sp, -4"
+                        )
+                );
+            }
         }
         mips.append (
                 String.join("\n",

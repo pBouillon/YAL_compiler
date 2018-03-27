@@ -27,7 +27,7 @@ public class DeclFonction extends Instruction {
         super(n);
         name   = _name ;
         linstr = _linstr ;
-        entry = new FnEntry(name, null) ;
+        entry = new FnEntry(name, "func_" + _name) ;
 
         addFn() ;
 
