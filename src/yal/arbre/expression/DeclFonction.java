@@ -21,13 +21,17 @@ public class DeclFonction extends Instruction {
     int noParam ;
 
     Entry entry ;
+    String etq ;
     boolean exist ;
 
     public DeclFonction(String _name, BlocDInstructions _linstr, int n, int _noParam) {
         super(n);
+
+
         name   = _name ;
         linstr = _linstr ;
-        entry = new FnEntry(name, "func_" + _name) ;
+        etq = _name + _noParam ;
+        entry = new FnEntry(name, etq) ;
 
         addFn() ;
 
@@ -56,7 +60,7 @@ public class DeclFonction extends Instruction {
                     name,
                     TDSv2.getInstance().getCurrentRegion(),
                     noParam,
-                    entry.getEtq(),
+                    etq,
                     this
             )
         ) ;
