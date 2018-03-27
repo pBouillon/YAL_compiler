@@ -36,7 +36,6 @@ public class AppelFunc extends Expression {
                     )
                 ) ;
         }
-//        TDS.getInstance().identifier("func_" + name, noLigne) ;
     }
 
     @Override

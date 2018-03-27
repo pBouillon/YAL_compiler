@@ -1,26 +1,10 @@
 programme test debut
     entier a ;
 
-    fonction f1 (entier i; entier j; entier k) debut
-        ecrire "On devrait voir 1 -> " ;
-        ecrire i ;
-        ecrire "\nOn devrait voir 2 -> " ;
-        ecrire j ;
-        ecrire "\nOn devrait voir 3 -> " ;
-        ecrire k ;
-        retourne 0 ;
+    fonction f1 (entier i) debut
+        retourne i ;
     fin
 
-    fonction f2 (entier i; entier j) debut
-        entier a ;
-        entier b ;
-
-        a = 5 ;
-        b = 10 ;
-        retourne a + b ;
-    fin
-
-    a = f1(0, 5, 6) ;
+    a = f1(4);
     ecrire a ;
-    ecrire f2(4, 5) ;
 fin

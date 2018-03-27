@@ -7,6 +7,7 @@ import yal.exceptions.AnalyseException;
 import yal.exceptions.ListeSemantiqueException;
 import yal.exceptions.ReturnException;
 import yal.tabledessymboles.TDS;
+import yal.tabledessymboles.TDSv2;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -45,6 +46,7 @@ public class Yal {
 			ArbreAbstrait arbre = (ArbreAbstrait) analyseur.parse().value ;
 
 			arbre.verifier() ;
+			TDSv2.getInstance().checkFn() ;
 
 			ListeSemantiqueException liste = ListeSemantiqueException.getInstance() ;
 			if (liste.isError()) {
@@ -58,15 +60,17 @@ public class Yal {
 					check_ret(header() + mipsCode) ;
 				}
 				liste = ListeSemantiqueException.getInstance() ;
+
+				if (!mipsCode.contains(footer())) {
+					mipsCode += footer() ;
+				}
+
+				mipsCode += TDSv2.getInstance().genFn() ;
 				if (liste.isError()) {
 					for(RuntimeException s : liste.getListeException()) {
 						System.err.println (s.getMessage()) ;
 					}
 					exit(1) ;
-				}
-
-				if (!mipsCode.contains(footer())) {
-					mipsCode += footer() ;
 				}
 
 				String fileName = fichier.substring (0, fichier.length() - 4) ;

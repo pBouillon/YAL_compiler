@@ -178,4 +178,21 @@ public class TDSv2 {
         currentNode.decrVal() ;
     }
 
+    public String genFn() {
+        StringBuilder mips = new StringBuilder() ;
+        for (Node n : root.getChilds()) {
+            if (n.getSymbol() instanceof FnSymbol) {
+                mips.append(n.getSymbol().getFn().toMIPS()) ;
+            }
+        }
+        return mips.toString() ;
+    }
+
+    public void checkFn() {
+        for (Node n : root.getChilds()) {
+            if (n.getSymbol() instanceof FnSymbol) {
+                n.getSymbol().getFn().verifier() ;
+            }
+        }
+    }
 }

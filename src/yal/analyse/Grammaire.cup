@@ -296,13 +296,14 @@ PARAMETRES ::=  PAROUV PARFER
 
 LPARAM ::= ENTIER IDF:i POINTVIRGULE LPARAM:lp
             {:
+                new DeclParam(i, ileft + 1) ;
                 RESULT = lp + 1 ;
             :}
         |
             ENTIER IDF:i
             {:
-                new DeclParam(i, ileft + 1) ;
                 TDSv2.getInstance().beginBloc() ;
+                new DeclParam(i, ileft + 1) ;
                 RESULT = 1 ;
             :}
         ;
