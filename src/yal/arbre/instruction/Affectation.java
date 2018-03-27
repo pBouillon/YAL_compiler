@@ -3,7 +3,9 @@ package yal.arbre.instruction;
 import yal.arbre.expression.Expression;
 import yal.exceptions.BadAffectationException;
 import yal.exceptions.ListeSemantiqueException;
-import yal.tabledessymboles.TDS;
+import yal.exceptions.SemantiqueException;
+import yal.tabledessymboles.TDSv2;
+import yal.tabledessymboles.VarEntry;
 
 public class Affectation extends Instruction {
 	
@@ -18,10 +20,12 @@ public class Affectation extends Instruction {
 
     @Override
     public void verifier() {
-    	 TDS.getInstance().identifier(idf, noLigne);
-    	 if (!exp.getType().equals(TYPE_ENTIER)) {
-             ListeSemantiqueException.getInstance().addException(new BadAffectationException(noLigne));
-         }
+        if (TDSv2.getInstance().varExists(new VarEntry(idf, "VAR"))){
+            ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne, idf +": var non déclarée"));
+        }
+        if (!exp.getType().equals(TYPE_ENTIER)) {
+            ListeSemantiqueException.getInstance().addException(new BadAffectationException(noLigne));
+        }
     }
 
     @Override
@@ -30,12 +34,8 @@ public class Affectation extends Instruction {
                 "\n",
                 exp.toMIPS(),
                 "# affectation de " + exp.toString() + " -> " + idf,
-                "\tsw $v0, " + TDS.getInstance()
-                                    .identifier (
-                                            idf,
-                                            noLigne
-                                    )
-                                    .getPointeur() + "($s7)"
+                TDSv2.getInstance().identifierVar(new VarEntry(idf, "VAR")),
+                "\tsw $v0, ($s2)"
         ) ;
     }
 

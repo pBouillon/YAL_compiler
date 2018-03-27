@@ -83,11 +83,11 @@ non terminal ArbreAbstrait PROG ;
 non terminal Instruction INSTR ;
 non terminal Expression EXPR, CSTE ;
 non terminal Instruction AFFECT, PRINT, READ, BOUCLE, CONDITION, ELSE;
-non terminal BlocDInstructions LINSTR, LDECL, LPARAM, VLDECL ;
-non terminal Object PAR_EFF ;
+non terminal BlocDInstructions LINSTR, LDECL, VLDECL ;
+non terminal ArrayList<Expression> PAR_EFF ;
 
 non terminal ArbreAbstrait DECL_FONCTION, DECL_VAR, DECLARATION ;
-non terminal Symbol PARAMETRES;
+non terminal Integer PARAMETRES, LPARAM;
 
 precedence left OU ;
 precedence left ET ;
@@ -150,7 +150,6 @@ DECLARATION ::= DECL_VAR:v
 				
 DECL_VAR ::= 	ENTIER IDF:i POINTVIRGULE
 				{:
-				    TDS.getInstance().ajouter(new Entree(i), new Symbole(),ileft+1);
 				    RESULT = new DeclVar(i, ileft) ;
 				:}
  				;
@@ -205,10 +204,10 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 {: RESULT = e ; :}
         |
                 IDF:i PAROUV PARFER
-                {: RESULT = new AppelFunc(i, ileft + 1) ; :}
+                {: RESULT = new AppelFunc(i, ileft + 1, null) ; :}
         |
-                IDF PAROUV PAR_EFF:pe PARFER
-                {: :}
+                IDF:i PAROUV PAR_EFF:pe PARFER
+                {: RESULT = new AppelFunc(i, ileft + 1, pe) ; :}
         ;
 				
 INSTR ::=       PRINT:p POINTVIRGULE
@@ -270,28 +269,42 @@ CSTE    ::=     CONSTANTEINT:e
 
 /* FONCTIONS */
 
-DECL_FONCTION ::=  FONCTION IDF:i PARAMETRES DEBUT LINSTR:li FIN
+DECL_FONCTION ::=  FONCTION IDF:i PARAMETRES:p DEBUT LINSTR:li FIN
                    {:
-                     TDS.getInstance().ajouter(new Entree("func_" + i), new Symbole(), ileft+1) ;
-                     RESULT = new Fonction(i, li, lileft+1) ;
+                        new DeclFonction (i, li, lileft + 1, p) ;
+                        TDSv2.getInstance().endBlock() ;
                    :}
         |
-                   FONCTION IDF:i PARAMETRES DEBUT VLDECL:vld LINSTR:li FIN
-                   {: :}
+                   FONCTION IDF:i PARAMETRES:p DEBUT VLDECL:vld LINSTR:li FIN
+                   {:
+                        new DeclFonction(i, vld, li, lileft + 1, p) ;
+                        TDSv2.getInstance().endBlock() ;
+                   :}
         ;
 
 PARAMETRES ::=  PAROUV PARFER
-                {: :}
+                {:
+                    TDSv2.getInstance().beginBloc() ;
+                    RESULT = 0 ;
+                :}
         |
                 PAROUV LPARAM:lp PARFER
-                {:  :}
+                {:
+                    RESULT = lp ;
+                :}
         ;
 
-LPARAM ::= LPARAM POINTVIRGULE ENTIER IDF:i
-            {:  :}
+LPARAM ::= ENTIER IDF:i POINTVIRGULE LPARAM:lp
+            {:
+                RESULT = lp + 1 ;
+            :}
         |
             ENTIER IDF:i
-            {:  :}
+            {:
+                new DeclParam(i, ileft + 1) ;
+                TDSv2.getInstance().beginBloc() ;
+                RESULT = 1 ;
+            :}
         ;
 
 PAR_EFF ::= EXPR:e VIRGULE PAR_EFF:pe

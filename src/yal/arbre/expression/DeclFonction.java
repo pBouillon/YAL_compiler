@@ -52,7 +52,6 @@ public class DeclFonction extends Instruction {
         }
         TDSv2.addFn (
             entry,
-            /* (String _name, int _noRegion, int _paramNb, String _etq, DeclFonction _fn) */
             new FnSymbol (
                     name,
                     TDSv2.getInstance().getCurrentRegion(),

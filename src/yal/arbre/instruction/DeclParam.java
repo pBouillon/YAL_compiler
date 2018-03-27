@@ -17,7 +17,7 @@ public class DeclParam extends Instruction {
     boolean exists ;
     String name ;
 
-    protected DeclParam(String idf, int no) {
+    public DeclParam(String idf, int no) {
         super(no);
         entry = new VarEntry (idf, PARM_NAME) ;
         nbParam = 0 ;
@@ -35,7 +35,6 @@ public class DeclParam extends Instruction {
             exists = true ;
             return ;
         }
-        TDSv2.getInstance().decrParamVal() ;
         TDSv2.addVar(
                 entry,
                 new VarSymbol (
@@ -44,6 +43,7 @@ public class DeclParam extends Instruction {
                         TDSv2.getInstance().getParamValue()
                 )
         ) ;
+        TDSv2.getInstance().decrParamVal() ;
         exists = false ;
     }
 
