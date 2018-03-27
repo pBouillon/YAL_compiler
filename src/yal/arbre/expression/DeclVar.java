@@ -17,7 +17,6 @@ public class DeclVar extends Instruction {
 
     public DeclVar(String _name, int no) {
         super(no);
-        System.out.println("ajout de la var " + _name + " avec un bloc de " + TDSv2.getInstance().getCurrentRegion());
 
         name = _name ;
 

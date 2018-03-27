@@ -5,6 +5,6 @@ programme test debut
         retourne i ;
     fin
 
-    a = f1(4);
+    a = f1(14);
     ecrire a ;
 fin

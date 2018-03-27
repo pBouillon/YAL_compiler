@@ -23,7 +23,6 @@ public class Affectation extends Instruction {
 
     @Override
     public void verifier() {
-        System.out.println("search de la var " + idf.toString() + " avec un bloc de " + noRegion);
         if (!TDSv2.getInstance().varExists(new VarEntry(idf, "VAR"), noRegion)){
             ListeSemantiqueException.getInstance().addException(new SemantiqueException(noLigne, idf +": var non déclarée"));
         }
