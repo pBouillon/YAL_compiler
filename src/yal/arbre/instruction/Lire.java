@@ -24,6 +24,7 @@ public class Lire extends Instruction {
 			"\tli $v0, 5",
 			"\tsyscall",
 			TDSv2.getInstance().identifierVar(new VarEntry(varName, "VAR")),
+			
 			"\tsw $v0, ($s2)"
 		) ;
 	}
