@@ -1,6 +1,8 @@
 package yal.arbre.instruction;
 
 import yal.tabledessymboles.TDS;
+import yal.tabledessymboles.TDSv2;
+import yal.tabledessymboles.VarEntry;
 
 public class Lire extends Instruction {
 	private String varName;
@@ -21,11 +23,8 @@ public class Lire extends Instruction {
 			"\t# read code",
 			"\tli $v0, 5",
 			"\tsyscall",
-			"\tsw $v0, " +
-					TDS.getInstance()
-							.identifier(varName, super.noLigne)
-							.getPointeur() +
-					"($s7)"
+			TDSv2.getInstance().identifierVar(new VarEntry(varName, "VAR")),
+			"\tsw $v0, ($s2)"
 		) ;
 	}
 }
