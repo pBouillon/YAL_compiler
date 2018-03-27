@@ -69,11 +69,12 @@ public class TDSv2 {
         int noRegion = n.getSymbol().getNoRegion() ;
 
         String generated = "" ;
+        int padding = 16 - n.getSymbol().getPadding() ;
 
         if (n.getEntry().getType().equals(PARM_NAME)) {
             generated += String.join (
                     "\n",
-                    "\n\tadd $s2, $s7, " + (16 - n.getSymbol().getPadding())
+                    "\n\tadd $s2, $s7, " + padding
             ) ;
         }
         else {
@@ -133,25 +134,6 @@ public class TDSv2 {
         return false ;
     }
 
-    public void FnCheck() {
-        for (Node n : root.getChilds()) {
-            if (n.getEntry() instanceof FnEntry) {
-                n.getSymbol().getFn().verifier() ;
-            }
-        }
-    }
-
-    public void Fn2MIPS() {
-        StringBuilder sb = new StringBuilder() ;
-        for (Node n : root.getChilds()) {
-            if (n.getEntry() instanceof FnEntry) {
-                sb.append (
-                        n.getSymbol().getFn().toMIPS()
-                ) ;
-            }
-        }
-    }
-
     public void beginBloc() {
         ++maxRegion ;
         currentRegion = maxRegion ;
@@ -172,7 +154,7 @@ public class TDSv2 {
     }
 
     public int getVarValue() {
-        return varValue ;
+        return currentNode.getVal() ;
     }
 
     public void decrVarValue() {

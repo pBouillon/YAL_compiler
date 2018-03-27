@@ -8,6 +8,7 @@ public class VarSymbol extends Symbol {
     public VarSymbol(String _name, int _noRegion, int _padding) {
         super(_name, _noRegion, "") ;
         padding = _padding ;
+        System.out.println("decl de " + name + " dans n°" + noRegion + " avec padding = " + padding);
     }
 
     @Override

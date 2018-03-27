@@ -1,10 +1,18 @@
 programme test debut
     entier a ;
+    entier b ;
 
     fonction f1 (entier i) debut
         retourne i ;
     fin
 
+    fonction f2 (entier k; entier l) debut
+        retourne k + l ;
+    fin
+
     a = f1(14);
+    b = f2(12, 10) ;
     ecrire a ;
+    ecrire "\n" ;
+    ecrire b ;
 fin
