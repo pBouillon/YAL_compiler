@@ -1,7 +1,8 @@
 package yal.arbre.expression;
 
+import yal.exceptions.ListeSemantiqueException;
+import yal.exceptions.SemantiqueException;
 import yal.tabledessymboles.Entry;
-import yal.tabledessymboles.TDS;
 import yal.tabledessymboles.TDSv2;
 import yal.tabledessymboles.VarEntry;
 
@@ -27,17 +28,21 @@ public class IDF extends Expression{
 	@Override
 	public void verifier() {
 		exist = TDSv2.getInstance().varExists(entry, noRegion) ;
-		TDS.getInstance().identifier(idf, noLigne);
+		if (!exist) {
+			ListeSemantiqueException.getInstance()
+					.addException(
+							new SemantiqueException(noLigne, idf + ": Var non déclarée")
+					);
+		}
 	}
 
 	@Override
 	public String toMIPS() {
 		return String.join (
 			"\n",
-			"# recuperation de la valeur de " +  idf,
-				"lw $v0, "+ TDS.getInstance()
-								.identifier (idf, noLigne)
-								.getPointeur()+"($s7) \n"
+			"\t# recuperation de la valeur de " +  idf,
+				TDSv2.getInstance().identifierVar(entry),
+				"\tlw $v0, ($s2)"
 		) ;
 	}
 }
