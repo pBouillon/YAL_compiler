@@ -42,6 +42,7 @@ public class DeclFonction extends Instruction {
         super(n);
         name   = _name ;
         linstr = _linstr ;
+        etq = _name + _noParam ;
         ldecl  = _ldecl  ;
 
         addFn() ;

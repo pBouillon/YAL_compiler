@@ -19,6 +19,7 @@ public class DeclParam extends Instruction {
 
     public DeclParam(String idf, int no) {
         super(no);
+
         entry = new VarEntry (idf, PARM_NAME) ;
         nbParam = 0 ;
 
