@@ -45,14 +45,14 @@ public class Node {
         return val ;
     }
 
-    public boolean exists (Entry e) {
+    public boolean exists (Entry e, int noRegion) {
         for (Node n : childs) {
             if (!(n.symbol instanceof FnSymbol)
-                    && n.exists(e)) {
+                    && n.exists(e, noRegion)) {
                 return true ;
             }
         }
-        return entree.equals(e) ;
+        return entree.equals(e) && symbol.getNoRegion() == noRegion ;
     }
 
     public void decrVal() {

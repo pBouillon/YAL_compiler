@@ -1,14 +1,22 @@
 package yal.arbre.expression;
 
+import yal.tabledessymboles.Entry;
 import yal.tabledessymboles.TDS;
+import yal.tabledessymboles.TDSv2;
+import yal.tabledessymboles.VarEntry;
 
 public class IDF extends Expression{
 	
 	private String idf;
+	private Entry entry ;
+	boolean exist ;
+	int noRegion ;
 
 	public IDF(String i, int n) {
 		super(n);
 		idf = i;
+		entry = new VarEntry(i, "VAR") ;
+		noRegion = TDSv2.getInstance().getCurrentRegion() ;
 	}
 
 	@Override
@@ -18,6 +26,7 @@ public class IDF extends Expression{
 
 	@Override
 	public void verifier() {
+		exist = TDSv2.getInstance().varExists(entry, noRegion) ;
 		TDS.getInstance().identifier(idf, noLigne);
 	}
 

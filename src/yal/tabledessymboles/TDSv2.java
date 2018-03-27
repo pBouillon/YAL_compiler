@@ -118,8 +118,8 @@ public class TDSv2 {
         return false ;
     }
 
-    public boolean varExists(Entry e) {
-        return root.exists(e) ;
+    public boolean varExists(Entry e, int noRegion) {
+        return root.exists(e, noRegion) ;
     }
 
     public boolean paramExists(Entry e, int noRegion) {

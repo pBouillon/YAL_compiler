@@ -198,7 +198,7 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 {: RESULT = c ; :}
         |
                 IDF:i
-                {: RESULT = new IDF(i, ileft+1) ; :}
+                {: RESULT = new IDF(i, ileft) ; :}
         |
                 PAROUV  EXPR:e  PARFER
                 {: RESULT = e ; :}

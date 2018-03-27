@@ -22,10 +22,10 @@ public class DeclVar extends Instruction {
         noRegion = TDSv2.getInstance().getCurrentRegion() ;
         entry = new VarEntry(name, "VAR") ;
 
-        if (TDSv2.getInstance().varExists(entry)) exists = true ;
+        if (TDSv2.getInstance().varExists(entry, noRegion)) exists = true ;
         else {
             exists = false ;
-            TDSv2.addVar(
+            TDSv2.addVar (
                     entry,
                     new VarSymbol(name, noRegion, TDSv2.getInstance().getVarValue())
             ) ;
