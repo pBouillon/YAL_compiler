@@ -314,5 +314,9 @@ PAR_EFF ::= EXPR:e VIRGULE PAR_EFF:pe
             :}
         |
             EXPR:e
-            {: RESULT = new ArrayList<Expression>(e); :}
+            {:
+                ArrayList<Expression> al = new ArrayList<Expression>() ;
+                al.add(e) ;
+                RESULT = al ;
+            :}
         ;

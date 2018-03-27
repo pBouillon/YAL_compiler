@@ -32,6 +32,8 @@ public abstract class Entry {
     public boolean equals(Object obj) {
         if (this == obj) return true ;
 
+        if (obj == null) return false ;
+
         if (getClass() != obj.getClass()) return false ;
 
         Entry e = (Entry) obj ;
