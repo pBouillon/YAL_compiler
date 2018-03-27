@@ -271,13 +271,13 @@ CSTE    ::=     CONSTANTEINT:e
 
 DECL_FONCTION ::=  FONCTION IDF:i PARAMETRES:p DEBUT LINSTR:li FIN
                    {:
-                        new DeclFonction (i, li, lileft + 1, p) ;
+                        RESULT = new DeclFonction (i, li, lileft + 1, p) ;
                         TDSv2.getInstance().endBlock() ;
                    :}
         |
                    FONCTION IDF:i PARAMETRES:p DEBUT VLDECL:vld LINSTR:li FIN
                    {:
-                        new DeclFonction(i, vld, li, lileft + 1, p) ;
+                        RESULT = new DeclFonction(i, vld, li, lileft + 1, p) ;
                         TDSv2.getInstance().endBlock() ;
                    :}
         ;
