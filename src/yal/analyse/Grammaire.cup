@@ -143,11 +143,9 @@ VLDECL ::=  VLDECL DECL_VAR
 
 DECLARATION ::= DECL_VAR:v
                 {: RESULT = v ; :}
-        |
-                DECL_FONCTION:f
-                {: RESULT = f ; :}
         ;
-				
+
+        
 DECL_VAR ::= 	ENTIER IDF:i POINTVIRGULE
 				{:
 				    RESULT = new DeclVar(i, ileft) ;
@@ -224,6 +222,9 @@ INSTR ::=       PRINT:p POINTVIRGULE
         |
         		CONDITION:c
         		{: RESULT = c ; :}
+        |
+        		DECL_FONCTION:f
+                {:  :}
         |
                 RETOURNE EXPR:e POINTVIRGULE
                 {: RESULT = new Retourne(e, eleft+1) ; :}
