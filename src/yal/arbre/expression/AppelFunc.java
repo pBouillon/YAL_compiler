@@ -55,7 +55,7 @@ public class AppelFunc extends Expression {
                         "\n",
                         "\n\t# Eval du " + i + "eme parametre",
                         e.toMIPS(),
-                        "sw $v0, (sp)",
+                        "sw $v0, ($sp)",
                         "addi $sp, $sp, -4"
                         )
                 );

@@ -52,11 +52,12 @@ public class TDSv2 {
     }
 
     public Symbol identifierFn (Entry e, int paramNb) {
-        for (Node n : root.getChilds())
-        if (currentNode.getEntry() instanceof FnEntry
-                && n.getEntry().equals(e)
-                && n.getSymbol().getNbParam() == paramNb) {
-            return n.getSymbol() ;
+        for (Node n : root.getChilds()) {
+            if (currentNode.getEntry() instanceof FnEntry
+                    && n.getEntry().equals(e)
+                    && n.getSymbol().getNbParam() == paramNb) {
+                return n.getSymbol();
+            }
         }
         return null ;
     }

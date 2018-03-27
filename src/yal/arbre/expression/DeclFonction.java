@@ -27,15 +27,14 @@ public class DeclFonction extends Instruction {
     public DeclFonction(String _name, BlocDInstructions _linstr, int n, int _noParam) {
         super(n);
 
-
         name   = _name ;
         linstr = _linstr ;
         etq = _name + _noParam ;
         entry = new FnEntry(name, etq) ;
+        noParam = _noParam ;
 
         addFn() ;
 
-        noParam = _noParam ;
     }
 
     public DeclFonction(String _name, BlocDInstructions _ldecl, BlocDInstructions _linstr, int n, int _noParam) {
@@ -45,9 +44,9 @@ public class DeclFonction extends Instruction {
         etq = _name + _noParam ;
         ldecl  = _ldecl  ;
 
+        noParam = _noParam ;
         addFn() ;
 
-        noParam = _noParam ;
     }
 
     public void addFn() {
