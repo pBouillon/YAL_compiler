@@ -75,7 +75,9 @@ terminal String    CONSTANTEINT, CONSTANTEBOOL , CONSTANTECHAINE ;
 terminal String	   SI, ALORS, SINON, FSI;
 terminal String    FONCTION, RETOURNE ;
 
-terminal String    ENTIER, ECRIRE ;
+terminal String    ENTIER, ECRIRE  ;
+terminal String    LONGUEUR ;
+terminal Symbol    POINT, CROCH_OUVR, CROCH_FER ;
 
 /* Non terminals used in the grammar section.  */
 
@@ -88,6 +90,8 @@ non terminal ArrayList<Expression> PAR_EFF ;
 
 non terminal ArbreAbstrait DECL_FONCTION, DECL_VAR, DECLARATION ;
 non terminal Integer PARAMETRES, LPARAM;
+
+non terminal DeclTab DECL_TAB ;
 
 precedence left OU ;
 precedence left ET ;
@@ -111,50 +115,64 @@ PROG    ::=     PROGRAMME IDF DEBUT LDECL:d LINSTR:e FIN
         |
                 PROGRAMME IDF DEBUT LINSTR:e FIN
                 {: RESULT = e; :}
-				;
+        ;
 
 
-LINSTR    ::=     INSTR:e 
-                {:  BlocDInstructions bloc = new BlocDInstructions(eleft+1) ;
+LINSTR  ::=   INSTR:e
+                {:
+                    BlocDInstructions bloc = new BlocDInstructions(eleft+1) ;
                 	bloc.ajouter(e) ;
-                	RESULT = bloc ; :}
+                	RESULT = bloc ;
+                :}
         |
         		LINSTR:li INSTR:e
-                {: 	li.ajouter(e) ;
-                	RESULT = li ; :}
-                ;
+                {:
+                    li.ajouter(e) ;
+                	RESULT = li ;
+                :}
+        ;
                 
-LDECL ::= 	DECLARATION:d
-            {:  BlocDInstructions bloc = new BlocDInstructions(dleft+1) ;
+LDECL ::= 	    DECLARATION:d
+                {:  BlocDInstructions bloc = new BlocDInstructions(dleft+1) ;
                 bloc.ajouter(d) ;
                 RESULT = bloc ; :}
 	  |
-	  		LDECL:ld DECLARATION:d
-	  		{: 	ld.ajouter(d) ;
+	  		    LDECL:ld DECLARATION:d
+	  		    {: 	ld.ajouter(d) ;
                 RESULT = ld ; :}
-            ;
+      ;
 
-VLDECL ::=  VLDECL DECL_VAR
-            {: :}
+VLDECL ::=      VLDECL DECL_VAR
+                {: :}
       |
-            DECL_VAR:v
-            {: :}
+                DECL_VAR:v
+                {: :}
       ;
 
 DECLARATION ::= DECL_VAR:v
                 {: RESULT = v ; :}
-        ;
+      |
+                DECL_TAB:t
+                {: RESULT = t ; :}
+      ;
 
         
 DECL_VAR ::= 	ENTIER IDF:i POINTVIRGULE
 				{:
 				    RESULT = new DeclVar(i, ileft) ;
 				:}
- 				;
+     ;
+
+DECL_TAB ::=    ENTIER CROCH_OUVR EXPR:e CROCH_FER IDF:i POINTVIRGULE
+                {: RESULT = new DeclTab(i, e, ileft + 1) ; :}
+     ;
  				
 AFFECT ::= 		IDF:i EGAL EXPR:e
-				{:  RESULT = new Affectation(i,e,eleft+1);  :}
-				;
+				{: RESULT = new AffectationVar(i,e,eleft+1);  :}
+     |
+                IDF:i CROCH_OUVR EXPR:e CROCH_FER EGAL EXPR:e2
+                {: RESULT = new AffectationTab(i, e, e2, ileft+1) ; :}
+     ;
 				    
 EXPR    ::=     EXPR:g  PLUS  EXPR:d
                 {: RESULT = new Plus(g, d) ; :}
@@ -206,6 +224,9 @@ EXPR    ::=     EXPR:g  PLUS  EXPR:d
         |
                 IDF:i PAROUV PAR_EFF:pe PARFER
                 {: RESULT = new AppelFunc(i, ileft + 1, pe) ; :}
+        |
+                IDF:i POINT LONGUEUR
+                {: RESULT = new TabLongueur(i, ileft + 1) ; :}
         ;
 				
 INSTR ::=       PRINT:p POINTVIRGULE
@@ -228,11 +249,11 @@ INSTR ::=       PRINT:p POINTVIRGULE
         |
                 RETOURNE EXPR:e POINTVIRGULE
                 {: RESULT = new Retourne(e, eleft+1) ; :}
-                ;
+        ;
 
 READ ::= 	    LIRE IDF:i
 			    {: RESULT = new Lire(i, ileft + 1) ; :}
-			    ;
+        ;
 
 PRINT ::=       ECRIRE EXPR:e
                 {:  RESULT = new EcrireExpr(e, eleft + 1) ; :}
@@ -243,9 +264,10 @@ PRINT ::=       ECRIRE EXPR:e
 
 BOUCLE ::= 	TANTQUE EXPR:e REPETER LINSTR:l FINTANTQUE
 			{:  RESULT = new Boucle(e, l, eleft + 1) ; :}
-			;
+        ;
 			
-CONDITION ::= 	SI EXPR:cond ALORS LINSTR:si SINON LINSTR:sinon FSI
+CONDITION ::=
+                SI EXPR:cond ALORS LINSTR:si SINON LINSTR:sinon FSI
 				{: RESULT = new Condition(cond, si, sinon, condleft + 1) ; :}
         |
                 SI EXPR:cond ALORS LINSTR:si FSI
@@ -260,13 +282,14 @@ CONDITION ::= 	SI EXPR:cond ALORS LINSTR:si SINON LINSTR:sinon FSI
 		|
 		        SI EXPR:cond ALORS SINON FSI
 				{: RESULT = new Condition(cond, null, null, condleft + 1) ; :}
-				;
+        ;
 			
 CSTE    ::=     CONSTANTEINT:e 
                 {: RESULT = new ConstanteEntiere(e, eleft+1) ; :}
-        |       CONSTANTEBOOL:e 
+        |
+                CONSTANTEBOOL:e
                 {: RESULT = new ConstanteBool(e, eleft+1) ; :}
-                ;
+        ;
 
 /* FONCTIONS */
 

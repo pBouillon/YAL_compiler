@@ -1,6 +1,7 @@
 programme test debut
     entier a ;
     entier b ;
+    entier[5] tab ;
 
     fonction f1 (entier i) debut
         retourne i ;
@@ -9,6 +10,9 @@ programme test debut
     fonction f2 (entier k; entier l) debut
         retourne k + l ;
     fin
+
+    tab[3] = 2 ;
+    ecrire tab.longueur ;
 
     a = f1(14);
     b = f2(12, 10) ;

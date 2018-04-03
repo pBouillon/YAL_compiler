@@ -59,6 +59,11 @@ espace     = {finDeLigne}  | [ \t\f]
 
 commentaireSlashSlash = [/][/].*
 
+crochOuvr = "["
+crochFer  = "]"
+point     = "\."
+longueur  = "longueur"
+
 %%
 {entier}                { return symbol(CodesLexicaux.ENTIER, yytext()); }
 {ecrire}                { return symbol(CodesLexicaux.ECRIRE, yytext()); }
@@ -113,4 +118,10 @@ commentaireSlashSlash = [/][/].*
 {commentaireSlashSlash} { }
 
 {finDeLigne}            { }
+
+{crochOuvr}             { return symbol(CodesLexicaux.CROCH_OUVR, yytext()) ; }
+{crochFer}              { return symbol(CodesLexicaux.CROCH_FER, yytext()) ;  }
+{point}                 { return symbol(CodesLexicaux.POINT, yytext()) ;      }
+{longueur}              { return symbol(CodesLexicaux.LONGUEUR, yytext()) ;   }
+
 .                       { throw new AnalyseLexicaleException(yyline, yycolumn, yytext()) ; }

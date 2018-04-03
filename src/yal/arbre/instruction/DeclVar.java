@@ -1,6 +1,5 @@
-package yal.arbre.expression;
+package yal.arbre.instruction;
 
-import yal.arbre.instruction.Instruction;
 import yal.exceptions.DoubleDeclarationException;
 import yal.exceptions.ListeSemantiqueException;
 import yal.tabledessymboles.Entry;
